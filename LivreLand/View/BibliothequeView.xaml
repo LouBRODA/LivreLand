@@ -44,128 +44,30 @@
                                                 ButtonIcon="tray_2_fill.png"
                                                 ButtonNumber="45"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             Margin="10,0,0,0"
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorCutStartView/>
 
                     <!--En prêt-->
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="person_badge_clock_fill.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="0"/>
-                        <Label Text="En prêt"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                        <Label Text="1"
-                                VerticalOptions="Center"
-                                Grid.Column="4"/>
-                        <Image Source="chevron_right.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="6"/>
-                    </Grid>
+                    <contentView:HomeButtonView ButtonTitle="En prêt"
+                                                ButtonIcon="person_badge_clock_fill.png"
+                                                ButtonNumber="1"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             Margin="10,0,0,0"
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorCutStartView/>
 
                     <!--À lire plus tard-->
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="arrow_forward.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="0"/>
-                        <Label Text="À lire plus tard"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                        <Image Source="chevron_right.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="6"/>
-                    </Grid>
+                    <contentView:HomeButtonView ButtonTitle="À lire plus tard"
+                                                ButtonIcon="arrow_forward.png"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             Margin="10,0,0,0"
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorCutStartView/>
 
                     <!--Statut de lecture-->
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="eyeglasses.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="0"/>
-                        <Label Text="Statut de lecture"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                        <Image Source="chevron_right.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="6"/>
-                    </Grid>
+                    <contentView:HomeButtonView ButtonTitle="Statut de lecture"
+                                                ButtonIcon="eyeglasses.png"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             Margin="10,0,0,0"
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorCutStartView/>
 
                     <!--Favoris-->
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="heart_fill.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="0"/>
-                        <Label Text="Favoris"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                        <Image Source="chevron_right.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="6"/>
-                    </Grid>
+                    <contentView:HomeButtonView ButtonTitle="Favoris"
+                                                ButtonIcon="heart_fill.png"/>
 
                     <BoxView Color="{DynamicResource Gray}"  
                              HeightRequest="1"  
@@ -178,96 +80,27 @@
                        Grid.Row="4"/>
 
                 <VerticalStackLayout BackgroundColor="{DynamicResource LightGray}"
-                                        Grid.Row="6">
+                                     Grid.Row="6">
 
                     <BoxView Color="{DynamicResource Gray}"  
                              HeightRequest="1"  
                              HorizontalOptions="Fill"/>
 
                     <!--Auteur-->
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="person_fill.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="0"/>
-                        <Label Text="Auteur"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                        <Image Source="chevron_right.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="6"/>
-                    </Grid>
+                    <contentView:HomeButtonView ButtonTitle="Auteur"
+                                                ButtonIcon="person_fill.png"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             Margin="10,0,0,0"
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorCutStartView/>
 
                     <!--Date de publication-->
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="calendar.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="0"/>
-                        <Label Text="Date de publication"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                        <Image Source="chevron_right.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="6"/>
-                    </Grid>
+                    <contentView:HomeButtonView ButtonTitle="Date de publication"
+                                                ButtonIcon="calendar.png"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             Margin="10,0,0,0"
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorCutStartView/>
 
                     <!--Note-->
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="1"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="sparkles.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="0"/>
-                        <Label Text="Note"
-                                VerticalOptions="Center"
-                                Grid.Column="2"/>
-                        <Image Source="chevron_right.png"
-                                MaximumHeightRequest="20"
-                                MaximumWidthRequest="20"
-                                Grid.Column="6"/>
-                    </Grid>
+                    <contentView:HomeButtonView ButtonTitle="Note"
+                                                ButtonIcon="sparkles.png"/>
 
                     <BoxView Color="{DynamicResource Gray}"  
                              HeightRequest="1"  

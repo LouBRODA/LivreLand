@@ -2,10 +2,54 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivreLand.View.HeaderPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button VerticalOptions="Center"
+                    ImageSource="chevron_right.png"
+                    Rotation="180"
+                    BackgroundColor="Transparent"
+                    MaximumHeightRequest="20"
+                    MaximumWidthRequest="20"
+                    Grid.Column="0"/>
+            <Label Text="Mes livres"
+                   VerticalOptions="Center"
+                   TextColor="Red"
+                   Grid.Column="2"/>
+            <!--<Grid.GestureRecognizers>
+                <TapGestureRecognizer Command=""/>
+            </Grid.GestureRecognizers>-->
+        </Grid>
+        <Label Text="Tous"
+               FontAttributes="Bold"
+               Grid.Column="2"/>
+        <Button VerticalOptions="Center"
+                ImageSource="plus.png"
+                BackgroundColor="Transparent"
+                MaximumHeightRequest="20"
+                MaximumWidthRequest="20"
+                Grid.Column="4"/>
+        <Button VerticalOptions="Center"
+                ImageSource="plus.png"
+                BackgroundColor="Transparent"
+                MaximumHeightRequest="20"
+                MaximumWidthRequest="20"
+                Grid.Column="6"/>
+    </Grid>
+    
 </ContentView>

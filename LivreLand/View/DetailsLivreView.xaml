@@ -1,32 +1,243 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:LivreLand.View"
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              x:Class="LivreLand.View.DetailsLivreView"
              Title="DetailsLivreView">
     <Grid>
-        <ScrollView>
-            <VerticalStackLayout Margin="10">
-                
-                <!--Informations générales-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                </Grid>
-                    
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <view:HeaderPage Grid.Row="0"/>
+        <ScrollView Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <VerticalStackLayout Grid.Row="0">
+                    <!--Informations générales-->
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="La horde du contrevent"
+                               Grid.Column="2"
+                               Grid.Row="2"/>
+                    </Grid>
+
+                    <contentView:SeparatorCutStartView/>
+
                     <!--Informations en ligne-->
-                    
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Infos en ligne"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"
+                               Grid.Column="0"/>
+                        <Image Source="chevron_right.png"
+                               MaximumHeightRequest="20"
+                               MaximumWidthRequest="20"
+                               Grid.Column="2"/>
+                    </Grid>
+
+                    <contentView:SeparatorCutStartView/>
+
                     <!--Auteur-->
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Auteur"
+                               FontAttributes="Bold"
+                               Grid.Row="0"/>
+                        <Label Text="Alain Damasio"
+                               Grid.Row="1"/>
+                    </Grid>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <!--Maison d'édition-->
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Maison d'édition"
+                               FontAttributes="Bold"
+                               Grid.Row="0"/>
+                        <Label Text="Gallimard (2015)"
+                               Grid.Row="1"/>
+                    </Grid>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <!--Résumé-->
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Résumé"
+                               FontAttributes="Bold"
+                               Grid.Row="0"/>
+                        <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas integer eget aliquet. Nunc sed id semper risus. Nisl purus in mollis nunc sed id semper risus. Egestas congue quisque egestas diam in arcu cursus euismod. Elementum integer enim neque volutpat ac tincidunt vitae. Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Sollicitudin tempor id eu nisl nunc. Eget mauris pharetra et ultrices neque. In vitae turpis massa sed elementum tempus. Posuere ac ut consequat semper viverra nam. Quisque non tellus orci ac auctor augue mauris augue. Cursus in hac habitasse platea dictumst. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Vel fringilla est ullamcorper eget nulla facilisi etiam."
+                               Grid.Row="1"/>
+                    </Grid>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <!--Détails-->
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Détails"
+                               FontAttributes="Bold"
+                               Grid.Row="0"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Nombre de pages"
+                                   Grid.Column="0"/>
+                            <Label Text="700"
+                                   Grid.Column="2"/>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Langue"
+                                   Grid.Column="0"/>
+                            <Label Text="français"
+                                   Grid.Column="2"/>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="ISBN"
+                                   Grid.Column="0"/>
+                            <Label Text="9782070464234"
+                                   Grid.Column="2"/>
+                        </Grid>
+                    </Grid>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <!--Statut de lecture-->
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Statut de lecture"
+                               FontAttributes="Bold"
+                               Grid.Row="0"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Statut"
+                                   Grid.Column="0"/>
+                            <Label Text="Non lu"
+                                   Grid.Column="2"/>
+                        </Grid>
+                    </Grid>
                     
+                    <contentView:SeparatorCutStartView/>
+
+                    <!--Bibliothèque-->
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Bibliothèque"
+                               FontAttributes="Bold"
+                               Grid.Row="0"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Ajouté le"
+                                   Grid.Column="0"/>
+                            <Label Text="10 août 2023"
+                                   Grid.Column="2"/>
+                        </Grid>
+                    </Grid>
+
+                    <contentView:SeparatorCutStartView/>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="2">
+
+                    <contentView:SeparatorCutStartView/>
                     
-            </VerticalStackLayout>
+                    <contentView:DetailsLivreButtonView ButtonIcon=""
+                                                        ButtonTitle="Déplacer le livre"/>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <contentView:DetailsLivreButtonView ButtonIcon=""
+                                                        ButtonTitle="Ajouter à la liste À lire plus tard"/>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <contentView:DetailsLivreButtonView ButtonIcon="eyeglasses.png"
+                                                        ButtonTitle="Changer le statut de lecture"/>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <contentView:DetailsLivreButtonView ButtonIcon="person.png"
+                                                        ButtonTitle="Prêter le livre"/>
+                </VerticalStackLayout>
+                <!--Buttons-->
+            </Grid>
         </ScrollView>
     </Grid>
 </ContentPage>

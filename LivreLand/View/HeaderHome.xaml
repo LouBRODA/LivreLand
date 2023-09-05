@@ -10,7 +10,6 @@
                    VerticalOptions="Center"
                    TextColor="Red"
                    FontAttributes="Bold"
-                   BackgroundColor="Transparent"
                    Grid.Column="0"/>
             <!--<Grid.GestureRecognizers>
                 <TapGestureRecognizer Command=""/>
