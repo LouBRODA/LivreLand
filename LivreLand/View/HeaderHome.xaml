@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivreLand.View.HeaderHome">
+
+    <Grid ColumnDefinitions="auto, *, auto"
+          Margin="5">
+        <Grid>
+            <Label Text="Modifier"
+                   VerticalOptions="Center"
+                   TextColor="Red"
+                   FontAttributes="Bold"
+                   BackgroundColor="Transparent"
+                   Grid.Column="0"/>
+            <!--<Grid.GestureRecognizers>
+                <TapGestureRecognizer Command=""/>
+            </Grid.GestureRecognizers>-->
+        </Grid>
+        <Button VerticalOptions="Center"
+                ImageSource="plus.png"
+                BackgroundColor="Transparent"
+                MaximumHeightRequest="20"
+                MaximumWidthRequest="20"
+                Grid.Column="2"/>
+    </Grid>
+    
+</ContentView>
