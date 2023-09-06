@@ -5,8 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Color x:Key="Gray">#e1e1e1</Color>
+    <Color x:Key="TextGray">#5b5b5b</Color>
     <Color x:Key="LightGray">#f8f8f8</Color>
-    
+    <Color x:Key="HeaderGray">#f2f0f6</Color>
+    <Color x:Key="HeaderSeparatorGray">#c9c9cb</Color>
+
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>

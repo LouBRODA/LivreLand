@@ -11,7 +11,16 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <view:HeaderPage Grid.Row="0"/>
+
+        <VerticalStackLayout Grid.Row="0">
+            <view:HeaderPage HeaderTitle="Détails du livre"
+                             HeaderBackButtonText="Tous"
+                             HeaderPlusButtonVisible="False"
+                             HeaderSwitchButtonVisible="False"
+                             HeaderColor="{DynamicResource HeaderGray}"/>
+            <contentView:SeparatorEntireView/>
+        </VerticalStackLayout>
+
         <ScrollView Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -68,9 +77,10 @@
                         </Grid.RowDefinitions>
 
                         <Label Text="Auteur"
-                               FontAttributes="Bold"
+                               Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
                         <Label Text="Alain Damasio"
+                               Style="{StaticResource DetailsLivreBody}"
                                Grid.Row="1"/>
                     </Grid>
 
@@ -84,9 +94,10 @@
                         </Grid.RowDefinitions>
 
                         <Label Text="Maison d'édition"
-                               FontAttributes="Bold"
+                               Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
                         <Label Text="Gallimard (2015)"
+                               Style="{StaticResource DetailsLivreBody}"
                                Grid.Row="1"/>
                     </Grid>
 
@@ -100,9 +111,10 @@
                         </Grid.RowDefinitions>
 
                         <Label Text="Résumé"
-                               FontAttributes="Bold"
+                               Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
                         <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas integer eget aliquet. Nunc sed id semper risus. Nisl purus in mollis nunc sed id semper risus. Egestas congue quisque egestas diam in arcu cursus euismod. Elementum integer enim neque volutpat ac tincidunt vitae. Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Sollicitudin tempor id eu nisl nunc. Eget mauris pharetra et ultrices neque. In vitae turpis massa sed elementum tempus. Posuere ac ut consequat semper viverra nam. Quisque non tellus orci ac auctor augue mauris augue. Cursus in hac habitasse platea dictumst. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Vel fringilla est ullamcorper eget nulla facilisi etiam."
+                               Style="{StaticResource DetailsLivreBody}"
                                Grid.Row="1"/>
                     </Grid>
 
@@ -118,7 +130,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Text="Détails"
-                               FontAttributes="Bold"
+                               Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -128,8 +140,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Text="Nombre de pages"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
                             <Label Text="700"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
                         <Grid Grid.Row="2">
@@ -140,8 +154,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Text="Langue"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
                             <Label Text="français"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -152,8 +168,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Text="ISBN"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
                             <Label Text="9782070464234"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
                     </Grid>
@@ -168,7 +186,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Text="Statut de lecture"
-                               FontAttributes="Bold"
+                               Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -178,8 +196,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Text="Statut"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
                             <Label Text="Non lu"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
                     </Grid>
@@ -194,7 +214,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Text="Bibliothèque"
-                               FontAttributes="Bold"
+                               Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -204,8 +224,10 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Text="Ajouté le"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
                             <Label Text="10 août 2023"
+                                   Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
                     </Grid>

@@ -176,6 +176,28 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Label" x:Key="HeaderTitle">
+        <Setter Property="TextColor" Value="{DynamicResource Black}"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+    
+    <Style TargetType="Label" x:Key="DetailsLivreTitle">
+        <Setter Property="TextColor" Value="{DynamicResource Black}"/>
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="DetailsLivreBody">
+        <Setter Property="TextColor" Value="{DynamicResource TextGray}"/>
+        <Setter Property="FontSize" Value="Body"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="DetailsButtonBody">
+        <Setter Property="TextColor" Value="{DynamicResource TextGray}"/>
+        <Setter Property="FontSize" Value="Medium"/>
+    </Style>
+    
     <Style TargetType="ListView">
         <Setter Property="SeparatorColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="RefreshControlColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
@@ -247,6 +269,7 @@
 
     <Style TargetType="SearchBar">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
+        <Setter Property="Placeholder" Value="Rechercher" />
         <Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
         <Setter Property="CancelButtonColor" Value="{StaticResource Gray500}" />
         <Setter Property="BackgroundColor" Value="Transparent" />

@@ -17,6 +17,7 @@
                MaximumWidthRequest="20"
                Grid.Column="0"/>
         <Label Text="{Binding ButtonTitle}"
+               Style="{StaticResource DetailsButtonBody}"
                TextColor="Red"
                VerticalOptions="Center"
                Grid.Column="2"/>

@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:LivreLand.View"
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              x:Class="LivreLand.View.FiltrageDateView"
              Title="FiltrageDateView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <view:HeaderPage Grid.Row="0"
+                         HeaderTitle="Date de publication"
+                         HeaderPlusButtonVisible="False"
+                         HeaderSwitchButtonVisible="True"/>
+
+        <VerticalStackLayout BackgroundColor="{DynamicResource Light}"
+                             Grid.Row="2">
+            <contentView:SeparatorEntireView/>
+
+            <contentView:SearchBarView Grid.Row="2"/>
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="4">
+            <VerticalStackLayout Grid.Row="2">
+                <contentView:SeparatorEntireView/>
+
+                <!--2022-->
+                <contentView:HomeButtonView ButtonTitle="2022"
+                                            ButtonIcon="book_fill.png"
+                                            ButtonNumber="1"/>
+
+                <contentView:SeparatorBigCutStartView/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+    
 </ContentPage>

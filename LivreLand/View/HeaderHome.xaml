@@ -9,7 +9,7 @@
             <Label Text="Modifier"
                    VerticalOptions="Center"
                    TextColor="Red"
-                   FontAttributes="Bold"
+                   Style="{StaticResource HeaderTitle}"
                    Grid.Column="0"/>
             <!--<Grid.GestureRecognizers>
                 <TapGestureRecognizer Command=""/>

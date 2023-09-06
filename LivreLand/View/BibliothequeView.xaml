@@ -12,6 +12,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <view:HeaderHome Grid.Row="0"/>
         <ScrollView Grid.Row="2">
             <Grid>
@@ -35,9 +36,7 @@
                 <VerticalStackLayout BackgroundColor="{DynamicResource LightGray}"
                                         Grid.Row="2">
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorEntireView/>
 
                     <!--Tous-->
                     <contentView:HomeButtonView ButtonTitle="Tous"
@@ -69,22 +68,18 @@
                     <contentView:HomeButtonView ButtonTitle="Favoris"
                                                 ButtonIcon="heart_fill.png"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>
 
                 <Label Text="Filtres"
                        Margin="10,0,0,0"
-                       FontAttributes="Bold"
+                       Style="{StaticResource HeaderTitle}"
                        Grid.Row="4"/>
 
                 <VerticalStackLayout BackgroundColor="{DynamicResource LightGray}"
                                      Grid.Row="6">
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorEntireView/>
 
                     <!--Auteur-->
                     <contentView:HomeButtonView ButtonTitle="Auteur"
@@ -102,9 +97,7 @@
                     <contentView:HomeButtonView ButtonTitle="Note"
                                                 ButtonIcon="sparkles.png"/>
 
-                    <BoxView Color="{DynamicResource Gray}"  
-                             HeightRequest="1"  
-                             HorizontalOptions="Fill"/>
+                    <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>
 
             </Grid>

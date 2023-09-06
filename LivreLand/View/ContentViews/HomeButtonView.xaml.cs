@@ -23,6 +23,13 @@ public partial class HomeButtonView : ContentView
         set => SetValue(HomeButtonView.ButtonNumberProperty, value);
     }
 
+    public static readonly BindableProperty ButtonCommandProperty = BindableProperty.Create(nameof(ButtonCommand), typeof(Command), typeof(HomeButtonView), string.Empty);
+    public Command ButtonCommand
+    {
+        get => (Command)GetValue(HomeButtonView.ButtonCommandProperty);
+        set => SetValue(HomeButtonView.ButtonCommandProperty, value);
+    }
+
     public HomeButtonView()
     {
         InitializeComponent();

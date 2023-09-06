@@ -1,55 +1,70 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivreLand.View.HeaderPage">
-
+             x:Class="LivreLand.View.HeaderPage"
+             x:Name="this"
+             BindingContext="{x:Reference this}"
+             BackgroundColor="{Binding HeaderColor}">
+    
     <Grid Margin="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="2"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        
-        <Grid Grid.Column="0">
+        <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="2"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Button VerticalOptions="Center"
+                        ImageSource="chevron_right.png"
+                        Rotation="180"
+                        BackgroundColor="Transparent"
+                        MaximumHeightRequest="20"
+                        MaximumWidthRequest="20"
+                        Grid.Column="0"/>
+                <Label Text="{Binding HeaderBackButtonText}"
+                       VerticalOptions="Center"
+                       TextColor="Red"
+                       Style="{StaticResource HeaderTitle}"
+                       Grid.Column="2"/>
+                <!--<Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command=""/>
+                </Grid.GestureRecognizers>-->
+            </Grid>
             <Button VerticalOptions="Center"
-                    ImageSource="chevron_right.png"
-                    Rotation="180"
+                    ImageSource="plus.png"
                     BackgroundColor="Transparent"
                     MaximumHeightRequest="20"
                     MaximumWidthRequest="20"
-                    Grid.Column="0"/>
-            <Label Text="Mes livres"
-                   VerticalOptions="Center"
-                   TextColor="Red"
-                   Grid.Column="2"/>
-            <!--<Grid.GestureRecognizers>
-                <TapGestureRecognizer Command=""/>
-            </Grid.GestureRecognizers>-->
+                    IsVisible="{Binding HeaderPlusButtonVisible}"
+                    Grid.Column="2"/>
+            <Button VerticalOptions="Center"
+                    ImageSource="plus.png"
+                    BackgroundColor="Transparent"
+                    MaximumHeightRequest="20"
+                    MaximumWidthRequest="20"
+                    IsVisible="{Binding HeaderSwitchButtonVisible}"
+                    Grid.Column="4"/>
         </Grid>
-        <Label Text="Tous"
-               FontAttributes="Bold"
-               Grid.Column="2"/>
-        <Button VerticalOptions="Center"
-                ImageSource="plus.png"
-                BackgroundColor="Transparent"
-                MaximumHeightRequest="20"
-                MaximumWidthRequest="20"
-                Grid.Column="4"/>
-        <Button VerticalOptions="Center"
-                ImageSource="plus.png"
-                BackgroundColor="Transparent"
-                MaximumHeightRequest="20"
-                MaximumWidthRequest="20"
-                Grid.Column="6"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding HeaderTitle}"
+                   Style="{StaticResource HeaderTitle}"
+                   Grid.Column="1"/>
+        </Grid>
+
     </Grid>
     
 </ContentView>

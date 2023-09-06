@@ -12,7 +12,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
@@ -27,9 +27,12 @@
                VerticalOptions="Center"
                Grid.Column="4"/>
         <Image Source="chevron_right.png"
-               MaximumHeightRequest="20"
-               MaximumWidthRequest="20"
+               MaximumHeightRequest="15"
+               MaximumWidthRequest="15"
                Grid.Column="6"/>
+        <!--<Grid.GestureRecognizers>
+            <TapGestureRecognizer Command=""/>
+        </Grid.GestureRecognizers>-->
     </Grid>
-    
+
 </ContentView>
