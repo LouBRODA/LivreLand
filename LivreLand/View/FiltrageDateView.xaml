@@ -15,10 +15,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <view:HeaderPage Grid.Row="0"
-                         HeaderTitle="Date de publication"
+        <view:HeaderPage HeaderTitle="Date de publication"
                          HeaderPlusButtonVisible="False"
-                         HeaderSwitchButtonVisible="True"/>
+                         HeaderSwitchButtonVisible="True"
+                         Grid.Row="0"/>
 
         <VerticalStackLayout BackgroundColor="{DynamicResource Light}"
                              Grid.Row="2">
