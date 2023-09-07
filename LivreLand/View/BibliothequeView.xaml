@@ -4,9 +4,10 @@
              xmlns:view="clr-namespace:LivreLand.View"
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              x:Class="LivreLand.View.BibliothequeView"
+             x:Name="this"
              Title="BibliothequeView">
 
-    <Grid>
+    <Grid BindingContext="{x:Reference this}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="10"/>
@@ -28,20 +29,20 @@
                 </Grid.RowDefinitions>
 
                 <Label Text="Mes Livres"
-                       FontAttributes="Bold"
-                       FontSize="40"
                        Margin="10,0,0,0"
+                       Style="{StaticResource HomeTitle}"
                        Grid.Row="0"/>
 
                 <VerticalStackLayout BackgroundColor="{DynamicResource LightGray}"
-                                        Grid.Row="2">
+                                     Grid.Row="2">
 
                     <contentView:SeparatorEntireView/>
 
                     <!--Tous-->
                     <contentView:HomeButtonView ButtonTitle="Tous"
                                                 ButtonIcon="tray_2_fill.png"
-                                                ButtonNumber="45"/>
+                                                ButtonNumber="45"
+                                                ButtonCommand="{Binding FiltreAuteurCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 

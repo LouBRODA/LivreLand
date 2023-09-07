@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              x:Class="LivreLand.View.TousView"
              Title="TousView">
+    
     <Grid>
         <ScrollView>
-            <CollectionView>
+            <CollectionView ItemsSource="{Binding AllBooks}">
                 <CollectionView.GroupHeaderTemplate>
                     <DataTemplate>
                         <Label Text="Alain Damasio"/>
@@ -30,13 +32,13 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                             </Grid>
-                            <Label Text="La horde du contrevent"
+                            <Label Text="{Binding Title}"
                                    Grid.Row="0"/>
-                            <Label Text="Alain Damasio"
+                            <Label Text="{Binding Author}"
                                    Grid.Row="1"/>
-                            <Label Text="Non lu"
+                            <Label Text="{Binding State}"
                                    Grid.Row="2"/>
-
+                            <contentView:StarNotationView Grid.Row="4"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

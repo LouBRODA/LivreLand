@@ -181,7 +181,13 @@
         <Setter Property="FontSize" Value="Medium"/>
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
-    
+
+    <Style TargetType="Label" x:Key="HomeTitle">
+        <Setter Property="TextColor" Value="{DynamicResource Black}"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
     <Style TargetType="Label" x:Key="DetailsLivreTitle">
         <Setter Property="TextColor" Value="{DynamicResource Black}"/>
         <Setter Property="FontSize" Value="Small"/>

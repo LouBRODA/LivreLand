@@ -30,9 +30,9 @@
                MaximumHeightRequest="15"
                MaximumWidthRequest="15"
                Grid.Column="6"/>
-        <!--<Grid.GestureRecognizers>
-            <TapGestureRecognizer Command=""/>
-        </Grid.GestureRecognizers>-->
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
+        </Grid.GestureRecognizers>
     </Grid>
 
 </ContentView>

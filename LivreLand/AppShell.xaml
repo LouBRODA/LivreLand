@@ -20,7 +20,7 @@
                       ContentTemplate="{DataTemplate view:DetailsLivreView}"
                       Icon="bookmark_fill"/>
         <ShellContent Title="Search"
-                      ContentTemplate="{DataTemplate view:FiltrageDateView}"
+                      ContentTemplate="{DataTemplate view:TousView}"
                       Icon="magnifying_glass.png"/>
     </TabBar>
 
