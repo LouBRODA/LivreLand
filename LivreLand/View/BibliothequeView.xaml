@@ -33,8 +33,10 @@
                        Style="{StaticResource HomeTitle}"
                        Grid.Row="0"/>
 
-                <VerticalStackLayout BackgroundColor="{DynamicResource LightGray}"
-                                     Grid.Row="2">
+                <VerticalStackLayout Grid.Row="2">
+                    <VerticalStackLayout.BackgroundColor>
+                        <AppThemeBinding Light="{DynamicResource LightGray}" Dark="{StaticResource Black}" />
+                    </VerticalStackLayout.BackgroundColor>
 
                     <contentView:SeparatorEntireView/>
 
@@ -77,8 +79,10 @@
                        Style="{StaticResource HeaderTitle}"
                        Grid.Row="4"/>
 
-                <VerticalStackLayout BackgroundColor="{DynamicResource LightGray}"
-                                     Grid.Row="6">
+                <VerticalStackLayout Grid.Row="6">
+                    <VerticalStackLayout.BackgroundColor>
+                        <AppThemeBinding Light="{DynamicResource LightGray}" Dark="{StaticResource Black}" />
+                    </VerticalStackLayout.BackgroundColor>
 
                     <contentView:SeparatorEntireView/>
 

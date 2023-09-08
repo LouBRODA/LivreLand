@@ -1,3 +1,4 @@
+using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Graphics;
 
 namespace LivreLand.View;
@@ -43,4 +44,9 @@ public partial class HeaderPage : ContentView
 	{
 		InitializeComponent();
 	}
+
+    public void OnBackButtonTapped(object sender, EventArgs e)
+    {
+        App.Current.MainPage.Navigation.PopAsync();
+    }
 }

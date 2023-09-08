@@ -14,13 +14,13 @@
                       ContentTemplate="{DataTemplate view:BibliothequeView}"
                       Icon="books_vertical_fill.png"/>
         <ShellContent Title="My Lists"
-                      ContentTemplate="{DataTemplate view:FiltrageAuteurView}"
+                      ContentTemplate="{DataTemplate view:TousView}"
                       Icon="list_bullet.svg"/>
         <ShellContent Title="My Readings"
-                      ContentTemplate="{DataTemplate view:DetailsLivreView}"
+                      ContentTemplate="{DataTemplate view:FiltrageAuteurView}"
                       Icon="bookmark_fill"/>
         <ShellContent Title="Search"
-                      ContentTemplate="{DataTemplate view:TousView}"
+                      ContentTemplate="{DataTemplate view:FiltrageDateView}"
                       Icon="magnifying_glass.png"/>
     </TabBar>
 

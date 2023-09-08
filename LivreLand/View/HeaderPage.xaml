@@ -34,9 +34,9 @@
                        TextColor="Red"
                        Style="{StaticResource HeaderTitle}"
                        Grid.Column="2"/>
-                <!--<Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command=""/>
-                </Grid.GestureRecognizers>-->
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackButtonTapped"/>
+                </Grid.GestureRecognizers>
             </Grid>
             <Button VerticalOptions="Center"
                     ImageSource="plus.png"

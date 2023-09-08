@@ -93,6 +93,9 @@
 	  <MauiXaml Update="View\FiltrageDateView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\FiltrageNoteView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\HeaderHome.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

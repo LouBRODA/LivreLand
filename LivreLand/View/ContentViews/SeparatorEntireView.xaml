@@ -5,6 +5,10 @@
     <Grid>
         <BoxView Color="{DynamicResource HeaderSeparatorGray}"  
                  HeightRequest="1"  
-                 HorizontalOptions="Fill"/>
+                 HorizontalOptions="Fill">
+            <BoxView.BackgroundColor>
+                <AppThemeBinding Light="{DynamicResource Gray}" Dark="{StaticResource White}" />
+            </BoxView.BackgroundColor>
+        </BoxView>
     </Grid>
 </ContentView>

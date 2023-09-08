@@ -19,7 +19,9 @@
                          HeaderSwitchButtonVisible="True"
                          Grid.Row="0"/>
         <ScrollView Grid.Row="2">
-            <CollectionView ItemsSource="{Binding AllBooks}">
+            <CollectionView ItemsSource="{Binding AllBooks}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnSelectionChanged">
                 <CollectionView.GroupHeaderTemplate>
                     <DataTemplate>
                         <Grid BackgroundColor="{DynamicResource HeaderGray}">
@@ -36,36 +38,43 @@
                 </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <Image Source="book_cover.png"
-                                   WidthRequest="100"
-                                   HeightRequest="100"
-                                   Grid.Column="0"
-                                   Grid.RowSpan="5"/>
-                            <Label Text="{Binding Title}"
-                                   Grid.Column="2"
-                                   Grid.Row="0"/>
-                            <Label Text="{Binding Author}"
-                                   Grid.Column="2"
-                                   Grid.Row="1"/>
-                            <Label Text="{Binding State}"
-                                   Grid.Column="2"
-                                   Grid.Row="2"/>
-                            <contentView:StarNotationView Grid.Column="2"
-                                                          Grid.Row="4"/>
-                        </Grid>
+                        <VerticalStackLayout Margin="10"
+                                             Spacing="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="book_cover.png"
+                                       WidthRequest="100"
+                                       HeightRequest="100"
+                                       Grid.Column="0"
+                                       Grid.RowSpan="5"/>
+                                <Label Text="{Binding Title}"
+                                       Style="{StaticResource MasterTitleBookText}"
+                                       Grid.Column="2"
+                                       Grid.Row="0"/>
+                                <Label Text="{Binding Author}"
+                                       Style="{StaticResource MasterAuthorBookText}"
+                                       Grid.Column="2"
+                                       Grid.Row="1"/>
+                                <Label Text="{Binding State}"
+                                       Style="{StaticResource MasterStateBookText}"                                   
+                                       Grid.Column="2"
+                                       Grid.Row="2"/>
+                                <contentView:StarNotationView Grid.Column="2"
+                                                              Grid.Row="4"/>
+                            </Grid>
+                            <contentView:SeparatorCutStartView/>
+                        </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>            

@@ -22,9 +22,11 @@
                Grid.Column="0"/>
         <Label Text="{Binding ButtonTitle}"
                VerticalOptions="Center"
+               Style="{StaticResource HomeButtonText}"
                Grid.Column="2"/>
         <Label Text="{Binding ButtonNumber, FallbackValue=' '}"
                VerticalOptions="Center"
+               Style="{StaticResource DetailsButtonBody}"
                Grid.Column="4"/>
         <Image Source="chevron_right.png"
                MaximumHeightRequest="15"

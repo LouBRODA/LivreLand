@@ -16,4 +16,9 @@ public partial class TousView : ContentPage
 		BindingContext = this;
 		InitializeComponent();
 	}
+
+	void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
+	}
 }
