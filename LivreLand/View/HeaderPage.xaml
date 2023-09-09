@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LivreLand.View.HeaderPage"
              x:Name="this"
              BindingContext="{x:Reference this}"
@@ -12,7 +13,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="2"/>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
@@ -31,27 +32,36 @@
                         Grid.Column="0"/>
                 <Label Text="{Binding HeaderBackButtonText}"
                        VerticalOptions="Center"
-                       TextColor="Red"
+                       TextColor="{DynamicResource PinkOrange}"
                        Style="{StaticResource HeaderTitle}"
                        Grid.Column="2"/>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnBackButtonTapped"/>
                 </Grid.GestureRecognizers>
             </Grid>
-            <Button VerticalOptions="Center"
-                    ImageSource="plus.png"
-                    BackgroundColor="Transparent"
-                    MaximumHeightRequest="20"
-                    MaximumWidthRequest="20"
-                    IsVisible="{Binding HeaderPlusButtonVisible}"
-                    Grid.Column="2"/>
-            <Button VerticalOptions="Center"
-                    ImageSource="plus.png"
-                    BackgroundColor="Transparent"
-                    MaximumHeightRequest="20"
-                    MaximumWidthRequest="20"
-                    IsVisible="{Binding HeaderSwitchButtonVisible}"
-                    Grid.Column="4"/>
+            <ImageButton VerticalOptions="Center"
+                         Source="plus.png"
+                         BackgroundColor="Transparent"
+                         MaximumHeightRequest="20"
+                         MaximumWidthRequest="20"
+                         IsVisible="{Binding HeaderPlusButtonVisible}"
+                         Clicked="OnPlusClicked"
+                         Grid.Column="2">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{DynamicResource PinkOrange}"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <ImageButton VerticalOptions="Center"
+                         Source="plus.png"
+                         BackgroundColor="Transparent"
+                         MaximumHeightRequest="20"
+                         MaximumWidthRequest="20"
+                         IsVisible="{Binding HeaderSwitchButtonVisible}"
+                         Grid.Column="4">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{DynamicResource PinkOrange}"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
         </Grid>
 
         <Grid>

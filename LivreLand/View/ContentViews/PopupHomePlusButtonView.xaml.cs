@@ -1,6 +1,8 @@
+using CommunityToolkit.Maui.Views;
+
 namespace LivreLand.View.ContentViews;
 
-public partial class PopupHomePlusButtonView : ContentView
+public partial class PopupHomePlusButtonView : Popup
 {
 	public PopupHomePlusButtonView()
 	{

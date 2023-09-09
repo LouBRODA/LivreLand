@@ -1,3 +1,5 @@
+using Microsoft.Maui.Graphics;
+
 namespace LivreLand.View.ContentViews;
 
 public partial class HomeButtonView : ContentView
@@ -21,6 +23,13 @@ public partial class HomeButtonView : ContentView
     {
         get => (string)GetValue(HomeButtonView.ButtonNumberProperty);
         set => SetValue(HomeButtonView.ButtonNumberProperty, value);
+    }
+
+    public static readonly BindableProperty ButtonIconColorProperty = BindableProperty.Create(nameof(ButtonIconColor), typeof(Color), typeof(HomeButtonView));
+    public Color ButtonIconColor
+    {
+        get => (Color)GetValue(HomeButtonView.ButtonIconColorProperty);
+        set => SetValue(HomeButtonView.ButtonIconColorProperty, value);
     }
 
     public static readonly BindableProperty ButtonCommandProperty = BindableProperty.Create(nameof(ButtonCommand), typeof(Command), typeof(HomeButtonView));

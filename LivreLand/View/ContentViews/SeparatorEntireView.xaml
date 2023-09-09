@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivreLand.View.ContentViews.SeparatorEntireView">
     <Grid>
-        <BoxView Color="{DynamicResource HeaderSeparatorGray}"  
-                 HeightRequest="1"  
+        <BoxView HeightRequest="1"  
                  HorizontalOptions="Fill">
-            <BoxView.BackgroundColor>
-                <AppThemeBinding Light="{DynamicResource Gray}" Dark="{StaticResource White}" />
-            </BoxView.BackgroundColor>
+            <BoxView.Color>
+                <AppThemeBinding Light="{DynamicResource HeaderSeparatorGray}" Dark="{StaticResource White}" />
+            </BoxView.Color>
         </BoxView>
     </Grid>
 </ContentView>

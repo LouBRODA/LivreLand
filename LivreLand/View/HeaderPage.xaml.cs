@@ -1,5 +1,7 @@
+using LivreLand.View.ContentViews;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Graphics;
+using CommunityToolkit.Maui.Views;
 
 namespace LivreLand.View;
 
@@ -48,5 +50,11 @@ public partial class HeaderPage : ContentView
     public void OnBackButtonTapped(object sender, EventArgs e)
     {
         App.Current.MainPage.Navigation.PopAsync();
+    }
+
+    public void OnPlusClicked(object sender, EventArgs e)
+    {
+        var plusPopup = new PopupHomePlusButtonView();
+        App.Current.MainPage.ShowPopup(plusPopup);
     }
 }

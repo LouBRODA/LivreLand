@@ -10,6 +10,8 @@
     <Color x:Key="HeaderGray">#f2f0f6</Color>
     <Color x:Key="HeaderSeparatorGray">#c9c9cb</Color>
 
+    <Color x:Key="PinkOrange">#fd0342</Color>
+    
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>

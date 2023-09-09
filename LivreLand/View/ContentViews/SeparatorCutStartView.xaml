@@ -6,9 +6,9 @@
         <BoxView Margin="10,0,0,0"
                  HeightRequest="1"  
                  HorizontalOptions="Fill">
-            <BoxView.BackgroundColor>
-                <AppThemeBinding Light="{DynamicResource Gray}" Dark="{StaticResource White}" />
-            </BoxView.BackgroundColor>
+            <BoxView.Color>
+                <AppThemeBinding Light="{DynamicResource HeaderSeparatorGray}" Dark="{StaticResource White}" />
+            </BoxView.Color>
         </BoxView>
     </Grid>
 </ContentView>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:view="clr-namespace:LivreLand.View"
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              x:Class="LivreLand.View.FiltrageAuteurView"
@@ -35,7 +36,8 @@
                 <!--Alain Damasio-->
                 <contentView:HomeButtonView ButtonTitle="Alain Damasio"
                                             ButtonIcon="book_fill.png"
-                                            ButtonNumber="2"/>
+                                            ButtonNumber="2"
+                                            ButtonIconColor="{DynamicResource PinkOrange}"/>
 
                 <contentView:SeparatorBigCutStartView/>
             </VerticalStackLayout>
