@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-               x:Class="LivreLand.View.ContentViews.PopupHomePlusButtonView">
-    <Grid>
+               x:Class="LivreLand.View.ContentViews.PopupHomePlusButtonView"
+               HorizontalOptions="End"
+               VerticalOptions="Start">
+
+    <Grid BackgroundColor="{DynamicResource PopupBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="10 "/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Label Text="Ajouter un livre"/>
+        <Grid Grid.Row="0"
+              Margin="10,5,10,5">
+            <Label Text="Ajouter un livre"
+                   Style="{StaticResource MasterStateBookText}"/>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <contentView:SeparatorEntireView Grid.Row="1"/>
+
+        <Grid Grid.Row="2"
+              Margin="10,5,10,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -25,10 +37,14 @@
             </Grid.ColumnDefinitions>
 
             <Label Text="Scanner un code-barres"
+                   Style="{StaticResource HomeButtonText}"
                    Grid.Column="0"/>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <contentView:SeparatorEntireView Grid.Row="3"/>
+
+        <Grid Grid.Row="4"
+              Margin="10,5,10,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -36,13 +52,15 @@
             </Grid.ColumnDefinitions>
 
             <Label Text="Scanner des codes-barres"
+                   Style="{StaticResource HomeButtonText}"
                    Grid.Column="0"/>
         </Grid>
 
-        <Grid  BackgroundColor="{DynamicResource HeaderGray}"
-              Grid.Row="3"/>
+        <Grid BackgroundColor="{DynamicResource Gray}"
+              Grid.Row="5"/>
 
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="6"
+              Margin="10,5,10,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -50,6 +68,7 @@
             </Grid.ColumnDefinitions>
 
             <Label Text="Rechercher en ligne"
+                   Style="{StaticResource HomeButtonText}"
                    Grid.Column="0"/>
             <Image Source="magnifying_glass.png"
                    Grid.Column="2">
@@ -59,7 +78,10 @@
             </Image>
         </Grid>
 
-        <Grid Grid.Row="5">
+        <contentView:SeparatorEntireView Grid.Row="7"/>
+
+        <Grid Grid.Row="8"
+              Margin="10,5,10,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -67,7 +89,9 @@
             </Grid.ColumnDefinitions>
 
             <Label Text="Saisir l'ISBN"
+                   Style="{StaticResource HomeButtonText}"
                    Grid.Column="0"/>
         </Grid>
     </Grid>
+
 </toolkit:Popup>
