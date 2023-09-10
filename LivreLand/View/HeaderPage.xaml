@@ -5,10 +5,10 @@
              x:Class="LivreLand.View.HeaderPage"
              x:Name="this"
              BindingContext="{x:Reference this}"
-             BackgroundColor="{Binding HeaderColor}">
+             BackgroundColor="{AppThemeBinding Light={Binding HeaderColor}, Dark={StaticResource HeaderGray}}">
     
     <Grid Margin="5">
-        <Grid>
+        <Grid>  
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>

@@ -4,7 +4,21 @@
              x:Class="LivreLand.View.ContentViews.SearchBarView">
 
     <Grid>
-        <SearchBar/> 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Frame CornerRadius="10"
+               BorderColor="Transparent"
+               BackgroundColor="{DynamicResource Gray}"
+               HeightRequest="40"
+               Grid.Column="1">
+            <SearchBar WidthRequest="200"
+                       HeightRequest="50"
+                       HorizontalOptions="Start"/>   
+        </Frame>
+         
     </Grid>
     
 </ContentView>

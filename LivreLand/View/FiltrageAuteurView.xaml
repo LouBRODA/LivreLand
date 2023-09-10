@@ -23,6 +23,7 @@
                          HeaderSwitchButtonVisible="True"/>
 
         <VerticalStackLayout BackgroundColor="{DynamicResource Light}"
+                             Spacing="10"
                              Grid.Row="2">
             <contentView:SeparatorEntireView/>
 
