@@ -247,12 +247,12 @@
 
                     <contentView:SeparatorCutStartView/>
                     
-                    <contentView:DetailsLivreButtonView ButtonIcon=""
+                    <contentView:DetailsLivreButtonView ButtonIcon="folder.png"
                                                         ButtonTitle="Déplacer le livre"/>
 
                     <contentView:SeparatorCutStartView/>
 
-                    <contentView:DetailsLivreButtonView ButtonIcon=""
+                    <contentView:DetailsLivreButtonView ButtonIcon="rounded_plus"
                                                         ButtonTitle="Ajouter à la liste À lire plus tard"/>
 
                     <contentView:SeparatorCutStartView/>

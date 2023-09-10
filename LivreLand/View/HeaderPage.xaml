@@ -52,7 +52,8 @@
                 </ImageButton.Behaviors>
             </ImageButton>
             <ImageButton VerticalOptions="Center"
-                         Source="plus.png"
+                         Source="switch_fill.png"
+                         Rotation="90"
                          BackgroundColor="Transparent"
                          MaximumHeightRequest="20"
                          MaximumWidthRequest="20"
