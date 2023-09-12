@@ -24,7 +24,7 @@
                             SelectionChanged="OnSelectionChanged">
                 <CollectionView.GroupHeaderTemplate>
                     <DataTemplate>
-                        <Grid BackgroundColor="{DynamicResource HeaderGray}">
+                        <Grid BackgroundColor="{StaticResource HeaderGray}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10"/>
                                 <ColumnDefinition Width="auto"/>

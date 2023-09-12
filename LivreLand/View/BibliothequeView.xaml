@@ -35,7 +35,7 @@
 
                 <VerticalStackLayout Grid.Row="2">
                     <VerticalStackLayout.BackgroundColor>
-                        <AppThemeBinding Light="{DynamicResource LightGray}" Dark="{StaticResource Black}" />
+                        <AppThemeBinding Light="{StaticResource LightGray}" Dark="{StaticResource Black}" />
                     </VerticalStackLayout.BackgroundColor>
 
                     <contentView:SeparatorEntireView/>
@@ -81,7 +81,7 @@
 
                 <VerticalStackLayout Grid.Row="6">
                     <VerticalStackLayout.BackgroundColor>
-                        <AppThemeBinding Light="{DynamicResource LightGray}" Dark="{StaticResource Black}" />
+                        <AppThemeBinding Light="{StaticResource LightGray}" Dark="{StaticResource Black}" />
                     </VerticalStackLayout.BackgroundColor>
 
                     <contentView:SeparatorEntireView/>

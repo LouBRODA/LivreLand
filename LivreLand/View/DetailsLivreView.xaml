@@ -17,7 +17,7 @@
                              HeaderBackButtonText="Tous"
                              HeaderPlusButtonVisible="False"
                              HeaderSwitchButtonVisible="False"
-                             HeaderColor="{DynamicResource HeaderGray}"/>
+                             HeaderColor="{StaticResource HeaderGray}"/>
             <contentView:SeparatorEntireView/>
         </VerticalStackLayout>
 

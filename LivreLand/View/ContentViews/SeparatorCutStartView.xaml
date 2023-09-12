@@ -7,7 +7,7 @@
                  HeightRequest="1"  
                  HorizontalOptions="Fill">
             <BoxView.Color>
-                <AppThemeBinding Light="{DynamicResource HeaderSeparatorGray}" Dark="{StaticResource White}" />
+                <AppThemeBinding Light="{StaticResource HeaderSeparatorGray}" Dark="{StaticResource White}" />
             </BoxView.Color>
         </BoxView>
     </Grid>

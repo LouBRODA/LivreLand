@@ -177,51 +177,51 @@
     </Style>
 
     <Style TargetType="Label" x:Key="HeaderTitle">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Medium"/>
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
     <Style TargetType="Label" x:Key="HomeTitle">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="40"/>
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
     <Style TargetType="Label" x:Key="DetailsLivreTitle">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Small"/>
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
     <Style TargetType="Label" x:Key="DetailsLivreBody">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource TextGray}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextGray}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Body"/>
     </Style>
 
     <Style TargetType="Label" x:Key="DetailsButtonBody">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource TextGray}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextGray}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Medium"/>
     </Style>
 
     <Style TargetType="Label" x:Key="MasterTitleBookText">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Medium"/>
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
     <Style TargetType="Label" x:Key="MasterAuthorBookText">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Small"/>
     </Style>
 
     <Style TargetType="Label" x:Key="MasterStateBookText">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource TextGray}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextGray}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Micro"/>
     </Style>
 
     <Style TargetType="Label" x:Key="HomeButtonText">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={StaticResource White}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
         <Setter Property="FontSize" Value="Medium"/>
     </Style>
 

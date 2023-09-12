@@ -25,7 +25,7 @@ public partial class HomeButtonView : ContentView
         set => SetValue(HomeButtonView.ButtonNumberProperty, value);
     }
 
-    public static readonly BindableProperty ButtonIconColorProperty = BindableProperty.Create(nameof(ButtonIconColor), typeof(Color), typeof(HomeButtonView));
+    public static readonly BindableProperty ButtonIconColorProperty = BindableProperty.Create(nameof(ButtonIconColor), typeof(Color), typeof(HomeButtonView), Colors.Black);
     public Color ButtonIconColor
     {
         get => (Color)GetValue(HomeButtonView.ButtonIconColorProperty);
