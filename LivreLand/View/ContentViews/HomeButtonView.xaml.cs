@@ -25,11 +25,18 @@ public partial class HomeButtonView : ContentView
         set => SetValue(HomeButtonView.ButtonNumberProperty, value);
     }
 
-    public static readonly BindableProperty ButtonIconColorProperty = BindableProperty.Create(nameof(ButtonIconColor), typeof(Color), typeof(HomeButtonView), Colors.Black);
-    public Color ButtonIconColor
+    public static readonly BindableProperty ButtonRedIconVisibleProperty = BindableProperty.Create(nameof(ButtonRedIconVisible), typeof(Boolean), typeof(HomeButtonView), true);
+    public Boolean ButtonRedIconVisible
     {
-        get => (Color)GetValue(HomeButtonView.ButtonIconColorProperty);
-        set => SetValue(HomeButtonView.ButtonIconColorProperty, value);
+        get => (Boolean)GetValue(HomeButtonView.ButtonRedIconVisibleProperty);
+        set => SetValue(HomeButtonView.ButtonRedIconVisibleProperty, value);
+    }
+
+    public static readonly BindableProperty ButtonBlackIconVisibleProperty = BindableProperty.Create(nameof(ButtonBlackIconVisible), typeof(Boolean), typeof(HomeButtonView), true);
+    public Boolean ButtonBlackIconVisible
+    {
+        get => (Boolean)GetValue(HomeButtonView.ButtonBlackIconVisibleProperty);
+        set => SetValue(HomeButtonView.ButtonBlackIconVisibleProperty, value);
     }
 
     public static readonly BindableProperty ButtonCommandProperty = BindableProperty.Create(nameof(ButtonCommand), typeof(Command), typeof(HomeButtonView));

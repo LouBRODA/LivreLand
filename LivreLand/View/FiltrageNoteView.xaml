@@ -36,9 +36,10 @@
 
                 <!--1 étoile-->
                 <contentView:HomeButtonView ButtonTitle="1 étoile"
-                                            ButtonIcon="star_fill.png"
+                                            ButtonIcon="book.png"
                                             ButtonNumber="2"
-                                            ButtonIconColor="{DynamicResource PinkOrange}"/>
+                                            ButtonRedIconVisible="False"
+                                            ButtonBlackIconVisible="True"/>
 
                 <contentView:SeparatorBigCutStartView/>
             </VerticalStackLayout>

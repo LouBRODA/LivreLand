@@ -20,9 +20,19 @@
         <Image Source="{Binding ButtonIcon}"
                MaximumHeightRequest="20"
                MaximumWidthRequest="20"
+               IsVisible="{Binding ButtonRedIconVisible}"
                Grid.Column="0">
             <Image.Behaviors>
-                <toolkit:IconTintColorBehavior TintColor="{Binding ButtonIconColor}"/>
+                <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
+            </Image.Behaviors>
+        </Image>
+        <Image Source="{Binding ButtonIcon}"
+               MaximumHeightRequest="20"
+               MaximumWidthRequest="20"
+               IsVisible="{Binding ButtonBlackIconVisible}"
+               Grid.Column="0">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{StaticResource Black}"/>
             </Image.Behaviors>
         </Image>
         <Label Text="{Binding ButtonTitle}"

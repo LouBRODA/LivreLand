@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LivreLand.View.HeaderHome">
 
     <Grid ColumnDefinitions="auto, *, auto"
@@ -8,13 +9,20 @@
         <Grid>
             <Label Text="Modifier"
                    VerticalOptions="Center"
-                   TextColor="Red"
+                   TextColor="{StaticResource PinkOrange}"
                    Style="{StaticResource HeaderTitle}"
                    Grid.Column="0"/>
-            <!--<Grid.GestureRecognizers>
-                <TapGestureRecognizer Command=""/>
-            </Grid.GestureRecognizers>-->
         </Grid>
+        <ImageButton VerticalOptions="Center"
+                     Source="plus.png"
+                     BackgroundColor="Transparent"
+                     MaximumHeightRequest="20"
+                     MaximumWidthRequest="20"
+                     Grid.Column="2">
+            <ImageButton.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
+            </ImageButton.Behaviors>
+        </ImageButton>
         <Button VerticalOptions="Center"
                 ImageSource="plus.png"
                 BackgroundColor="Transparent"

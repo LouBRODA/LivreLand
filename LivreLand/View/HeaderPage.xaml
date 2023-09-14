@@ -48,19 +48,18 @@
                          Clicked="OnPlusClicked"
                          Grid.Column="2">
                 <ImageButton.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="{DynamicResource PinkOrange}"/>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
                 </ImageButton.Behaviors>
             </ImageButton>
             <ImageButton VerticalOptions="Center"
-                         Source="switch_fill.png"
-                         Rotation="90"
+                         Source="arrow_up_arrow_down.png"
                          BackgroundColor="Transparent"
                          MaximumHeightRequest="20"
                          MaximumWidthRequest="20"
                          IsVisible="{Binding HeaderSwitchButtonVisible}"
                          Grid.Column="4">
                 <ImageButton.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="{DynamicResource PinkOrange}"/>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
                 </ImageButton.Behaviors>
             </ImageButton>
         </Grid>

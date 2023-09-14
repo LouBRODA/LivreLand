@@ -35,9 +35,10 @@
 
                 <!--2022-->
                 <contentView:HomeButtonView ButtonTitle="2022"
-                                            ButtonIcon="book_fill.png"
+                                            ButtonIcon="book.png"
                                             ButtonNumber="1"
-                                            ButtonIconColor="{DynamicResource PinkOrange}"/>
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
 
                 <contentView:SeparatorBigCutStartView/>
             </VerticalStackLayout>

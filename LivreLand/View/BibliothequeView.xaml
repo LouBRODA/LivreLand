@@ -44,32 +44,42 @@
                     <contentView:HomeButtonView ButtonTitle="Tous"
                                                 ButtonIcon="tray_2_fill.png"
                                                 ButtonNumber="45"
-                                                ButtonCommand="{Binding FiltreAuteurCommand}"/>
+                                                ButtonCommand="{Binding FiltreAuteurCommand}"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <!--En prêt-->
                     <contentView:HomeButtonView ButtonTitle="En prêt"
                                                 ButtonIcon="person_badge_clock_fill.png"
-                                                ButtonNumber="1"/>
+                                                ButtonNumber="1"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <!--À lire plus tard-->
                     <contentView:HomeButtonView ButtonTitle="À lire plus tard"
-                                                ButtonIcon="arrow_forward.png"/>
+                                                ButtonIcon="arrow_forward.png"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <!--Statut de lecture-->
                     <contentView:HomeButtonView ButtonTitle="Statut de lecture"
-                                                ButtonIcon="eyeglasses.png"/>
+                                                ButtonIcon="eyeglasses.png"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <!--Favoris-->
                     <contentView:HomeButtonView ButtonTitle="Favoris"
-                                                ButtonIcon="heart_fill.png"/>
+                                                ButtonIcon="heart_fill.png"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>
@@ -88,19 +98,25 @@
 
                     <!--Auteur-->
                     <contentView:HomeButtonView ButtonTitle="Auteur"
-                                                ButtonIcon="person_fill.png"/>
+                                                ButtonIcon="person_fill.png"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <!--Date de publication-->
                     <contentView:HomeButtonView ButtonTitle="Date de publication"
-                                                ButtonIcon="calendar.png"/>
+                                                ButtonIcon="calendar.png"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <!--Note-->
                     <contentView:HomeButtonView ButtonTitle="Note"
-                                                ButtonIcon="sparkles.png"/>
+                                                ButtonIcon="sparkles.png"
+                                                ButtonRedIconVisible="False"
+                                                ButtonBlackIconVisible="True"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>

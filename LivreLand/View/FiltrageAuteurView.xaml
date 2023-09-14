@@ -36,9 +36,10 @@
 
                 <!--Alain Damasio-->
                 <contentView:HomeButtonView ButtonTitle="Alain Damasio"
-                                            ButtonIcon="book_fill.png"
+                                            ButtonIcon="book.png"
                                             ButtonNumber="2"
-                                            ButtonIconColor="{StaticResource PinkOrange}"/>
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
 
                 <contentView:SeparatorBigCutStartView/>
             </VerticalStackLayout>

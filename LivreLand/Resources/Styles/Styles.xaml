@@ -225,6 +225,12 @@
         <Setter Property="FontSize" Value="Medium"/>
     </Style>
 
+    <Style TargetType="Label" x:Key="HeaderCollectionViewText">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextGray}, Dark={StaticResource White}}"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
     <Style TargetType="ListView">
         <Setter Property="SeparatorColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="RefreshControlColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
