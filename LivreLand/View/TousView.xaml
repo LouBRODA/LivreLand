@@ -25,7 +25,7 @@
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid BackgroundColor="{StaticResource HeaderGray}"
+                <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
                       Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
@@ -83,9 +83,13 @@
                             </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                </CollectionView>                 
+                </CollectionView>
             </Grid>
-           
         </ScrollView>
+        <Grid HorizontalOptions="End"
+              VerticalOptions="Center"
+              Grid.RowSpan="3">
+            <contentView:AlphabetVerticalMenuView/>
+        </Grid>
     </Grid>
 </ContentPage>

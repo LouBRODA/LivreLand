@@ -32,7 +32,7 @@
                IsVisible="{Binding ButtonBlackIconVisible}"
                Grid.Column="0">
             <Image.Behaviors>
-                <toolkit:IconTintColorBehavior TintColor="{StaticResource Black}"/>
+                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
             </Image.Behaviors>
         </Image>
         <Label Text="{Binding ButtonTitle}"
@@ -46,7 +46,12 @@
         <Image Source="chevron_right.png"
                MaximumHeightRequest="15"
                MaximumWidthRequest="15"
-               Grid.Column="6"/>
+               Grid.Column="6">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+            </Image.Behaviors>
+        </Image>
+
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding ButtonCommand}"/>
         </Grid.GestureRecognizers>

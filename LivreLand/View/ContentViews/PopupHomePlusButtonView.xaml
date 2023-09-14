@@ -9,7 +9,7 @@
                Color="Transparent">
 
     <Border>
-        <Grid BackgroundColor="{DynamicResource PopupBackground}">
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource PopupBackground}, Dark={StaticResource Black}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -33,9 +33,8 @@
             <Grid Grid.Row="2"
                   Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Scanner un code-barres"
@@ -44,9 +43,9 @@
                 <Image Source="qr_bar_code_fill.png"
                        HeightRequest="20"
                        WidthRequest="20"
-                       Grid.Column="2">
+                       Grid.Column="1">
                     <Image.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="Black"/>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
                     </Image.Behaviors>
                 </Image>
             </Grid>
@@ -56,20 +55,20 @@
             <Grid Grid.Row="4"
                   Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Scanner des codes-barres"
+                       MaxLines="2"
                        Style="{StaticResource HomeButtonText}"
                        Grid.Column="0"/>
                 <Image Source="bar_code_fill.png"
                        HeightRequest="20"
                        WidthRequest="20"
-                       Grid.Column="2">
+                       Grid.Column="1">
                     <Image.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="Black"/>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
                     </Image.Behaviors>
                 </Image>
             </Grid>
@@ -80,9 +79,8 @@
             <Grid Grid.Row="6"
                   Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Rechercher en ligne"
@@ -91,9 +89,9 @@
                 <Image Source="magnifying_glass.png"
                        HeightRequest="20"
                        WidthRequest="20"
-                       Grid.Column="2">
+                       Grid.Column="1">
                     <Image.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="Black"/>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
                     </Image.Behaviors>
                 </Image>
             </Grid>
@@ -103,9 +101,8 @@
             <Grid Grid.Row="8"
                   Margin="10,5,10,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Saisir l'ISBN"
@@ -114,9 +111,9 @@
                 <Image Source="keyboard_fill.png"
                        HeightRequest="20"
                        WidthRequest="20"
-                       Grid.Column="2">
+                       Grid.Column="1">
                     <Image.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="Black"/>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
                     </Image.Behaviors>
                 </Image>
             </Grid>

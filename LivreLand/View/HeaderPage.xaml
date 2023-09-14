@@ -5,7 +5,7 @@
              x:Class="LivreLand.View.HeaderPage"
              x:Name="this"
              BindingContext="{x:Reference this}"
-             BackgroundColor="{AppThemeBinding Light={Binding HeaderColor}, Dark={StaticResource HeaderGray}}">
+             BackgroundColor="{AppThemeBinding Light={Binding HeaderColor}, Dark={StaticResource Black}}">
     
     <Grid Margin="5">
         <Grid>  
@@ -23,13 +23,17 @@
                     <ColumnDefinition Width="2"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <Button VerticalOptions="Center"
-                        ImageSource="chevron_right.png"
-                        Rotation="180"
-                        BackgroundColor="Transparent"
-                        MaximumHeightRequest="20"
-                        MaximumWidthRequest="20"
-                        Grid.Column="0"/>
+                <ImageButton VerticalOptions="Center"
+                             Source="chevron_right.png"
+                             Rotation="180"
+                             BackgroundColor="Transparent"
+                             MaximumHeightRequest="20"
+                             MaximumWidthRequest="20"
+                             Grid.Column="0">
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                    </ImageButton.Behaviors>
+                </ImageButton>
                 <Label Text="{Binding HeaderBackButtonText}"
                        VerticalOptions="Center"
                        TextColor="{DynamicResource PinkOrange}"
