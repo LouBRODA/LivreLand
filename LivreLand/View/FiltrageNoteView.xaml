@@ -42,6 +42,42 @@
                                             ButtonBlackIconVisible="True"/>
 
                 <contentView:SeparatorBigCutStartView/>
+
+                <!--2 étoiles-->
+                <contentView:HomeButtonView ButtonTitle="2 étoiles"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="2"
+                                            ButtonRedIconVisible="False"
+                                            ButtonBlackIconVisible="True"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--3 étoiles-->
+                <contentView:HomeButtonView ButtonTitle="3 étoiles"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="2"
+                                            ButtonRedIconVisible="False"
+                                            ButtonBlackIconVisible="True"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--4 étoiles-->
+                <contentView:HomeButtonView ButtonTitle="4 étoiles"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="2"
+                                            ButtonRedIconVisible="False"
+                                            ButtonBlackIconVisible="True"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--5 étoiles-->
+                <contentView:HomeButtonView ButtonTitle="5 étoiles"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="2"
+                                            ButtonRedIconVisible="False"
+                                            ButtonBlackIconVisible="True"/>
+
+                <contentView:SeparatorBigCutStartView/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

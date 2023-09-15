@@ -4,33 +4,34 @@
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              x:Class="LivreLand.View.ContentViews.AlphabetVerticalMenuView">
 
-    <VerticalStackLayout Margin="0,0,5,0">
+    <VerticalStackLayout Margin="0,0,5,0"
+                         Spacing="-4">
         <contentView:LetterVerticalMenuView ButtonLetter="A"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="B"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="B"/>-->
         <contentView:LetterVerticalMenuView ButtonLetter="C"/>
         <contentView:LetterVerticalMenuView ButtonLetter="D"/>
         <contentView:LetterVerticalMenuView ButtonLetter="E"/>
         <contentView:LetterVerticalMenuView ButtonLetter="F"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="G"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="G"/>-->
         <contentView:LetterVerticalMenuView ButtonLetter="H"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="I"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="I"/>-->
         <contentView:LetterVerticalMenuView ButtonLetter="J"/>
         <contentView:LetterVerticalMenuView ButtonLetter="K"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="L"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="L"/>-->
         <contentView:LetterVerticalMenuView ButtonLetter="M"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="N"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="O"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="N"/>-->
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="O"/>-->
         <contentView:LetterVerticalMenuView ButtonLetter="P"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="Q"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="Q"/>-->
         <contentView:LetterVerticalMenuView ButtonLetter="R"/>
         <contentView:LetterVerticalMenuView ButtonLetter="S"/>
         <contentView:LetterVerticalMenuView ButtonLetter="T"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="U"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="U"/>-->
         <contentView:LetterVerticalMenuView ButtonLetter="V"/>
         <contentView:LetterVerticalMenuView ButtonLetter="W"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="X"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="Y"/>
-        <contentView:LetterVerticalMenuView ButtonLetter="Z"/>
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="X"/>-->
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="Y"/>-->
+        <!--<contentView:LetterVerticalMenuView ButtonLetter="Z"/>-->
     </VerticalStackLayout>
 
 </ContentView>

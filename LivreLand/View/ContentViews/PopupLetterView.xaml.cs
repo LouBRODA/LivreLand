@@ -7,6 +7,5 @@ public partial class PopupLetterView : Popup
     public PopupLetterView(string letter)
 	{
         InitializeComponent();
-        letterText.Text = letter;
     }
 }

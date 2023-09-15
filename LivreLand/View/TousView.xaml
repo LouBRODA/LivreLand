@@ -18,7 +18,7 @@
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
                          Grid.Row="0"/>
-        <ScrollView Grid.Row="2">
+        <ScrollView Grid.Row="2" Style="{StaticResource Key=test}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -46,6 +46,15 @@
                         <DataTemplate>
                             <VerticalStackLayout Margin="10"
                                                  Spacing="20">
+                                <VisualStateManager.VisualStateGroups x:Name="SelectionStates">
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
@@ -62,6 +71,11 @@
                                     <Image Source="book_cover.png"
                                            WidthRequest="100"
                                            HeightRequest="100"
+                                           Grid.Column="0"
+                                           Grid.RowSpan="5"/>
+                                    <Image Source="couverture_la_horde_du_contrevent.png"
+                                           WidthRequest="90"
+                                           HeightRequest="90"
                                            Grid.Column="0"
                                            Grid.RowSpan="5"/>
                                     <Label Text="{Binding Title}"

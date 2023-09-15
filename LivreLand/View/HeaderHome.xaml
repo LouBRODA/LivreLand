@@ -24,12 +24,6 @@
                 <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
             </ImageButton.Behaviors>
         </ImageButton>
-        <Button VerticalOptions="Center"
-                ImageSource="plus.png"
-                BackgroundColor="Transparent"
-                MaximumHeightRequest="20"
-                MaximumWidthRequest="20"
-                Grid.Column="2"/>
     </Grid>
     
 </ContentView>

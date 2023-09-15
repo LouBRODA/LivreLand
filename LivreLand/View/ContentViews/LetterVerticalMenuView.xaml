@@ -8,9 +8,6 @@
         <Label x:Name="letterText"
                Text="{Binding ButtonLetter}"
                TextColor="{StaticResource Blue100Accent}"/>
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Tapped="OnLetterTapped"/>
-        </Grid.GestureRecognizers>
     </Grid>
     
 </ContentView>

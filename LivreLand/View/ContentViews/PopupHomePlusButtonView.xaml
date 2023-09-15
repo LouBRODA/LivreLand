@@ -7,7 +7,7 @@
                HorizontalOptions="End"
                VerticalOptions="Start"
                Color="Transparent">
-
+    
     <Border>
         <Grid BackgroundColor="{AppThemeBinding Light={StaticResource PopupBackground}, Dark={StaticResource Black}}">
             <Grid.RowDefinitions>
@@ -60,6 +60,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Scanner des codes-barres"
+                       LineBreakMode="WordWrap"
                        MaxLines="2"
                        Style="{StaticResource HomeButtonText}"
                        Grid.Column="0"/>

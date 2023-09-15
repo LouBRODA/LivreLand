@@ -5,8 +5,7 @@
                x:Class="LivreLand.View.ContentViews.PopupLetterView">
 
     <Grid BackgroundColor="{StaticResource HeaderGray}">
-        <Label x:Name="letterText"
-               Style="{StaticResource HomeTitle}"/>
+        <Label Style="{StaticResource HomeTitle}"/>
     </Grid>
     
 </toolkit:Popup>
