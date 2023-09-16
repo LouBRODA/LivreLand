@@ -72,26 +72,32 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Border Padding="-5,-5,-5,1"
-                                            Margin="10,0,0,0"
-                                            HeightRequest="100"
-                                            WidthRequest="62"
-                                            HorizontalOptions="Center"
-                                            Stroke="{StaticResource Gray}"
-                                            StrokeShape="RoundRectangle 3"
-                                            StrokeThickness="3"
-                                            Grid.Column="0"
-                                            Grid.RowSpan="5">
-                                        <Border HorizontalOptions="Center"
+                                    <Grid Grid.Column="0"
+                                          Grid.RowSpan="5">
+                                        <Border Padding="-5,-5,-5,1"
+                                                Margin="10,0,0,0"
+                                                HeightRequest="100"
+                                                WidthRequest="62"
+                                                HorizontalOptions="Center"
                                                 Stroke="{StaticResource Gray}"
                                                 StrokeShape="RoundRectangle 3"
                                                 StrokeThickness="3">
-                                            <Image Source="couverture_la_horde_du_contrevent.png"
-                                                   Aspect="AspectFill"
-                                                   Grid.Column="0"
-                                                   Grid.RowSpan="5"/>
+                                            <Border HorizontalOptions="Center"
+                                                    Stroke="{StaticResource Gray}"
+                                                    StrokeShape="RoundRectangle 3"
+                                                    StrokeThickness="3">
+                                                <Image Source="couverture_la_horde_du_contrevent.png"
+                                                       Aspect="AspectFill"
+                                                       Grid.Column="0"
+                                                       Grid.RowSpan="5"/>
+                                            </Border>
                                         </Border>
-                                    </Border>
+                                        <Image Source="bookmark_red.png"
+                                               HeightRequest="10"
+                                               WidthRequest="10"
+                                               Margin="0,97,20,0"
+                                               VerticalOptions="End"/>
+                                    </Grid>
                                     <Label Text="{Binding Title}"
                                            Style="{StaticResource MasterTitleBookText}"
                                            Grid.Column="2"
@@ -155,26 +161,32 @@
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Border Padding="-5,-5,-5,1"
-                                            Margin="10,0,0,0"
-                                            HeightRequest="100"
-                                            WidthRequest="62"
-                                            HorizontalOptions="Center"
-                                            Stroke="{StaticResource Gray}"
-                                            StrokeShape="RoundRectangle 3"
-                                            StrokeThickness="3"
-                                            Grid.Column="0"
-                                            Grid.RowSpan="5">
-                                        <Border HorizontalOptions="Center"
+                                    <Grid Grid.Column="0"
+                                          Grid.RowSpan="5">
+                                        <Border Padding="-5,-5,-5,1"
+                                                Margin="10,0,0,0"
+                                                HeightRequest="100"
+                                                WidthRequest="62"
+                                                HorizontalOptions="Center"
                                                 Stroke="{StaticResource Gray}"
                                                 StrokeShape="RoundRectangle 3"
                                                 StrokeThickness="3">
-                                            <Image Source="couverture_la_horde_du_contrevent.png"
-                                                   Aspect="AspectFill"
-                                                   Grid.Column="0"
-                                                   Grid.RowSpan="5"/>
+                                            <Border HorizontalOptions="Center"
+                                                    Stroke="{StaticResource Gray}"
+                                                    StrokeShape="RoundRectangle 3"
+                                                    StrokeThickness="3">
+                                                <Image Source="couverture_la_horde_du_contrevent.png"
+                                                       Aspect="AspectFill"
+                                                       Grid.Column="0"
+                                                       Grid.RowSpan="5"/>
+                                            </Border>
                                         </Border>
-                                    </Border>
+                                        <Image Source="bookmark_red.png"
+                                               HeightRequest="10"
+                                               WidthRequest="10"
+                                               Margin="0,97,20,0"
+                                               VerticalOptions="End"/>
+                                    </Grid>
                                     <Label Text="{Binding Title}"
                                            Style="{StaticResource MasterTitleBookText}"
                                            Grid.Column="2"
