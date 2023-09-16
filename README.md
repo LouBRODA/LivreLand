@@ -24,11 +24,19 @@ Disponible sur :
 ![](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
 
 *******
+
 <div id='progression'/>
 
 🚧  __EN PROGRESSION__
 
-Étape 1 : Développement des vues en XAML 
+Étape 1 : Développement des vues en XAML  
+- Intégralité des pages proposées sur la page d'accueil développées
+- Mode clair & Mode sombre disponibles  
+- Utilisable en mode portrait ou mode paysage  
+- Exploitation des Styles et des Content View réutilisables  
+- Mise à disposition de quelques données dans un Stub pour la présentation des vues  
+- View Model non utilisés et fonctionnalités pas toutes mises en place  
+- Navigation généralement utilisables mais pas parfaitement codée   
 
 *******
 
@@ -45,9 +53,10 @@ Retrouver tous vos livres préférés en un clic.
 
 ## Fonctionnalités
 
-- Livres triés par auteur, date, notes...
+- Livres triés par auteur, date, notes, statut de lecture...
 - Livres à lire plus tard
 - Livres prêtés
+- Livres favoris
 
 *******
 
@@ -60,10 +69,9 @@ Retrouver tous vos livres préférés en un clic.
     - Émulateur sous Visual Studio 2022
     - Téléphone portable    
 - Langages utilisés
-    -  ![](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+    -  ![](https://img.shields.io/badge/.NETMAUI-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
     -  ![](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
     -  ![](https://img.shields.io/static/v1?style=for-the-badge&message=XAML&color=0C54C2&logo=XAML&logoColor=FFFFFF&label=)
-    -  ![](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
 - Personnes 
     - 1 étudiant en BUT Informatique
 
