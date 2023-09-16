@@ -36,7 +36,7 @@ Disponible sur :
 - Exploitation des Styles et des Content View réutilisables  
 - Mise à disposition de quelques données dans un Stub pour la présentation des vues  
 - View Model non utilisés et fonctionnalités pas toutes mises en place  
-- Navigation généralement utilisables mais pas parfaitement codée   
+- Navigation généralement utilisable mais pas parfaitement codée   
 
 *******
 
