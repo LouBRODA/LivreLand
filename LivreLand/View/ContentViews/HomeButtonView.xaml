@@ -51,6 +51,9 @@
                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
             </Image.Behaviors>
         </Image>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ButtonTappedCommand}"/>
+        </Grid.GestureRecognizers>
     </Grid>
 
 </ContentView>

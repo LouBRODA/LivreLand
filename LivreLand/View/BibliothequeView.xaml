@@ -7,6 +7,7 @@
              x:Class="LivreLand.View.BibliothequeView"
              x:Name="this"
              Title="BibliothequeView">
+    
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior>
             <toolkit:StatusBarBehavior.StatusBarColor>
@@ -53,7 +54,8 @@
                                                 ButtonIcon="tray_2_fill.png"
                                                 ButtonNumber="45"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding TousNavigationCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -62,7 +64,8 @@
                                                 ButtonIcon="person_badge_clock_fill.png"
                                                 ButtonNumber="1"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding EmpruntsPretsNavigationCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -70,7 +73,8 @@
                     <contentView:HomeButtonView ButtonTitle="À lire plus tard"
                                                 ButtonIcon="arrow_forward.png"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding ALirePlusTardNavigationCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -78,7 +82,8 @@
                     <contentView:HomeButtonView ButtonTitle="Statut de lecture"
                                                 ButtonIcon="eyeglasses.png"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding StatutLectureNavigationCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -86,7 +91,8 @@
                     <contentView:HomeButtonView ButtonTitle="Favoris"
                                                 ButtonIcon="heart_fill.png"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding FavorisNavigationCommand}"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>
@@ -107,7 +113,8 @@
                     <contentView:HomeButtonView ButtonTitle="Auteur"
                                                 ButtonIcon="person_fill.png"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding AuteurNavigationCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -115,7 +122,8 @@
                     <contentView:HomeButtonView ButtonTitle="Date de publication"
                                                 ButtonIcon="calendar.png"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding DatePublicationNavigationCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -123,7 +131,8 @@
                     <contentView:HomeButtonView ButtonTitle="Note"
                                                 ButtonIcon="sparkles.png"
                                                 ButtonRedIconVisible="False"
-                                                ButtonBlackIconVisible="True"/>
+                                                ButtonBlackIconVisible="True"
+                                                ButtonTappedCommand="{Binding NoteNavigationCommand}"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>

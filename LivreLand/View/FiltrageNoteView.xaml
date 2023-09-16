@@ -38,8 +38,8 @@
                 <contentView:HomeButtonView ButtonTitle="1 étoile"
                                             ButtonIcon="book.png"
                                             ButtonNumber="2"
-                                            ButtonRedIconVisible="False"
-                                            ButtonBlackIconVisible="True"/>
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
 
                 <contentView:SeparatorBigCutStartView/>
 
@@ -47,8 +47,8 @@
                 <contentView:HomeButtonView ButtonTitle="2 étoiles"
                                             ButtonIcon="book.png"
                                             ButtonNumber="2"
-                                            ButtonRedIconVisible="False"
-                                            ButtonBlackIconVisible="True"/>
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
 
                 <contentView:SeparatorBigCutStartView/>
 
@@ -56,8 +56,8 @@
                 <contentView:HomeButtonView ButtonTitle="3 étoiles"
                                             ButtonIcon="book.png"
                                             ButtonNumber="2"
-                                            ButtonRedIconVisible="False"
-                                            ButtonBlackIconVisible="True"/>
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
 
                 <contentView:SeparatorBigCutStartView/>
 
@@ -65,8 +65,8 @@
                 <contentView:HomeButtonView ButtonTitle="4 étoiles"
                                             ButtonIcon="book.png"
                                             ButtonNumber="2"
-                                            ButtonRedIconVisible="False"
-                                            ButtonBlackIconVisible="True"/>
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
 
                 <contentView:SeparatorBigCutStartView/>
 
@@ -74,8 +74,8 @@
                 <contentView:HomeButtonView ButtonTitle="5 étoiles"
                                             ButtonIcon="book.png"
                                             ButtonNumber="2"
-                                            ButtonRedIconVisible="False"
-                                            ButtonBlackIconVisible="True"/>
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
 
                 <contentView:SeparatorBigCutStartView/>
             </VerticalStackLayout>

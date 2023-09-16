@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:LivreLand.View"
-             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"                          
-             x:Class="LivreLand.View.EmpruntsPretsView"
-             Title="EmpruntsPretsView">
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"     
+             x:Class="LivreLand.View.StatutLectureView"
+             Title="StatutLectureView">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,12 +15,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <view:HeaderPage HeaderTitle="En prêt"
+        <view:HeaderPage HeaderTitle="Statut de lecture"
                          HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
                          Grid.Row="0"/>
-        <contentView:EmpruntsPretsButtonView Grid.Row="2"/>
+        <contentView:SearchBarView Grid.Row="2"/>
         <ScrollView Grid.Row="4">
             <Grid>
                 <Grid.RowDefinitions>
@@ -40,12 +40,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Antoine"
+                    <Label Text="Non lus"
                            VerticalOptions="Center"
                            Style="{StaticResource HeaderCollectionViewText}"
                            Grid.Column="1"/>
                 </Grid>
-                <CollectionView ItemsSource="{Binding AntoineBooks}"
+                <CollectionView ItemsSource="{Binding NonLuBooks}"
                                 SelectionMode="Single"
                                 SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">
@@ -123,12 +123,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Audrey Pouclet"
+                    <Label Text="Terminés"
                            VerticalOptions="Center"
                            Style="{StaticResource HeaderCollectionViewText}"
                            Grid.Column="1"/>
                 </Grid>
-                <CollectionView ItemsSource="{Binding AudreyPoucletBooks}"
+                <CollectionView ItemsSource="{Binding TermineBooks}"
                                 SelectionMode="Single"
                                 SelectionChanged="OnSelectionChanged"
                                 Grid.Row="6">
