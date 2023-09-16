@@ -17,7 +17,7 @@
                       ContentTemplate="{DataTemplate view:TousView}"
                       Icon="list_bullet.svg"/>
         <ShellContent Title="My Readings"
-                      ContentTemplate="{DataTemplate view:FiltrageAuteurView}"
+                      ContentTemplate="{DataTemplate view:EmpruntsPretsView}"
                       Icon="bookmark_fill"/>
         <ShellContent Title="Search"
                       ContentTemplate="{DataTemplate view:FiltrageDateView}"
