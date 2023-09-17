@@ -31,12 +31,12 @@ Disponible sur :
 
 Étape 1 : Développement des vues en XAML  
 - Intégralité des pages proposées sur la page d'accueil développées
-- Mode clair & Mode sombre disponibles  
+- Mode clair & Mode sombre disponibles (pas très esthétique)
 - Utilisable en mode portrait ou mode paysage  
 - Exploitation des Styles et des Content View réutilisables  
 - Mise à disposition de quelques données dans un Stub pour la présentation des vues  
-- View Model non utilisés et fonctionnalités pas toutes mises en place  
-- Navigation généralement utilisable mais pas parfaitement codée   
+- View Model non utilisés et fonctionnalités pas toutes mises en place (seulement les vues)
+- Navigation généralement utilisable mais pas parfaitement codée  
 
 *******
 
