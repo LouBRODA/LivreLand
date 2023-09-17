@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:view="clr-namespace:LivreLand.View"
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+             x:Class="LivreLand.View.FiltrageDateView"
+             Title="FiltrageDateView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <view:HeaderPage HeaderTitle="Date de publication"
+                         HeaderPlusButtonVisible="False"
+                         HeaderSwitchButtonVisible="True"
+                         Grid.Row="0"/>
+
+        <VerticalStackLayout BackgroundColor="{DynamicResource Light}"
+                             Spacing="10"
+                             Grid.Row="2">
+            <contentView:SeparatorEntireView/>
+
+            <contentView:SearchBarView Grid.Row="2"/>
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="4">
+            <VerticalStackLayout Grid.Row="2">
+                <contentView:SeparatorEntireView/>
+
+                <!--2022-->
+                <contentView:HomeButtonView ButtonTitle="2022"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2021-->
+                <contentView:HomeButtonView ButtonTitle="2021"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="6"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2020-->
+                <contentView:HomeButtonView ButtonTitle="2020"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="6"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--2019-->
+                <contentView:HomeButtonView ButtonTitle="2019"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="3"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+                
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2018-->
+                <contentView:HomeButtonView ButtonTitle="2018"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="2"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2016-->
+                <contentView:HomeButtonView ButtonTitle="2016"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="4"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2015-->
+                <contentView:HomeButtonView ButtonTitle="2015"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="4"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2012-->
+                <contentView:HomeButtonView ButtonTitle="2012"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2010-->
+                <contentView:HomeButtonView ButtonTitle="2010"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+                
+                <!--2004-->
+                <contentView:HomeButtonView ButtonTitle="2004"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--1997-->
+                <contentView:HomeButtonView ButtonTitle="1997"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+                
+                <contentView:SeparatorBigCutStartView/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+    
+</ContentPage>

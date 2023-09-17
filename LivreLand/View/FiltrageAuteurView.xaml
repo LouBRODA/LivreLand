@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:view="clr-namespace:LivreLand.View"
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+             x:Class="LivreLand.View.FiltrageAuteurView"
+             Title="FiltrageAuteurView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <view:HeaderPage Grid.Row="0"
+                         HeaderTitle="Auteur"
+                         HeaderBackButtonText="Mes livres"
+                         HeaderPlusButtonVisible="False"
+                         HeaderSwitchButtonVisible="True"/>
+
+        <VerticalStackLayout BackgroundColor="{DynamicResource Light}"
+                             Spacing="10"
+                             Grid.Row="2">
+            <contentView:SeparatorEntireView/>
+
+            <contentView:SearchBarView Grid.Row="2"/>
+        </VerticalStackLayout>
+        
+        <ScrollView Grid.Row="4">
+            <VerticalStackLayout Grid.Row="2">
+                <contentView:SeparatorEntireView/>
+
+                <!--Alain Damasio-->
+                <contentView:HomeButtonView ButtonTitle="Alain Damasio"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="2"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--Cixin Liu-->
+                <contentView:HomeButtonView ButtonTitle="Cixin Liu"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="3"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--Daniel Pennac-->
+                <contentView:HomeButtonView ButtonTitle="Daniel Pennac"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="2"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--Evgenij Ivanovič Zamâtin-->
+                <contentView:HomeButtonView ButtonTitle="Evgenij Ivanovič Zamâtin"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--Frank Herbert-->
+                <contentView:HomeButtonView ButtonTitle="Frank Herbert"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="6"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--Herbert George Wells-->
+                <contentView:HomeButtonView ButtonTitle="Herbert George Wells"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="3"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--James S. A. Corey-->
+                <contentView:HomeButtonView ButtonTitle="James S. A. Corey"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="6"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--James Tynion-->
+                <contentView:HomeButtonView ButtonTitle="James Tynion"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--James Tynion (IV)-->
+                <contentView:HomeButtonView ButtonTitle="James Tynion (IV)"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--Ken Kesey-->
+                <contentView:HomeButtonView ButtonTitle="Ken Kesey"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+                <!--Ken Liu-->
+                <contentView:HomeButtonView ButtonTitle="Ken Liu"
+                                            ButtonIcon="book.png"
+                                            ButtonNumber="1"
+                                            ButtonRedIconVisible="True"
+                                            ButtonBlackIconVisible="False"/>
+
+                <contentView:SeparatorBigCutStartView/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+    
+</ContentPage>

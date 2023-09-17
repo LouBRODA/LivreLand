@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivreLand.View.ContentViews.EmpruntsPretsButtonView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1">
+            <Grid BackgroundColor="{StaticResource Gray}"
+                  Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+        
+                <Button x:Name="pretsClicked"
+                        Text="Prêts"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                        Clicked="OnPretsClicked"
+                        Margin="2"
+                        Grid.Column="0"/>
+                <Button x:Name="empruntsButton"
+                        Text="Emprunts"
+                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        BackgroundColor="Transparent"
+                        Clicked="OnEmpruntsClicked"
+                        Margin="2"
+                        Grid.Column="1"/>        
+            </Grid>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+            </Border.StrokeShape>
+        </Border>
+       
+    </Grid>
+
+    
+</ContentView>

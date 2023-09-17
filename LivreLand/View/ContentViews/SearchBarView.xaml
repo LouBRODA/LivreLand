@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivreLand.View.ContentViews.SearchBarView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Frame CornerRadius="10"
+               BorderColor="Transparent"
+               BackgroundColor="{StaticResource Gray}"
+               HeightRequest="40"
+               Grid.Column="1">
+            <SearchBar WidthRequest="200"
+                       HeightRequest="50"
+                       HorizontalOptions="Start"/>   
+        </Frame>
+        <Grid Grid.Column="3"
+              VerticalOptions="Center">
+            <Label Text="Annuler"
+                   Style="{StaticResource DetailsLivreBody}"/>
+        </Grid>
+
+    </Grid>
+    
+</ContentView>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="LivreLand.View.ContentViews.HomeButtonView"
+             x:Name="this">
+
+    <Grid BindingContext="{x:Reference this}"
+          Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="{Binding ButtonIcon}"
+               MaximumHeightRequest="20"
+               MaximumWidthRequest="20"
+               IsVisible="{Binding ButtonRedIconVisible}"
+               Grid.Column="0">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
+            </Image.Behaviors>
+        </Image>
+        <Image Source="{Binding ButtonIcon}"
+               MaximumHeightRequest="20"
+               MaximumWidthRequest="20"
+               IsVisible="{Binding ButtonBlackIconVisible}"
+               Grid.Column="0">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+            </Image.Behaviors>
+        </Image>
+        <Label Text="{Binding ButtonTitle}"
+               VerticalOptions="Center"
+               Style="{StaticResource HomeButtonText}"
+               Grid.Column="2"/>
+        <Label Text="{Binding ButtonNumber, FallbackValue=' '}"
+               VerticalOptions="Center"
+               Style="{StaticResource DetailsButtonBody}"
+               Grid.Column="4"/>
+        <Image Source="chevron_right.png"
+               MaximumHeightRequest="15"
+               MaximumWidthRequest="15"
+               Grid.Column="6">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+            </Image.Behaviors>
+        </Image>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ButtonTappedCommand}"/>
+        </Grid.GestureRecognizers>
+    </Grid>
+
+</ContentView>

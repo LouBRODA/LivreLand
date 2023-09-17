@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="LivreLand.View.HeaderPage"
+             x:Name="this"
+             BindingContext="{x:Reference this}"
+             BackgroundColor="{AppThemeBinding Light={Binding HeaderColor}, Dark={StaticResource Black}}">
+    
+    <Grid Margin="5">
+        <Grid>  
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton VerticalOptions="Center"
+                             Source="chevron_right.png"
+                             Rotation="180"
+                             BackgroundColor="Transparent"
+                             MaximumHeightRequest="20"
+                             MaximumWidthRequest="20"
+                             Grid.Column="0">
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource PinkOrange}, Dark={StaticResource White}}"/>
+                    </ImageButton.Behaviors>
+                </ImageButton>
+                <Label Text="{Binding HeaderBackButtonText}"
+                       VerticalOptions="Center"
+                       TextColor="{DynamicResource PinkOrange}"
+                       Style="{StaticResource HeaderTitle}"
+                       Grid.Column="2"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackButtonTapped"/>
+                </Grid.GestureRecognizers>
+            </Grid>
+            <ImageButton VerticalOptions="Center"
+                         Source="plus.png"
+                         BackgroundColor="Transparent"
+                         MaximumHeightRequest="20"
+                         MaximumWidthRequest="20"
+                         IsVisible="{Binding HeaderPlusButtonVisible}"
+                         Clicked="OnPlusClicked"
+                         Grid.Column="2">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <ImageButton VerticalOptions="Center"
+                         Source="arrow_up_arrow_down.png"
+                         BackgroundColor="Transparent"
+                         MaximumHeightRequest="20"
+                         MaximumWidthRequest="20"
+                         IsVisible="{Binding HeaderSwitchButtonVisible}"
+                         Grid.Column="4">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding HeaderTitle}"
+                   Style="{StaticResource HeaderTitle}"
+                   Grid.Column="1"/>
+        </Grid>
+
+    </Grid>
+    
+</ContentView>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="LivreLand.View.ContentViews.PopupHomePlusButtonView"
+               HorizontalOptions="End"
+               VerticalOptions="Start"
+               Color="Transparent">
+    
+    <Border>
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource PopupBackground}, Dark={StaticResource Black}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"
+                  Margin="10,5,10,5">
+                <Label Text="Ajouter un livre"
+                       Style="{StaticResource MasterStateBookText}"/>
+            </Grid>
+
+            <contentView:SeparatorEntireView Grid.Row="1"/>
+
+            <Grid Grid.Row="2"
+                  Margin="10,5,10,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Scanner un code-barres"
+                       Style="{StaticResource HomeButtonText}"
+                       Grid.Column="0"/>
+                <Image Source="qr_bar_code_fill.png"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Grid.Column="1">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+
+            <contentView:SeparatorEntireView Grid.Row="3"/>
+
+            <Grid Grid.Row="4"
+                  Margin="10,5,10,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Scanner des codes-barres"
+                       LineBreakMode="WordWrap"
+                       MaxLines="2"
+                       Style="{StaticResource HomeButtonText}"
+                       Grid.Column="0"/>
+                <Image Source="bar_code_fill.png"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Grid.Column="1">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+
+            <Grid BackgroundColor="{DynamicResource Gray}"
+                  Grid.Row="5"/>
+
+            <Grid Grid.Row="6"
+                  Margin="10,5,10,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Rechercher en ligne"
+                       Style="{StaticResource HomeButtonText}"
+                       Grid.Column="0"/>
+                <Image Source="magnifying_glass.png"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Grid.Column="1">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+
+            <contentView:SeparatorEntireView Grid.Row="7"/>
+
+            <Grid Grid.Row="8"
+                  Margin="10,5,10,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Saisir l'ISBN"
+                       Style="{StaticResource HomeButtonText}"
+                       Grid.Column="0"/>
+                <Image Source="keyboard_fill.png"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Grid.Column="1">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+        </Grid>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+    </Border>
+
+</toolkit:Popup>
