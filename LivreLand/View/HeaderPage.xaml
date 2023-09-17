@@ -31,7 +31,7 @@
                              MaximumWidthRequest="20"
                              Grid.Column="0">
                     <ImageButton.Behaviors>
-                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource PinkOrange}, Dark={StaticResource White}}"/>
+                        <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
                     </ImageButton.Behaviors>
                 </ImageButton>
                 <Label Text="{Binding HeaderBackButtonText}"
