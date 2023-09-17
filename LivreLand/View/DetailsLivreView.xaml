@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:view="clr-namespace:LivreLand.View"
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              x:Class="LivreLand.View.DetailsLivreView"
@@ -92,7 +93,11 @@
                         <Image Source="chevron_right.png"
                                MaximumHeightRequest="20"
                                MaximumWidthRequest="20"
-                               Grid.Column="2"/>
+                               Grid.Column="2">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                            </Image.Behaviors>
+                        </Image>
                     </Grid>
 
                     <contentView:SeparatorCutStartView/>
