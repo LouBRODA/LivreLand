@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivreLand", "LivreLand\LivreLand.csproj", "{0E95A11F-0D16-4CC3-82CD-E3BE44C28B2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{0E95A11F-0D16-4CC3-82CD-E3BE44C28B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E95A11F-0D16-4CC3-82CD-E3BE44C28B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E95A11F-0D16-4CC3-82CD-E3BE44C28B2B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
