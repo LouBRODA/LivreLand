@@ -1,23 +1,32 @@
-﻿using System.Windows.Input;
+﻿using Model;
+using System.Windows.Input;
 
 namespace ViewModels
 {
     public class ManagerVM
     {
-        //public Manager Model
-        //{
-        //    get => model;
-        //    private set => model = value;
-        //}
-        //private Manager model;
 
-        //public ICommand GetBooksByTitleCommand;
+        #region Properties 
 
-        //public ManagerVM(Manager model)
-        //{
-        //    Model = model;
-        //    GetBooksByTitleCommand = new Command(async () =>
-        //    )
-        //}
+        public Manager Model
+        {
+            get => model;
+            private set => model = value;
+        }
+        private Manager model;
+
+        public ICommand GetBooksByTitleCommand;
+
+        #endregion
+
+        #region Constructor
+
+        public ManagerVM(Manager model)
+        {
+            Model = model;
+            //GetBooksByTitleCommand = new Command(async () =>)
+        }
+
+        #endregion
     }
 }

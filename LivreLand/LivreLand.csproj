@@ -54,6 +54,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Model\Model.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="View\ALirePlusTardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

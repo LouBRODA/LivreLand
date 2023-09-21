@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,25 +9,25 @@ namespace LivreLand.ViewModel
 {
     class BookVM
     {
-        //public Book Model
-        //{
-        //    get => model;
-        //    set => model = value;
-        //}
-        //private Book model;
+        public Book Model
+        {
+            get => model;
+            set => model = value;
+        }
+        private Book model;
 
-        //public BookVM()
-        //{
-        //    Model = model;
-        //}
+        public BookVM()
+        {
+            Model = model;
+        }
 
-        //public string Title
-        //{
-        //    get => model.Title;
-        //    set
-        //    {
-        //        model.Title = value;
-        //    }
-        //}
+        public string Title
+        {
+            get => model.Title;
+            set
+            {
+                model.Title = value;
+            }
+        }
     }
 }
