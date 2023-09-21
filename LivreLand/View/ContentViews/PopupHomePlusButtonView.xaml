@@ -118,6 +118,9 @@
                     </Image.Behaviors>
                 </Image>
             </Grid>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Navigator.PopupISBNNavigationCommand}"/>
+            </Grid.GestureRecognizers>
         </Grid>
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="10" />

@@ -2,11 +2,18 @@ using LivreLand.View.ContentViews;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Graphics;
 using CommunityToolkit.Maui.Views;
+using System.Windows.Input;
+using LivreLand.ViewModel;
 
 namespace LivreLand.View;
 
 public partial class HeaderPage : ContentView
 {
+
+    #region Properties
+
+    public NavigatorVM Navigator { get; private set; }
+
     public static readonly BindableProperty HeaderTitleProperty = BindableProperty.Create(nameof(HeaderTitle), typeof(string), typeof(HeaderPage), string.Empty);
     public string HeaderTitle
     {
@@ -42,19 +49,29 @@ public partial class HeaderPage : ContentView
         set => SetValue(HeaderPage.HeaderColorProperty, value);
     }
 
+    public static readonly BindableProperty ButtonPlusTappedCommandProperty = BindableProperty.Create(nameof(ButtonPlusTappedCommand), typeof(ICommand), typeof(HeaderPage));
+    public ICommand ButtonPlusTappedCommand
+    {
+        get { return (ICommand)GetValue(ButtonPlusTappedCommandProperty); }
+        set { SetValue(ButtonPlusTappedCommandProperty, value); }
+    }
+
+    public static readonly BindableProperty ButtonBackTappedCommandProperty = BindableProperty.Create(nameof(ButtonBackTappedCommand), typeof(ICommand), typeof(HeaderPage));
+    public ICommand ButtonBackTappedCommand
+    {
+        get { return (ICommand)GetValue(ButtonBackTappedCommandProperty); }
+        set { SetValue(ButtonBackTappedCommandProperty, value); }
+    }
+
+    #endregion
+
+    #region Constructor
+
     public HeaderPage()
 	{
 		InitializeComponent();
 	}
 
-    public void OnBackButtonTapped(object sender, EventArgs e)
-    {
-        App.Current.MainPage.Navigation.PopAsync();
-    }
+    #endregion
 
-    public void OnPlusClicked(object sender, EventArgs e)
-    {
-        var plusPopup = new PopupHomePlusButtonView();
-        App.Current.MainPage.ShowPopup(plusPopup);
-    }
 }

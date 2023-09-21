@@ -22,7 +22,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <view:HeaderHome Grid.Row="0"/>
+        <view:HeaderHome Grid.Row="0"
+                         ButtonTappedCommand="{Binding Navigator.PopupHomePlusNavigationCommand}"/>
         <ScrollView Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>

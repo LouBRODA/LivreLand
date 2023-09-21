@@ -23,8 +23,10 @@ public static class MauiProgram
 			.AddSingleton<NavigatorVM>()
 			.AddSingleton<BibliothequeView>();
 
+        //Ajouter des Singletons <ILibraryManager, LibraryStub>, Manager et ManagerVm
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

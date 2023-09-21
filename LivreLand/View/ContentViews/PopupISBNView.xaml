@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="LivreLand.View.ContentViews.PopupISBNView"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Color="Transparent">
+
+    <Border>
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource PopupBackground}, Dark={StaticResource Black}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"
+                  Margin="5">
+                <Label Text="Saisir l'ISBN"
+                       Style="{StaticResource MasterStateBookText}"/>
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Margin="5">
+                <Entry />
+            </Grid>
+        </Grid>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+    </Border>
+
+</toolkit:Popup>

@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:LivreLand.View"
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LivreLand.View.TousView"
              Title="TousView">
+
+    <!--<ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior />
+    </ContentPage.Behaviors>-->
     
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +22,9 @@
                          HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
-                         Grid.Row="0"/>
+                         Grid.Row="0"
+                         ButtonPlusTappedCommand="{Binding Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding Navigator.PopupBackButtonNavigationCommand}"/>
         <ScrollView Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -44,7 +51,6 @@
                 </Grid>
                 <CollectionView ItemsSource="{Binding DamasioBooks}"
                                 SelectionMode="Single"
-                                SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>

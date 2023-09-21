@@ -78,6 +78,9 @@
 	  <MauiXaml Update="View\ContentViews\PopupHomePlusButtonView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\ContentViews\PopupISBNView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\ContentViews\PopupLetterView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

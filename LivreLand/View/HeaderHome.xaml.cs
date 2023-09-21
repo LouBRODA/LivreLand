@@ -1,18 +1,30 @@
-using CommunityToolkit.Maui.Views;
-using LivreLand.View.ContentViews;
+using LivreLand.ViewModel;
+using System.Windows.Input;
 
 namespace LivreLand.View;
 
 public partial class HeaderHome : ContentView
 {
-	public HeaderHome()
-	{
-		InitializeComponent();
-	}
 
-    public void OnPlusClicked(object sender, EventArgs e)
+    #region Properties
+
+    public NavigatorVM Navigator { get; private set; }
+
+    public static readonly BindableProperty ButtonTappedCommandProperty = BindableProperty.Create(nameof(ButtonTappedCommand), typeof(ICommand), typeof(HeaderPage));
+    public ICommand ButtonTappedCommand
     {
-        var plusPopup = new PopupHomePlusButtonView();
-        App.Current.MainPage.ShowPopup(plusPopup);
+        get { return (ICommand)GetValue(ButtonTappedCommandProperty); }
+        set { SetValue(ButtonTappedCommandProperty, value); }
     }
+
+    #endregion
+
+    #region Constructor
+
+    public HeaderHome()
+	{
+        InitializeComponent();
+    }
+
+    #endregion
 }

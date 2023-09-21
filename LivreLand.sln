@@ -4,8 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivreLand", "LivreLand\LivreLand.csproj", "{0E95A11F-0D16-4CC3-82CD-E3BE44C28B2B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E} = {7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{72B707A3-3797-4F15-80BC-9D5ECA7B67EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +28,10 @@ Global
 		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DB41B43-9DAA-48C8-8D41-EF2F06FDD33E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B707A3-3797-4F15-80BC-9D5ECA7B67EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B707A3-3797-4F15-80BC-9D5ECA7B67EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B707A3-3797-4F15-80BC-9D5ECA7B67EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B707A3-3797-4F15-80BC-9D5ECA7B67EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

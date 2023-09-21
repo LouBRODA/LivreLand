@@ -2,9 +2,11 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="LivreLand.View.HeaderHome">
+             x:Class="LivreLand.View.HeaderHome"
+             x:Name="this">
 
-    <Grid ColumnDefinitions="auto, *, auto"
+    <Grid BindingContext="{x:Reference this}"
+          ColumnDefinitions="auto, *, auto"
           Margin="5">
         <Grid>
             <Label Text="Modifier"
@@ -18,8 +20,8 @@
                      BackgroundColor="Transparent"
                      MaximumHeightRequest="20"
                      MaximumWidthRequest="20"
-                     Clicked="OnPlusClicked"
-                     Grid.Column="2">
+                     Grid.Column="2"
+                     Command="{Binding ButtonTappedCommand}">
             <ImageButton.Behaviors>
                 <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
             </ImageButton.Behaviors>

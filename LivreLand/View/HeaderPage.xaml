@@ -4,10 +4,10 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LivreLand.View.HeaderPage"
              x:Name="this"
-             BindingContext="{x:Reference this}"
              BackgroundColor="{AppThemeBinding Light={Binding HeaderColor}, Dark={StaticResource Black}}">
-    
-    <Grid Margin="5">
+
+    <Grid BindingContext="{x:Reference this}"
+          Margin="5">
         <Grid>  
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -40,7 +40,7 @@
                        Style="{StaticResource HeaderTitle}"
                        Grid.Column="2"/>
                 <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnBackButtonTapped"/>
+                    <TapGestureRecognizer Command="{Binding PopupBackButtonNavigationCommand}"/>
                 </Grid.GestureRecognizers>
             </Grid>
             <ImageButton VerticalOptions="Center"
@@ -49,7 +49,7 @@
                          MaximumHeightRequest="20"
                          MaximumWidthRequest="20"
                          IsVisible="{Binding HeaderPlusButtonVisible}"
-                         Clicked="OnPlusClicked"
+                         Command="{Binding ButtonTappedCommand}"
                          Grid.Column="2">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="{StaticResource PinkOrange}"/>
