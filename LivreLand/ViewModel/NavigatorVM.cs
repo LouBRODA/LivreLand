@@ -33,7 +33,7 @@ namespace LivreLand.ViewModel
 
         public NavigatorVM()
         {
-            TousNavigationCommand = new Command(() => Navigator.PushAsync(new TousView()));
+            TousNavigationCommand = new Command(() => Navigator.PushAsync(new TousView(this)));
             EmpruntsPretsNavigationCommand = new Command(() => Navigator.PushAsync(new EmpruntsPretsView()));
             ALirePlusTardNavigationCommand = new Command(() => Navigator.PushAsync(new ALirePlusTardView()));
             StatutLectureNavigationCommand = new Command(() => Navigator.PushAsync(new StatutLectureView()));
