@@ -6,6 +6,12 @@ namespace ViewModels
     public class ManagerVM
     {
 
+        #region Fields
+
+        private Manager model;
+
+        #endregion
+
         #region Properties 
 
         public Manager Model
@@ -13,7 +19,6 @@ namespace ViewModels
             get => model;
             private set => model = value;
         }
-        private Manager model;
 
         public ICommand GetBooksByTitleCommand;
 

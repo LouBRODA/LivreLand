@@ -9,17 +9,20 @@ namespace LivreLand.ViewModel
 {
     class BookVM
     {
+
+        #region Fields
+
+        private Book model;
+
+        #endregion
+
+        #region Properties
+
         public Book Model
         {
             get => model;
             set => model = value;
-        }
-        private Book model;
-
-        public BookVM()
-        {
-            Model = model;
-        }
+        }      
 
         public string Title
         {
@@ -29,5 +32,16 @@ namespace LivreLand.ViewModel
                 model.Title = value;
             }
         }
+
+        #endregion
+
+        #region Constructor
+
+        public BookVM()
+        {
+            Model = model;
+        }
+
+        #endregion
     }
 }

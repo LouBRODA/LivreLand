@@ -2,6 +2,9 @@
 using LivreLand.View;
 using LivreLand.ViewModel;
 using Microsoft.Extensions.Logging;
+using Model;
+using Stub;
+using ViewModels;
 
 namespace LivreLand;
 
@@ -20,10 +23,14 @@ public static class MauiProgram
 			});
 
 		builder.Services
-			.AddSingleton<NavigatorVM>()
-			.AddSingleton<BibliothequeView>();
+			.AddSingleton<BibliothequeView>()
 
-        //Ajouter des Singletons <ILibraryManager, LibraryStub>, Manager et ManagerVm
+			.AddSingleton<NavigatorVM>()
+
+			.AddSingleton<ILibraryManager, LibraryStub>()
+			.AddSingleton<Manager>()
+
+			.AddSingleton<ManagerVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();
