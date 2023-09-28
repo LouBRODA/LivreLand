@@ -52,7 +52,7 @@
             </Image.Behaviors>
         </Image>
         <Grid.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding ButtonTappedCommand}"/>
+            <TapGestureRecognizer Command="{Binding ButtonTappedCommand}" CommandParameter="{Binding CommandParameter}"/>
         </Grid.GestureRecognizers>
     </Grid>
 

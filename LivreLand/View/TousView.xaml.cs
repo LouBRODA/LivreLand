@@ -1,5 +1,6 @@
 using LivreLand.Model;
 using LivreLand.ViewModel;
+using ViewModels;
 
 namespace LivreLand.View;
 
@@ -9,6 +10,7 @@ public partial class TousView : ContentPage
     #region Properties
 
     public NavigatorVM Navigator { get; private set; }
+    public ManagerVM Manager { get; private set; }
 
     public List<BookModel> DamasioBooks { get; set; } = new List<BookModel>()
 	{
@@ -27,9 +29,10 @@ public partial class TousView : ContentPage
 
     #region Constructor
 
-    public TousView(NavigatorVM navigatorVM)
+    public TousView(NavigatorVM navigatorVM, ManagerVM managerVM)
 	{
         Navigator = navigatorVM;
+        Manager = managerVM;
 		InitializeComponent();
         BindingContext = this;
     }

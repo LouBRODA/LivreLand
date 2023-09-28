@@ -55,7 +55,8 @@
                                                 ButtonNumber="45"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.TousNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="tous/"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -65,7 +66,8 @@
                                                 ButtonNumber="1"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.EmpruntsPretsNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="pret/"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -74,7 +76,8 @@
                                                 ButtonIcon="arrow_forward.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.ALirePlusTardNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="later/"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -83,7 +86,8 @@
                                                 ButtonIcon="eyeglasses.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.StatutLectureNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="statut/"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -92,7 +96,8 @@
                                                 ButtonIcon="heart_fill.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.FavorisNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="favoris/"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>
@@ -114,7 +119,8 @@
                                                 ButtonIcon="person_fill.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.AuteurNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="auteur/"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -123,7 +129,8 @@
                                                 ButtonIcon="calendar.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.DatePublicationNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="date/"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -132,7 +139,8 @@
                                                 ButtonIcon="sparkles.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NoteNavigationCommand}"/>
+                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                CommandParameter="note/"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>

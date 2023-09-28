@@ -12,15 +12,15 @@
     <TabBar>
         <ShellContent Title="My Library"
                       ContentTemplate="{DataTemplate view:BibliothequeView}"
+                      Route="library"
                       Icon="books_vertical_fill.png"/>
         <ShellContent Title="My Lists"
                       ContentTemplate="{DataTemplate view:TousView}"
+                      Route="tous"
                       Icon="list_bullet.svg"/>
         <ShellContent Title="My Readings"
-                      ContentTemplate="{DataTemplate view:EmpruntsPretsView}"
                       Icon="bookmark_fill"/>
         <ShellContent Title="Search"
-                      ContentTemplate="{DataTemplate view:FiltrageDateView}"
                       Icon="magnifying_glass.png"/>
     </TabBar>
 

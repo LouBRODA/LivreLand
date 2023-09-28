@@ -47,6 +47,13 @@ public partial class HomeButtonView : ContentView
         set { SetValue(ButtonTappedCommandProperty, value); }
     }
 
+    public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(string), typeof(HomeButtonView));
+    public string CommandParameter
+    {
+        get { return (string)GetValue(CommandParameterProperty); }
+        set { SetValue(CommandParameterProperty, value); }
+    }
+
     public HomeButtonView()
     {
         InitializeComponent();

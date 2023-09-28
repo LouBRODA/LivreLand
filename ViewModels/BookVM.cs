@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LivreLand.ViewModel
+namespace ViewModels
 {
-    class BookVM
+    public class BookVM
     {
 
         #region Fields
@@ -22,7 +22,7 @@ namespace LivreLand.ViewModel
         {
             get => model;
             set => model = value;
-        }      
+        }
 
         public string Title
         {
@@ -37,7 +37,7 @@ namespace LivreLand.ViewModel
 
         #region Constructor
 
-        public BookVM()
+        public BookVM(Book model)
         {
             Model = model;
         }

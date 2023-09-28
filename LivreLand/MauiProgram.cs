@@ -24,8 +24,9 @@ public static class MauiProgram
 
 		builder.Services
 			.AddSingleton<BibliothequeView>()
+			.AddSingleton<TousView>()
 
-			.AddSingleton<NavigatorVM>()
+            .AddSingleton<NavigatorVM>()
 
 			.AddSingleton<ILibraryManager, LibraryStub>()
 			.AddSingleton<Manager>()
