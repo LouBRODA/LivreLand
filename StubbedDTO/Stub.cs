@@ -122,7 +122,7 @@ namespace StubbedDTO
                     break;
 
             }
-            return Task.FromResult(Tuple.Create((long)books.Count(), books.Skip(index * count).Take(count)));
+            return Task.FromResult(Tuple.Create(books.LongCount(), books.Skip(index * count).Take(count)));
         }
 
         public async Task<Tuple<long, IEnumerable<BookDTO>>> GetBooks(int index, int count, string sort = "")
