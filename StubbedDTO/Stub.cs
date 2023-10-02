@@ -1,6 +1,7 @@
 ﻿using DtoAbstractLayer;
 using JsonReader;
 using LibraryDTO;
+using System.Reflection;
 
 namespace StubbedDTO
 {
@@ -12,23 +13,27 @@ namespace StubbedDTO
 
         public static List<WorkDTO> Works { get; set; } = new List<WorkDTO>();
 
-        public static string BasePath { get; set; } = "";
+        public static Assembly Assembly => typeof(Stub).Assembly;
 
         static Stub()
         {
-            foreach (var fileAuthor in new DirectoryInfo($"{BasePath}authors/").GetFiles())
+            foreach (var resource in Assembly.GetManifestResourceNames().Where(n => n.Contains("authors")))
             {
-                using (StreamReader reader = File.OpenText(fileAuthor.FullName))
+                using (Stream stream = Assembly.GetManifestResourceStream(resource))
+                using (StreamReader reader = new StreamReader(stream))
                 {
                     Authors.Add(AuthorJsonReader.ReadAuthor(reader.ReadToEnd()));
                 }
             }
 
-            foreach (var fileWork in new DirectoryInfo($"{BasePath}works/").GetFiles())
+            foreach (var resource in Assembly.GetManifestResourceNames().Where(n => n.Contains("works")))
             {
-                var ratingsFile = $"{BasePath}ratings/{fileWork.Name.Insert((int)(fileWork.Name.Length - fileWork.Extension.Length), ".ratings")}";
-                using (StreamReader reader = File.OpenText(fileWork.FullName))
-                using (StreamReader readerRatings = File.OpenText(ratingsFile))
+                var ratingsResource = resource.Insert(resource.LastIndexOf('.'), ".ratings").Replace("works", "ratings");
+
+                using (Stream stream = Assembly.GetManifestResourceStream(resource))
+                using (StreamReader reader = new StreamReader(stream))
+                using (Stream streamRatings = Assembly.GetManifestResourceStream(ratingsResource))
+                using (StreamReader readerRatings = new StreamReader(streamRatings))
                 {
                     var work = WorkJsonReader.ReadWork(reader.ReadToEnd(), readerRatings.ReadToEnd());
                     if (work.Authors != null)
@@ -42,9 +47,10 @@ namespace StubbedDTO
                 }
             }
 
-            foreach (var fileBook in new DirectoryInfo($"{BasePath}books/").GetFiles())
+            foreach (var resource in Assembly.GetManifestResourceNames().Where(n => n.Contains("books")))
             {
-                using (StreamReader reader = File.OpenText(fileBook.FullName))
+                using (Stream stream = Assembly.GetManifestResourceStream(resource))
+                using (StreamReader reader = new StreamReader(stream))
                 {
                     var book = BookJsonReader.ReadBook(reader.ReadToEnd());
                     foreach (var author in book.Authors.ToList())
