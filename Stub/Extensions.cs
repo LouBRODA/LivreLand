@@ -1,5 +1,6 @@
 ﻿using LibraryDTO;
 using Model;
+using static Stub.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Stub
 
         public static Author ToPoco(this AuthorDTO dto)
         {
-            var result = Mapper.AuthorsMapper.GetT(dto);
+            var result = AuthorsMapper.GetT(dto);
             if (result == null)
             {
                 result = new Author
@@ -48,7 +49,7 @@ namespace Stub
 
         public static Work ToPoco(this WorkDTO dto)
         {
-            var result = Mapper.WorksMapper.GetT(dto);
+            var result = WorksMapper.GetT(dto);
             if (result == null)
             {
                 result = new Work
@@ -68,7 +69,7 @@ namespace Stub
 
         public static Book ToPoco(this BookDTO dto)
         {
-            var result = Mapper.BooksMapper.GetT(dto);
+            var result = BooksMapper.GetT(dto);
             if (result == null)
             {
                 result = new Book

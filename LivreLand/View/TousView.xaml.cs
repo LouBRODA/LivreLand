@@ -9,9 +9,6 @@ public partial class TousView : ContentPage
 
     #region Properties
 
-    public NavigatorVM Navigator { get; private set; }
-    public ManagerVM Manager { get; private set; }
-
     public List<BookModel> DamasioBooks { get; set; } = new List<BookModel>()
 	{
 		new BookModel("La horde du contrevent","Alain Damasio","Non lu", 0),
@@ -29,10 +26,8 @@ public partial class TousView : ContentPage
 
     #region Constructor
 
-    public TousView(NavigatorVM navigatorVM, ManagerVM managerVM)
+    public TousView(TousVM tousVM)
 	{
-        Navigator = navigatorVM;
-        Manager = managerVM;
 		InitializeComponent();
         BindingContext = this;
     }

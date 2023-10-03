@@ -12,14 +12,10 @@ namespace Model
         private ILibraryManager LibraryManager { get; set; }
         private IUserLibraryManager UserLibraryManager { get; set; }
 
-        public ReadOnlyCollection<Book> Books { get; private set; }
-        private List<Book> books = new();
-
         public Manager(ILibraryManager libMgr, IUserLibraryManager userLibMgr)
         {
             LibraryManager = libMgr;
             UserLibraryManager = userLibMgr;
-            Books = new ReadOnlyCollection<Book>(books);
         }
 
         public async Task<Book> GetBookById(string id)

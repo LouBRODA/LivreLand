@@ -26,12 +26,15 @@ public static class MauiProgram
 			.AddSingleton<BibliothequeView>()
 			.AddSingleton<TousView>()
 
-            .AddSingleton<NavigatorVM>()
+			.AddSingleton<NavigatorVM>()
 
 			.AddSingleton<ILibraryManager, LibraryStub>()
+			.AddSingleton<IUserLibraryManager, UserLibraryStub>()
 			.AddSingleton<Manager>()
 
-			.AddSingleton<ManagerVM>();
+			.AddSingleton<ManagerVM>()
+
+			.AddSingleton<TousVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();

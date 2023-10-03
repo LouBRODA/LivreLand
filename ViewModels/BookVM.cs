@@ -1,4 +1,5 @@
 ﻿using Model;
+using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    public class BookVM
+    public class BookVM : BaseViewModel<Book>
     {
 
         #region Fields
@@ -32,6 +33,16 @@ namespace ViewModels
                 model.Title = value;
             }
         }
+
+        //public float? UserRating
+        //{
+        //    get => Model?.UserRating;
+        //    set
+        //    {
+        //        if (Model == null) return;
+        //        SetProperty(Model.UserRating = value, rating => Model.UserRating);
+        //    }
+        //}
 
         #endregion
 
