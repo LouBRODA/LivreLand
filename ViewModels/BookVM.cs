@@ -13,44 +13,71 @@ namespace ViewModels
 
         #region Fields
 
-        private Book model;
-
         #endregion
 
         #region Properties
 
-        public Book Model
+        public string ISBN13
         {
-            get => model;
-            set => model = value;
+            get => Model.ISBN13;
+            set => SetProperty(Model.ISBN13, value, v => Model.ISBN13 = value);
         }
 
         public string Title
         {
-            get => model.Title;
-            set
-            {
-                model.Title = value;
-            }
+            get => Model.Title;
+            set => SetProperty(Model.Title, value, v => Model.Title = value);
         }
 
-        //public float? UserRating
+        public List<string> Publishers
+        {
+            get => Model.Publishers;
+            set => SetProperty(Model.Publishers, value, v => Model.Publishers = value);
+        }
+
+        public DateTime PublishDate
+        {
+            get => Model.PublishDate;
+            set => SetProperty(Model.PublishDate, value, v => Model.PublishDate = value);
+        }
+
+        //public List<AuthorVM> Authors
         //{
-        //    get => Model?.UserRating;
+        //    get => model.Authors;
         //    set
         //    {
-        //        if (Model == null) return;
-        //        SetProperty(Model.UserRating = value, rating => Model.UserRating);
+        //        model.Authors = value;
         //    }
         //}
+
+        public int NbPages
+        {
+            get => Model.NbPages;
+            set => SetProperty(Model.NbPages, value, v => Model.NbPages = value);
+        }
+
+        public string ImageSmall
+        {
+            get => Model.ImageSmall;
+        }
+
+        public float? UserRating
+        {
+            get => Model?.UserRating;
+            set
+            {
+                if (Model == null) return;
+                SetProperty(Model.UserRating, value, rating => Model.UserRating = rating);
+            }
+        }
 
         #endregion
 
         #region Constructor
 
-        public BookVM(Book model)
+        public BookVM(Book b) : base(b)
         {
-            Model = model;
+            
         }
 
         #endregion

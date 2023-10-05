@@ -9,6 +9,8 @@ public partial class TousView : ContentPage
 
     #region Properties
 
+    public TousVM TousVM { get; set; }
+
     public List<BookModel> DamasioBooks { get; set; } = new List<BookModel>()
 	{
 		new BookModel("La horde du contrevent","Alain Damasio","Non lu", 0),
@@ -28,6 +30,7 @@ public partial class TousView : ContentPage
 
     public TousView(TousVM tousVM)
 	{
+        TousVM = tousVM;
 		InitializeComponent();
         BindingContext = this;
     }

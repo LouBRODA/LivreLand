@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonReader", "JsonReader\Js
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{D74E6DD7-ED6A-400C-89EE-FA3BB50D924F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalMVVMToolkit", "PersonalMVVMToolkit\PersonalMVVMToolkit.csproj", "{DBB77CBE-CB7A-4277-B625-60DBD5749C12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalMVVMToolkit", "PersonalMVVMToolkit\PersonalMVVMToolkit.csproj", "{DBB77CBE-CB7A-4277-B625-60DBD5749C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{F2F8D537-7A2F-4B67-A7C6-F8B7FE37483D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +76,10 @@ Global
 		{DBB77CBE-CB7A-4277-B625-60DBD5749C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBB77CBE-CB7A-4277-B625-60DBD5749C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBB77CBE-CB7A-4277-B625-60DBD5749C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2F8D537-7A2F-4B67-A7C6-F8B7FE37483D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F8D537-7A2F-4B67-A7C6-F8B7FE37483D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F8D537-7A2F-4B67-A7C6-F8B7FE37483D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F8D537-7A2F-4B67-A7C6-F8B7FE37483D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -35,10 +35,8 @@ namespace PersonalMVVMToolkit
             Model = model;
         }
 
-        public BaseViewModel()
-        {
-            Model = default(TModel);
-        }
+        public BaseViewModel() : this(default)
+        { }
 
         #endregion
     }

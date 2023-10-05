@@ -10,21 +10,13 @@ namespace ViewModels
 
         #region Fields
 
-        private Manager model;
         private readonly ObservableCollection<BookVM> books;
         private int index;
         private long nbBooks;
          
-
         #endregion
 
         #region Properties 
-
-        public Manager Model
-        {
-            get => model;
-            private set => model = value;
-        }
 
         public ReadOnlyObservableCollection<BookVM> AllBooks { get; private set; }
 
@@ -49,6 +41,8 @@ namespace ViewModels
         }
         public int NbPages => (int)(NbBooks / Count);
 
+        public ICommand PreviousCommand { get; private set; }
+
         public ICommand NextCommand { get; private set; }
 
         public ICommand GetBooksByTitleCommand { get; private set; }
@@ -59,17 +53,38 @@ namespace ViewModels
 
         #region Constructor
 
-        public ManagerVM(Manager model)
+        public ManagerVM(Manager model) : base(model)
         {
-            Model = model;
-            AllBooks = new ReadOnlyObservableCollection<BookVM>(books);
+            //AllBooks = new ReadOnlyObservableCollection<BookVM>(books);
+            PreviousCommand = new RelayCommand(() => Previous());
+            NextCommand = new RelayCommand(() => Next());
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
+        //public ManagerVM(ILibraryManager libMgr, IUserLibraryManager userLibMgr) : this (new Manager(libMgr, userLibMgr)) { }
+
         #endregion
 
         #region Methods
+
+        private async Task Previous()
+        {
+            if (Index > 0)
+            {
+                Index--;
+                await GetBooksFromCollection();
+            }
+        }
+
+        private async Task Next()
+        {
+            if (Index < NbPages)
+            {
+                Index++;
+                await GetBooksFromCollection();
+            }
+        }
 
         private async Task GetBooksFromCollection()
         {

@@ -8,9 +8,9 @@
              x:Class="LivreLand.View.TousView"
              Title="TousView">
 
-    <!--<ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior />
-    </ContentPage.Behaviors>-->
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding TousVM.Manager.GetBooksFromCollectionCommand}"/>
+    </ContentPage.Behaviors>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -24,8 +24,8 @@
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
                          Grid.Row="0"
-                         ButtonPlusTappedCommand="{Binding Navigator.PopupHomePlusNavigationCommand}"
-                         ButtonBackTappedCommand="{Binding Navigator.PopupBackButtonNavigationCommand}"/>
+                         ButtonPlusTappedCommand="{Binding TousVM.Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding TousVM.Navigator.PopupBackButtonNavigationCommand}"/>
         <ScrollView Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -50,7 +50,7 @@
                            Style="{StaticResource HeaderCollectionViewText}"
                            Grid.Column="1"/>
                 </Grid>
-                <CollectionView ItemsSource="{Binding Manager.AllBooks}"
+                <CollectionView ItemsSource="{Binding TousVM.Manager.AllBooks}"
                                 SelectionMode="Single"
                                 Grid.Row="2">
                     <CollectionView.ItemTemplate>
