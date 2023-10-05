@@ -44,5 +44,12 @@ public partial class TousView : ContentPage
 		App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
 	}
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        TousVM.Manager.GetBooksFromCollectionCommand.Execute(null);
+    }
+
     #endregion
 }

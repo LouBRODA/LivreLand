@@ -10,7 +10,7 @@ namespace ViewModels
 
         #region Fields
 
-        private readonly ObservableCollection<BookVM> books;
+        private readonly ObservableCollection<BookVM> books = new ObservableCollection<BookVM>();
         private int index;
         private long nbBooks;
          
@@ -18,7 +18,10 @@ namespace ViewModels
 
         #region Properties 
 
-        public ReadOnlyObservableCollection<BookVM> AllBooks { get; private set; }
+        public ObservableCollection<BookVM> AllBooks 
+        {
+            get => books; 
+        }
 
         public string SearchTitle { get; private set; }
 
@@ -55,7 +58,6 @@ namespace ViewModels
 
         public ManagerVM(Manager model) : base(model)
         {
-            //AllBooks = new ReadOnlyObservableCollection<BookVM>(books);
             PreviousCommand = new RelayCommand(() => Previous());
             NextCommand = new RelayCommand(() => Next());
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
@@ -96,6 +98,7 @@ namespace ViewModels
             {
                 books.Add(b);              
             }
+            OnPropertyChanged(nameof(AllBooks));
         }
 
         #endregion

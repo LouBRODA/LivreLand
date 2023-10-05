@@ -41,14 +41,16 @@ namespace ViewModels
             set => SetProperty(Model.PublishDate, value, v => Model.PublishDate = value);
         }
 
-        //public List<AuthorVM> Authors
-        //{
-        //    get => model.Authors;
-        //    set
-        //    {
-        //        model.Authors = value;
-        //    }
-        //}
+        public List<AuthorVM> Authors
+        {
+            get => Model.Authors.Select(a => new AuthorVM(a)).ToList();
+        }
+
+        public Status Status
+        {
+            get => Model.Status;
+            set => SetProperty(Model.Status, value, v => Model.Status = value);
+        }
 
         public int NbPages
         {
