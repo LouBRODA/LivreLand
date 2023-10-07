@@ -13,6 +13,8 @@ namespace ViewModels
 
         #region Fields
 
+        private int nbBooksWritten {  get; set; }
+
         #endregion
 
         #region Properties
@@ -23,6 +25,15 @@ namespace ViewModels
             set
             {
                 Model.Name = value;
+            }
+        }
+
+        public int NbBooksWritten
+        {
+            get => nbBooksWritten;
+            set
+            {
+                nbBooksWritten = value;
             }
         }
 

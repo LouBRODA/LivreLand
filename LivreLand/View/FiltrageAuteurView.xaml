@@ -35,15 +35,18 @@
             <VerticalStackLayout Grid.Row="2">
                 <contentView:SeparatorEntireView/>
 
-                <CollectionView ItemsSource="{Binding FiltrageAuteurVM.Manager.AllAuthors}">
+                <CollectionView ItemsSource="{Binding FiltrageAuteurVM.Manager.AllAuthors}"
+                                SelectedItem="{Binding FiltrageAuteurVM.Manager.SelectedAuthor}"
+                                SelectionChangedCommand="{Binding FiltrageAuteurVM.Navigator.NavigationCommand}"
+                                SelectionChangedCommandParameter="/tous">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:AuthorVM">
                             <VerticalStackLayout>
                                 <contentView:HomeButtonView ButtonTitle="{Binding Name}"
-                                                ButtonIcon="book.png"
-                                                ButtonNumber="2"
-                                                ButtonRedIconVisible="True"
-                                                ButtonBlackIconVisible="False"/>
+                                                            ButtonIcon="book.png"
+                                                            ButtonNumber="{Binding NbBooksWritten}"
+                                                            ButtonRedIconVisible="True"
+                                                            ButtonBlackIconVisible="False"/>
                                 <contentView:SeparatorBigCutStartView/>
                             </VerticalStackLayout>
                         </DataTemplate>

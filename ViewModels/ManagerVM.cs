@@ -12,6 +12,7 @@ namespace ViewModels
 
         private readonly ObservableCollection<BookVM> books = new ObservableCollection<BookVM>();
         private readonly ObservableCollection<AuthorVM> authors = new ObservableCollection<AuthorVM>();
+        private readonly ObservableCollection<PublishDateVM> publishDates = new ObservableCollection<PublishDateVM>();
         private int index;
         private long nbBooks;
          
@@ -28,6 +29,13 @@ namespace ViewModels
         {
             get => authors;
         }
+
+        public ObservableCollection<PublishDateVM> AllPublishDates
+        {
+            get => publishDates;
+        }
+
+        public AuthorVM SelectedAuthor { get; private set; }
 
         public string SearchTitle { get; private set; }
 
@@ -58,7 +66,11 @@ namespace ViewModels
 
         public ICommand GetBooksFromCollectionCommand { get; private set; }
 
+        public ICommand GetBooksByAuthorCommand { get; private set; }
+        
         public ICommand GetAllAuthorsCommand { get; private set; }
+
+        public ICommand GetAllPublishDatesCommand { get; private set; }
 
         #endregion
 
@@ -69,7 +81,9 @@ namespace ViewModels
             PreviousCommand = new RelayCommand(() => Previous());
             NextCommand = new RelayCommand(() => Next());
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
+            GetBooksByAuthorCommand = new RelayCommand(() => GetBooksByAuthor());
             GetAllAuthorsCommand = new RelayCommand(() => GetAllAuthors());
+            GetAllPublishDatesCommand = new RelayCommand(() => GetAllPublishDates());
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
@@ -110,6 +124,19 @@ namespace ViewModels
             OnPropertyChanged(nameof(AllBooks));
         }
 
+        private async Task GetBooksByAuthor()
+        {
+            var result = await Model.GetBooksByAuthor(SelectedAuthor.Name, Index, Count);
+            NbBooks = result.count;
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            foreach (var b in someBooks.Select(b => new BookVM(b)))
+            {
+                books.Add(b);
+            }
+            OnPropertyChanged(nameof(AllBooks));
+        }
+
         private async Task GetAllAuthors()
         {
             var result = await Model.GetBooksFromCollection(0, 20);
@@ -121,11 +148,25 @@ namespace ViewModels
                 foreach (var a in b.Authors)
                 {
                     authors.Add(a);
+                    a.NbBooksWritten++;
                 }
             }
             OnPropertyChanged(nameof(AllAuthors));
         }
 
+        private async Task GetAllPublishDates()
+        {
+            var result = await Model.GetBooksFromCollection(0, 20);
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            publishDates.Clear();
+            foreach (var b in someBooks.Select(b => new BookVM(b)))
+            {
+                var date = new PublishDateVM { PublishDate = b.PublishDate };
+                publishDates.Add(date);
+            }
+            OnPropertyChanged(nameof(AllPublishDates));
+        }
         #endregion
     }
 }
