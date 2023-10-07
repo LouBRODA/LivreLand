@@ -52,6 +52,7 @@
                 </Grid>
                 <CollectionView ItemsSource="{Binding TousVM.Manager.AllBooks}"
                                 SelectionMode="Single"
+                                SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:BookVM">
@@ -162,8 +163,15 @@
                                  Rotation="180"
                                  Command="{Binding TousVM.Manager.PreviousCommand}"
                                  Grid.Column="1"/>
-                    <Label Text="{Binding TousVM.Manager.Index, TousVM.Manager.NbPages, StringFormat='{0}/{1}'}"
-                           Grid.Column="3"/>
+                    <Label Grid.Column="3">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding TousVM.Manager.Index}"/>
+                                <Span Text="/"/>
+                                <Span Text="{Binding TousVM.Manager.NbPages}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <ImageButton Source="chevron_right.png"
                                  Command="{Binding TousVM.Manager.NextCommand}"
                                  Grid.Column="5"/>

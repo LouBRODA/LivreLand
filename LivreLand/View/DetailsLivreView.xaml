@@ -58,7 +58,7 @@
                                         Stroke="{StaticResource Gray}"
                                         StrokeShape="RoundRectangle 3"
                                         StrokeThickness="3">
-                                    <Image Source="couverture_la_horde_du_contrevent.png"
+                                    <Image Source="{Binding DetailsLivreVM.Book.ImageSmall}"
                                            Aspect="AspectFill"
                                            Grid.Column="0"
                                            Grid.RowSpan="5"/>
@@ -70,7 +70,7 @@
                                    Margin="0,97,20,0"
                                    VerticalOptions="End"/>
                         </Grid>
-                        <Label Text="La horde du contrevent"
+                        <Label Text="{Binding DetailsLivreVM.Book.Title}"
                                Grid.Column="2"
                                Grid.Row="0"/>
                         <contentView:StarNotationView Grid.Column="2"
@@ -112,7 +112,7 @@
                         <Label Text="Auteur"
                                Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
-                        <Label Text="Alain Damasio"
+                        <Label Text="{Binding DetailsLivreVM.Book.Author}"
                                Style="{StaticResource DetailsLivreBody}"
                                Grid.Row="1"/>
                     </Grid>
@@ -129,9 +129,14 @@
                         <Label Text="Maison d'édition"
                                Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
-                        <Label Text="Gallimard (2015)"
-                               Style="{StaticResource DetailsLivreBody}"
-                               Grid.Row="1"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Gallimard"/>
+                                    <Span Text="{Binding DetailsLivreVM.Book.PublishDate,StringFormat='({0})'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </Grid>
 
                     <contentView:SeparatorCutStartView/>
@@ -175,7 +180,7 @@
                             <Label Text="Nombre de pages"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
-                            <Label Text="700"
+                            <Label Text="{Binding DetailsLivreVM.Book.NbPages}"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
@@ -203,7 +208,7 @@
                             <Label Text="ISBN"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
-                            <Label Text="9782070464234"
+                            <Label Text="{Binding DetailsLivreVM.Book.ISBN13}"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
@@ -231,7 +236,7 @@
                             <Label Text="Statut"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
-                            <Label Text="Non lu"
+                            <Label Text="{Binding DetailsLivreVM.Book.Status}"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>

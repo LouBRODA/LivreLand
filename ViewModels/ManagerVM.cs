@@ -11,6 +11,7 @@ namespace ViewModels
         #region Fields
 
         private readonly ObservableCollection<BookVM> books = new ObservableCollection<BookVM>();
+        private readonly ObservableCollection<AuthorVM> authors = new ObservableCollection<AuthorVM>();
         private int index;
         private long nbBooks;
          
@@ -21,6 +22,11 @@ namespace ViewModels
         public ObservableCollection<BookVM> AllBooks 
         {
             get => books; 
+        }
+
+        public ObservableCollection<AuthorVM> AllAuthors
+        {
+            get => authors;
         }
 
         public string SearchTitle { get; private set; }
@@ -52,6 +58,8 @@ namespace ViewModels
 
         public ICommand GetBooksFromCollectionCommand { get; private set; }
 
+        public ICommand GetAllAuthorsCommand { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -61,6 +69,7 @@ namespace ViewModels
             PreviousCommand = new RelayCommand(() => Previous());
             NextCommand = new RelayCommand(() => Next());
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
+            GetAllAuthorsCommand = new RelayCommand(() => GetAllAuthors());
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
@@ -99,6 +108,22 @@ namespace ViewModels
                 books.Add(b);              
             }
             OnPropertyChanged(nameof(AllBooks));
+        }
+
+        private async Task GetAllAuthors()
+        {
+            var result = await Model.GetBooksFromCollection(0, 20);
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            authors.Clear();
+            foreach (var b in someBooks.Select(b => new BookVM(b)))
+            {
+                foreach (var a in b.Authors)
+                {
+                    authors.Add(a);
+                }
+            }
+            OnPropertyChanged(nameof(AllAuthors));
         }
 
         #endregion

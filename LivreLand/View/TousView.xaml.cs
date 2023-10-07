@@ -41,7 +41,11 @@ public partial class TousView : ContentPage
 
     void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
+        if (e.CurrentSelection.FirstOrDefault() is BookVM)
+        {
+            var result = new DetailsLivreVM(e.CurrentSelection.FirstOrDefault() as BookVM);
+            App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView(result));
+        }
 	}
 
     protected override void OnAppearing()

@@ -25,6 +25,6 @@ public partial class StatutLectureView : ContentPage
 
     void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
+        //App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
     }
 }
