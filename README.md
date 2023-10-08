@@ -38,6 +38,52 @@ Disponible sur :
 - View Model non utilisés et fonctionnalités pas toutes mises en place (seulement les vues)
 - Navigation généralement utilisable mais pas parfaitement codée  
 
+---
+
+Étape 2 : Personnal MVVM Toolkit
+
+```mermaid
+classDiagram
+direction LR
+class INotifyPropertyChanged {
+    <<interface>>
+}
+
+class ObservableObject{
+    +PropertyChanged: event PropertyChangedEventHandler?;
+    #OnPropertyChanged (string PropertyName = null) : void
+    #SetProperty<T> (T member, T value, Action<T> action, string propertyName = null) : void
+    #SetProperty<T> (ref T member, T value, string propertyName = null) : void
+}
+
+class BaseViewModel : T{
+    +Model: TModel;
+    -model: TModel;
+    +BaseViewModel(TModel model)
+    +BaseViewModel() : this(default)
+}
+
+class BaseViewModel{
+}
+
+class ICommand{
+    <<interface>>
+}
+
+class RelayCommand : T{
+    +CanExecuteChanged: event EventHandler?;
+    +CanExecute (object? parameter) : bool
+    +Execute (object? parameter) : void
+    +RefreshCommand() : void
+} 
+
+ObservableObject ..|> INotifyPropertyChanged
+BaseViewModel --|> ObservableObject
+BaseViewModel --|> ObservableObject
+RelayCommand ..|> ICommand
+
+```
+
 *******
 
 <div id='presentation'/>
