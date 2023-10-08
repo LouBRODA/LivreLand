@@ -27,6 +27,8 @@ public static class MauiProgram
 			.AddSingleton<TousView>()
 			.AddSingleton<FiltrageAuteurView>()
 			.AddSingleton<FiltrageDateView>()
+			.AddSingleton<FiltrageNoteView>()
+			.AddSingleton<ALirePlusTardView>()
 
             .AddSingleton<NavigatorVM>()
 
@@ -38,7 +40,9 @@ public static class MauiProgram
 
 			.AddSingleton<TousVM>()
 			.AddSingleton<FiltrageAuteurVM>()
-			.AddSingleton<FiltrageDateVM>();
+			.AddSingleton<FiltrageDateVM>()
+			.AddSingleton<FiltrageNoteVM>()
+			.AddSingleton<ALirePlusTardVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();

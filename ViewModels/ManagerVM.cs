@@ -13,6 +13,8 @@ namespace ViewModels
         private readonly ObservableCollection<BookVM> books = new ObservableCollection<BookVM>();
         private readonly ObservableCollection<AuthorVM> authors = new ObservableCollection<AuthorVM>();
         private readonly ObservableCollection<PublishDateVM> publishDates = new ObservableCollection<PublishDateVM>();
+        private readonly ObservableCollection<RatingsVM> ratings = new ObservableCollection<RatingsVM>();
+        private readonly ObservableCollection<BookVM> toBeReadBooks = new ObservableCollection<BookVM>();
         private int index;
         private long nbBooks;
          
@@ -33,6 +35,16 @@ namespace ViewModels
         public ObservableCollection<PublishDateVM> AllPublishDates
         {
             get => publishDates;
+        }
+
+        public ObservableCollection<RatingsVM> AllRatings
+        {
+            get => ratings;
+        }
+
+        public ObservableCollection<BookVM> ToBeReadBooks
+        {
+            get => toBeReadBooks;
         }
 
         public AuthorVM SelectedAuthor { get; private set; }
@@ -72,6 +84,10 @@ namespace ViewModels
 
         public ICommand GetAllPublishDatesCommand { get; private set; }
 
+        public ICommand GetAllRatingsCommand { get; private set; }
+
+        public ICommand GetToBeReadBooksCommand { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -84,6 +100,8 @@ namespace ViewModels
             GetBooksByAuthorCommand = new RelayCommand(() => GetBooksByAuthor());
             GetAllAuthorsCommand = new RelayCommand(() => GetAllAuthors());
             GetAllPublishDatesCommand = new RelayCommand(() => GetAllPublishDates());
+            GetAllRatingsCommand = new RelayCommand(() => GetAllRatings());
+            GetToBeReadBooksCommand = new RelayCommand(() => GetToBeReadBooks());
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
@@ -163,10 +181,61 @@ namespace ViewModels
             foreach (var b in someBooks.Select(b => new BookVM(b)))
             {
                 var date = new PublishDateVM { PublishDate = b.PublishDate };
+                date.NbBooksWritten++;
                 publishDates.Add(date);
+                foreach (var p in publishDates)
+                {
+                    if (date.PublishDate.Year == p.PublishDate.Year && !date.Equals(p))
+                    {
+                        p.NbBooksWritten++;
+                        publishDates.Remove(date);
+                    }
+                }
             }
             OnPropertyChanged(nameof(AllPublishDates));
         }
+
+        private async Task GetAllRatings()
+        {
+            var result = await Model.GetBooksFromCollection(0, 20);
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            ratings.Clear();
+            foreach (var b in someBooks.Select(b => new BookVM(b)))
+            {
+                var rating = new RatingsVM { Average = b.UserRating};
+                if (rating.Average != null)
+                {               
+                    rating.NbBooksWritten++;
+                    ratings.Add(rating);
+                    foreach (var r in ratings)
+                    {
+                        if (rating.Average == r.Average && !rating.Equals(r))
+                        {
+                            r.NbBooksWritten++;
+                            ratings.Remove(rating);
+                        }
+                    }
+                }
+            }
+            OnPropertyChanged(nameof(AllRatings));
+        }
+
+        private async Task GetToBeReadBooks()
+        {
+            var result = await Model.GetBooksFromCollection(0, 20);
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            toBeReadBooks.Clear();
+            foreach (var b in someBooks.Select(b => new BookVM(b)))
+            {
+                if (b.Status == Status.ToBeRead)
+                {
+                    toBeReadBooks.Add(b);
+                }
+            }
+        }
+
         #endregion
     }
 }

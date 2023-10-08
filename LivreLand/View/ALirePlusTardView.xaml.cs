@@ -1,22 +1,40 @@
 using LivreLand.Model;
+using LivreLand.ViewModel;
 
 namespace LivreLand.View;
 
 public partial class ALirePlusTardView : ContentPage
 {
-    public List<BookModel> ALirePlusTardBooks { get; set; } = new List<BookModel>()
-    {
-        new BookModel("La horde du contrevent","Alain Damasio","Non lu", 0),
-    };
+    #region Properties
 
-    public ALirePlusTardView()
+    public ALirePlusTardVM ALirePlusTardVM { get; set; }
+
+    #endregion
+
+    #region Constructor
+
+    public ALirePlusTardView(ALirePlusTardVM aLirePlusTardVM)
 	{
-        BindingContext = this;
+        ALirePlusTardVM = aLirePlusTardVM;
         InitializeComponent();
+        BindingContext = this;
 	}
+
+    #endregion
+
+    #region Properties
 
     void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         //App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        ALirePlusTardVM.Manager.GetToBeReadBooksCommand.Execute(null);
+    }
+
+    #endregion
 }
