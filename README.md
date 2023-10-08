@@ -56,7 +56,7 @@ class ObservableObject{
     #SetProperty<T> (ref T member, T value, string propertyName = null) : void
 }
 
-class BaseViewModel : T{
+class BaseViewModel{
     +Model: TModel;
     -model: TModel;
     +BaseViewModel(TModel model)
@@ -70,7 +70,7 @@ class ICommand{
     <<interface>>
 }
 
-class RelayCommand : T{
+class RelayCommand{
     +CanExecuteChanged: event EventHandler?;
     +CanExecute (object? parameter) : bool
     +Execute (object? parameter) : void
