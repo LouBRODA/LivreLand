@@ -63,9 +63,6 @@ class BaseViewModel{
     +BaseViewModel() : this(default)
 }
 
-class BaseViewModel{
-}
-
 class ICommand{
     <<interface>>
 }
