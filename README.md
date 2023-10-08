@@ -76,7 +76,6 @@ class RelayCommand{
 
 ObservableObject ..|> INotifyPropertyChanged
 BaseViewModel --|> ObservableObject
-BaseViewModel --|> ObservableObject
 RelayCommand ..|> ICommand
 
 ```
