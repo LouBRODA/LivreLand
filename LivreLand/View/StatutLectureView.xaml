@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:LivreLand.View"
-             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"     
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+             xmlns:viewModel="clr-namespace:ViewModels;assembly=ViewModels"     
              x:Class="LivreLand.View.StatutLectureView"
              Title="StatutLectureView">
 
@@ -23,123 +24,29 @@
         <contentView:SearchBarView Grid.Row="2"/>
         <ScrollView Grid.Row="4">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="10"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="10"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="10"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
-                      Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Non lus"
-                           VerticalOptions="Center"
-                           Style="{StaticResource HeaderCollectionViewText}"
-                           Grid.Column="1"/>
-                </Grid>
-                <CollectionView ItemsSource="{Binding NonLuBooks}"
+                <CollectionView ItemsSource="{Binding StatutLectureVM.Manager.AllBooks}"
                                 SelectionMode="Single"
                                 SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <VerticalStackLayout Margin="10"
-                                                 Spacing="20">
-                                <VisualStateManager.VisualStateGroups x:Name="SelectionStates">
-                                    <VisualStateGroup>
-                                        <VisualState x:Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="Transparent" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="10"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid Grid.Column="0"
-                                          Grid.RowSpan="5">
-                                        <Border Padding="-5,-5,-5,1"
-                                                Margin="10,0,0,0"
-                                                HeightRequest="100"
-                                                WidthRequest="62"
-                                                HorizontalOptions="Center"
-                                                Stroke="{StaticResource Gray}"
-                                                StrokeShape="RoundRectangle 3"
-                                                StrokeThickness="3">
-                                            <Border HorizontalOptions="Center"
-                                                    Stroke="{StaticResource Gray}"
-                                                    StrokeShape="RoundRectangle 3"
-                                                    StrokeThickness="3">
-                                                <Image Source="couverture_la_horde_du_contrevent.png"
-                                                       Aspect="AspectFill"
-                                                       Grid.Column="0"
-                                                       Grid.RowSpan="5"/>
-                                            </Border>
-                                        </Border>
-                                        <Image Source="bookmark_red.png"
-                                               HeightRequest="10"
-                                               WidthRequest="10"
-                                               Margin="0,97,20,0"
-                                               VerticalOptions="End"/>
-                                    </Grid>
-                                    <Label Text="{Binding Title}"
-                                           Style="{StaticResource MasterTitleBookText}"
-                                           Grid.Column="2"
-                                           Grid.Row="0"/>
-                                    <Label Text="{Binding Author}"
-                                           Style="{StaticResource MasterAuthorBookText}"
-                                           Grid.Column="2"
-                                           Grid.Row="1"/>
-                                    <Label Text="{Binding State}"
-                                           Style="{StaticResource MasterStateBookText}"                                   
-                                           Grid.Column="2"
-                                           Grid.Row="2"/>
-                                    <contentView:StarNotationView Grid.Column="2"
-                                                                  Grid.Row="4"/>
-                                </Grid>
-                                <contentView:SeparatorCutStartView/>
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
-                      Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <!--<CollectionView.GroupHeaderTemplate>
+                        <DataTemplate x:DataType="viewModel:BookVM">
+                            <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
+                                  Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                    <Label Text="Terminés"
-                           VerticalOptions="Center"
-                           Style="{StaticResource HeaderCollectionViewText}"
-                           Grid.Column="1"/>
-                </Grid>
-                <CollectionView ItemsSource="{Binding TermineBooks}"
-                                SelectionMode="Single"
-                                SelectionChanged="OnSelectionChanged"
-                                Grid.Row="6">
+                                <Label Text="{Binding Status}"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource HeaderCollectionViewText}"
+                                       Grid.Column="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>-->
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="viewModel:BookVM">
                             <VerticalStackLayout Margin="10"
                                                  Spacing="20">
                                 <VisualStateManager.VisualStateGroups x:Name="SelectionStates">
@@ -178,7 +85,7 @@
                                                     Stroke="{StaticResource Gray}"
                                                     StrokeShape="RoundRectangle 3"
                                                     StrokeThickness="3">
-                                                <Image Source="couverture_la_horde_du_contrevent.png"
+                                                <Image Source="{Binding ImageSmall}"
                                                        Aspect="AspectFill"
                                                        Grid.Column="0"
                                                        Grid.RowSpan="5"/>
@@ -194,11 +101,11 @@
                                            Style="{StaticResource MasterTitleBookText}"
                                            Grid.Column="2"
                                            Grid.Row="0"/>
-                                    <Label Text="{Binding Author}"
+                                    <Label Text="Author"
                                            Style="{StaticResource MasterAuthorBookText}"
                                            Grid.Column="2"
                                            Grid.Row="1"/>
-                                    <Label Text="{Binding State}"
+                                    <Label Text="{Binding Status}"
                                            Style="{StaticResource MasterStateBookText}"                                   
                                            Grid.Column="2"
                                            Grid.Row="2"/>

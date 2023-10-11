@@ -7,17 +7,28 @@ public partial class BibliothequeView : ContentPage
 {
     #region Properties
 
-    public NavigatorVM Navigator { get; private set; }
+    public BibliothequeVM BibliothequeVM { get; set; }
 
     #endregion
 
     #region Constructor
 
-    public BibliothequeView(NavigatorVM navigatorVM)
+    public BibliothequeView(BibliothequeVM bibliothequeVM)
 	{
-        Navigator = navigatorVM;
+        BibliothequeVM = bibliothequeVM;
         InitializeComponent();
         BindingContext = this;
+    }
+
+    #endregion
+
+    #region Methods
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        BibliothequeVM.Manager.GetBooksFromCollectionCommand.Execute(null);
     }
 
     #endregion

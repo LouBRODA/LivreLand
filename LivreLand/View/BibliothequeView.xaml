@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
         
         <view:HeaderHome Grid.Row="0"
-                         ButtonTappedCommand="{Binding Navigator.PopupHomePlusNavigationCommand}"/>
+                         ButtonTappedCommand="{Binding BibliothequeVM.Navigator.PopupHomePlusNavigationCommand}"/>
         <ScrollView Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -52,10 +52,10 @@
                     <!--Tous-->
                     <contentView:HomeButtonView ButtonTitle="Tous"
                                                 ButtonIcon="tray_2_fill.png"
-                                                ButtonNumber="45"
+                                                ButtonNumber="{Binding BibliothequeVM.Manager.NbBooks}"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="tous/"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -66,7 +66,7 @@
                                                 ButtonNumber="1"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="pret/"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -76,7 +76,7 @@
                                                 ButtonIcon="arrow_forward.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="later/"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -86,7 +86,7 @@
                                                 ButtonIcon="eyeglasses.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="statut/"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -96,7 +96,7 @@
                                                 ButtonIcon="heart_fill.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="favoris/"/>
 
                     <contentView:SeparatorEntireView/>
@@ -119,7 +119,7 @@
                                                 ButtonIcon="person_fill.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="auteur/"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -129,7 +129,7 @@
                                                 ButtonIcon="calendar.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="date/"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -139,7 +139,7 @@
                                                 ButtonIcon="sparkles.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding Navigator.NavigationCommand}"
+                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
                                                 CommandParameter="note/"/>
 
                     <contentView:SeparatorEntireView/>
