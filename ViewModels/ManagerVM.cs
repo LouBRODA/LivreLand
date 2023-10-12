@@ -1,6 +1,7 @@
 ﻿using Model;
 using PersonalMVVMToolkit;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace ViewModels
@@ -15,6 +16,10 @@ namespace ViewModels
         private readonly ObservableCollection<PublishDateVM> publishDates = new ObservableCollection<PublishDateVM>();
         private readonly ObservableCollection<RatingsVM> ratings = new ObservableCollection<RatingsVM>();
         private readonly ObservableCollection<BookVM> toBeReadBooks = new ObservableCollection<BookVM>();
+        private readonly ObservableCollection<LoanVM> currentLoans = new ObservableCollection<LoanVM>();
+        private readonly ObservableCollection<LoanVM> pastLoans = new ObservableCollection<LoanVM>();
+        private readonly ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
+        private readonly ObservableCollection<BorrowingVM> currentBorrowings = new ObservableCollection<BorrowingVM>();
         private int index;
         private long nbBooks;
          
@@ -45,6 +50,26 @@ namespace ViewModels
         public ObservableCollection<BookVM> ToBeReadBooks
         {
             get => toBeReadBooks;
+        }
+
+        public ObservableCollection<LoanVM> AllCurrentLoans
+        {
+            get => currentLoans;
+        }
+
+        public ObservableCollection<LoanVM> AllPastLoans
+        {
+            get => pastLoans;
+        }
+
+        public ObservableCollection<BorrowingVM> AllCurrentBorrowings
+        {
+            get => currentBorrowings;
+        }
+
+        public ObservableCollection<BorrowingVM> AllPastBorrowings
+        {
+            get => pastBorrowings;
         }
 
         public AuthorVM SelectedAuthor { get; private set; }
@@ -88,6 +113,14 @@ namespace ViewModels
 
         public ICommand GetToBeReadBooksCommand { get; private set; }
 
+        public ICommand GetCurrentLoansCommand { get; private set; }
+
+        public ICommand GetPastLoansCommand { get; private set; }
+
+        public ICommand GetCurrentBorrowingsCommand { get; private set; }
+
+        public ICommand GetPastBorrowingsCommand { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -102,6 +135,10 @@ namespace ViewModels
             GetAllPublishDatesCommand = new RelayCommand(() => GetAllPublishDates());
             GetAllRatingsCommand = new RelayCommand(() => GetAllRatings());
             GetToBeReadBooksCommand = new RelayCommand(() => GetToBeReadBooks());
+            GetCurrentLoansCommand = new RelayCommand(() =>  GetCurrentLoans());
+            GetPastLoansCommand = new RelayCommand(() =>  GetPastLoans());
+            GetCurrentBorrowingsCommand = new RelayCommand(() => GetCurrentBorrowings());
+            GetPastBorrowingsCommand = new RelayCommand(() => GetPastBorrowings());
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
@@ -234,6 +271,54 @@ namespace ViewModels
                     toBeReadBooks.Add(b);
                 }
             }
+        }
+
+        private async Task GetCurrentLoans()
+        {
+            var result = await Model.GetCurrentLoans(0, 20);
+            IEnumerable<Loan> someLoans = result.loans;
+            currentLoans.Clear();
+            foreach (var l in someLoans.Select(l => new LoanVM(l)))
+            {
+                currentLoans.Add(l);
+            }
+            OnPropertyChanged(nameof(AllCurrentLoans));
+        }
+
+        private async Task GetPastLoans()
+        {
+            var result = await Model.GetPastLoans(0, 20);
+            IEnumerable<Loan> someLoans = result.loans;
+            pastLoans.Clear();
+            foreach (var l in someLoans.Select(l => new LoanVM(l)))
+            {
+                pastLoans.Add(l);
+            }
+            OnPropertyChanged(nameof(AllPastLoans));
+        }
+
+        private async Task GetCurrentBorrowings()
+        {
+            var result = await Model.GetCurrentBorrowings(0, 20);
+            IEnumerable<Borrowing> someBorrowings = result.borrowings;
+            currentBorrowings.Clear();
+            foreach (var b in someBorrowings.Select(b => new BorrowingVM(b)))
+            {
+                currentBorrowings.Add(b);
+            }
+            OnPropertyChanged(nameof(AllCurrentBorrowings));
+        }
+
+        private async Task GetPastBorrowings()
+        {
+            var result = await Model.GetPastBorrowings(0, 20);
+            IEnumerable<Borrowing> someBorrowings = result.borrowings;
+            pastBorrowings.Clear();
+            foreach (var b in someBorrowings.Select(b => new BorrowingVM(b)))
+            {
+                pastBorrowings.Add(b);
+            }
+            OnPropertyChanged(nameof(AllPastBorrowings));
         }
 
         #endregion

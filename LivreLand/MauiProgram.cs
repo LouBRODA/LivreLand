@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using LivreLand.View;
+using LivreLand.View.ContentViews;
 using LivreLand.ViewModel;
 using Microsoft.Extensions.Logging;
 using Model;
@@ -30,8 +31,9 @@ public static class MauiProgram
 			.AddSingleton<FiltrageNoteView>()
 			.AddSingleton<ALirePlusTardView>()
 			.AddSingleton<StatutLectureView>()
+			.AddSingleton<EmpruntsPretsView>()
 
-			.AddSingleton<NavigatorVM>()
+            .AddSingleton<NavigatorVM>()
 
 			.AddSingleton<ILibraryManager, LibraryStub>()
 			.AddSingleton<IUserLibraryManager, UserLibraryStub>()
@@ -45,7 +47,8 @@ public static class MauiProgram
 			.AddSingleton<FiltrageDateVM>()
 			.AddSingleton<FiltrageNoteVM>()
 			.AddSingleton<ALirePlusTardVM>()
-			.AddSingleton<StatutLectureVM>();
+			.AddSingleton<StatutLectureVM>()
+			.AddSingleton<EmpruntsPretsVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();

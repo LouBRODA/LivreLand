@@ -22,7 +22,7 @@ public partial class ALirePlusTardView : ContentPage
 
     #endregion
 
-    #region Properties
+    #region Methods
 
     void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {

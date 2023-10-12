@@ -1,27 +1,41 @@
 using LivreLand.Model;
+using LivreLand.ViewModel;
 
 namespace LivreLand.View;
 
 public partial class EmpruntsPretsView : ContentPage
 {
-    public List<BookModel> AntoineBooks { get; set; } = new List<BookModel>()
-    {
-        new BookModel("The Wake","Scott Snyder","Terminé", 0),
-    };
+    #region Properties
 
-    public List<BookModel> AudreyPoucletBooks { get; set; } = new List<BookModel>()
-    {
-        new BookModel("Les feux de Cibola","James S. A. Corey","Terminé", 0),
-    };
+    public EmpruntsPretsVM EmpruntsPretsVM { get; set; }
 
-    public EmpruntsPretsView()
+    #endregion
+
+    #region Constructor
+
+    public EmpruntsPretsView(EmpruntsPretsVM empruntsPretsVM)
 	{
-        BindingContext = this;
+        EmpruntsPretsVM = empruntsPretsVM;
         InitializeComponent();
+        BindingContext = this;
 	}
+
+    #endregion
+
+    #region Methods
 
     void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         //App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        EmpruntsPretsVM.Manager.GetCurrentLoansCommand.Execute(null);
+        EmpruntsPretsVM.Manager.GetCurrentBorrowingsCommand.Execute(null);
+    }
+
+    #endregion
 }

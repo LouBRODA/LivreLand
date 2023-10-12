@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivreLand.View.ContentViews.EmpruntsPretsButtonView">
+             x:Class="LivreLand.View.ContentViews.EmpruntsPretsButtonView"
+             x:Name="this">
 
-    <Grid>
+    <Grid BindingContext="{x:Reference this}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="4*"/>
@@ -17,18 +18,18 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
         
-                <Button x:Name="pretsClicked"
-                        Text="Prêts"
+                <Button Text="Prêts"
                         TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-                        Clicked="OnPretsClicked"
+                        BackgroundColor="{Binding PretButtonBackgroundColor}"
+                        IsEnabled="{Binding PretButtonIsEnabled}"
+                        Command="{Binding PretsButtonCommand}"
                         Margin="2"
                         Grid.Column="0"/>
-                <Button x:Name="empruntsButton"
-                        Text="Emprunts"
+                <Button Text="Emprunts"
                         TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                        BackgroundColor="Transparent"
-                        Clicked="OnEmpruntsClicked"
+                        BackgroundColor="{Binding EmpruntButtonBackgroundColor}"
+                        IsEnabled="{Binding EmpruntButtonIsEnabled}"
+                        Command="{Binding EmpruntsButtonCommand}"
                         Margin="2"
                         Grid.Column="1"/>        
             </Grid>
