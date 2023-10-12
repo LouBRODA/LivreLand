@@ -35,8 +35,9 @@
                 <contentView:SeparatorEntireView/>
 
                 <CollectionView ItemsSource="{Binding FiltrageDateVM.Manager.AllPublishDates}"
+                                SelectedItem="{Binding FiltrageDateVM.Manager.SelectedDate}"
                                 SelectionChangedCommand="{Binding FiltrageDateVM.Navigator.NavigationCommand}"
-                                SelectionChangedCommandParameter="/tous">
+                                SelectionChangedCommandParameter="{Binding FiltrageDateVM.Manager.SelectedDate}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:PublishDateVM">
                             <VerticalStackLayout>

@@ -28,7 +28,7 @@
                                 SelectionMode="Single"
                                 SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">
-                    <!--<CollectionView.GroupHeaderTemplate>
+                    <CollectionView.GroupHeaderTemplate>
                         <DataTemplate x:DataType="viewModel:BookVM">
                             <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
                                   Grid.Row="0">
@@ -44,7 +44,7 @@
                                        Grid.Column="1"/>
                             </Grid>
                         </DataTemplate>
-                    </CollectionView.GroupHeaderTemplate>-->
+                    </CollectionView.GroupHeaderTemplate>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:BookVM">
                             <VerticalStackLayout Margin="10"

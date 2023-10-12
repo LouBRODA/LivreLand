@@ -74,6 +74,10 @@ namespace ViewModels
 
         public AuthorVM SelectedAuthor { get; private set; }
 
+        public PublishDateVM SelectedDate { get; private set; }
+
+        public RatingsVM SelectedRating { get; private set; }
+
         public string SearchTitle { get; private set; }
 
         public int Index 
@@ -107,6 +111,8 @@ namespace ViewModels
         
         public ICommand GetAllAuthorsCommand { get; private set; }
 
+        public ICommand GetBooksByDateCommand { get; private set; }
+
         public ICommand GetAllPublishDatesCommand { get; private set; }
 
         public ICommand GetAllRatingsCommand { get; private set; }
@@ -121,6 +127,8 @@ namespace ViewModels
 
         public ICommand GetPastBorrowingsCommand { get; private set; }
 
+        public ICommand GetBooksByRatingCommand { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -132,7 +140,9 @@ namespace ViewModels
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
             GetBooksByAuthorCommand = new RelayCommand(() => GetBooksByAuthor());
             GetAllAuthorsCommand = new RelayCommand(() => GetAllAuthors());
+            GetBooksByDateCommand = new RelayCommand(() => GetBooksByDate());
             GetAllPublishDatesCommand = new RelayCommand(() => GetAllPublishDates());
+            GetBooksByRatingCommand = new RelayCommand(() => GetBooksByRating());
             GetAllRatingsCommand = new RelayCommand(() => GetAllRatings());
             GetToBeReadBooksCommand = new RelayCommand(() => GetToBeReadBooks());
             GetCurrentLoansCommand = new RelayCommand(() =>  GetCurrentLoans());
@@ -171,6 +181,7 @@ namespace ViewModels
             var result = await Model.GetBooksFromCollection(Index, Count);
             NbBooks = result.count;
             IEnumerable<Book> someBooks = result.books;
+            someBooks = someBooks.OrderBy(b => b.Status);
             books.Clear();
             foreach (var b in someBooks.Select(b => new BookVM(b))) 
             {
@@ -209,6 +220,22 @@ namespace ViewModels
             OnPropertyChanged(nameof(AllAuthors));
         }
 
+        private async Task GetBooksByDate()
+        {
+            var result = await Model.GetBooksFromCollection(Index, Count);
+            NbBooks = result.count;
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            foreach (var b in someBooks.Select(b => new BookVM(b)))
+            {
+                if (b.PublishDate == SelectedDate.PublishDate)
+                {
+                    books.Add(b);
+                }                
+            }
+            OnPropertyChanged(nameof(AllBooks));
+        }
+
         private async Task GetAllPublishDates()
         {
             var result = await Model.GetBooksFromCollection(0, 20);
@@ -232,29 +259,59 @@ namespace ViewModels
             OnPropertyChanged(nameof(AllPublishDates));
         }
 
+        private async Task GetBooksByRating()
+        {
+            var result = await Model.GetBooksFromCollection(Index, Count);
+            NbBooks = result.count;
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            var filteredBooks = someBooks.Where(b => b.UserRating.HasValue && Math.Floor(b.UserRating.Value) == SelectedRating.Average);
+            foreach (var book in filteredBooks)
+            {
+                books.Add(new BookVM(book));
+            }
+            OnPropertyChanged(nameof(AllBooks));
+        }
+
         private async Task GetAllRatings()
         {
             var result = await Model.GetBooksFromCollection(0, 20);
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
             ratings.Clear();
+
+            Dictionary<string, List<BookVM>> groupedBooks = new Dictionary<string, List<BookVM>>();
+
             foreach (var b in someBooks.Select(b => new BookVM(b)))
             {
-                var rating = new RatingsVM { Average = b.UserRating};
+                var rating = new RatingsVM { Average = b.UserRating };
                 if (rating.Average != null)
-                {               
-                    rating.NbBooksWritten++;
-                    ratings.Add(rating);
-                    foreach (var r in ratings)
+                {
+                    string noteKey = Math.Floor(rating.Average.Value).ToString("0");
+
+                    if (!groupedBooks.ContainsKey(noteKey))
                     {
-                        if (rating.Average == r.Average && !rating.Equals(r))
-                        {
-                            r.NbBooksWritten++;
-                            ratings.Remove(rating);
-                        }
+                        groupedBooks[noteKey] = new List<BookVM>();
                     }
+
+                    groupedBooks[noteKey].Add(b);
                 }
             }
+
+            foreach (var entry in groupedBooks)
+            {
+                var noteKey = entry.Key;
+                var booksWithSameRating = entry.Value;
+
+                var rating = new RatingsVM
+                {
+                    Average = float.Parse(noteKey),
+                    NbBooksWritten = booksWithSameRating.Count
+                };
+
+                ratings.Add(rating);
+            }
+
             OnPropertyChanged(nameof(AllRatings));
         }
 
