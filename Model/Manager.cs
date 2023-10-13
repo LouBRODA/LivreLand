@@ -64,6 +64,11 @@ namespace Model
             return UserLibraryManager.UpdateBook(book);
         }
 
+        public Task<bool> RemoveBook(Book book)
+        {
+            return UserLibraryManager.RemoveBook(book);
+        }
+
         public Task<(long count, IEnumerable<Book> books)> GetBooksFromCollection(int index, int count, string sort = "")
         {
             var result = UserLibraryManager.GetBooksFromCollection(index, count, sort).Result;
@@ -114,6 +119,11 @@ namespace Model
         {
             var result = UserLibraryManager.GetPastBorrowings(index, count).Result;
             return Task.FromResult((result.Item1, result.Item2));
+        }
+
+        public Task<bool> LendBook(Book book, Contact contact, DateTime? loanDate)
+        {
+            return UserLibraryManager.LendBook(book, contact, loanDate);
         }
     }
 }

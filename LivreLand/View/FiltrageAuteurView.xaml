@@ -38,8 +38,7 @@
                 <CollectionView ItemsSource="{Binding FiltrageAuteurVM.Manager.AllAuthors}"
                                 SelectionMode="Single" 
                                 SelectedItem="{Binding FiltrageAuteurVM.Manager.SelectedAuthor}"
-                                SelectionChangedCommand="{Binding FiltrageAuteurVM.Navigator.NavigationCommand}"
-                                SelectionChangedCommandParameter="/tous">
+                                SelectionChangedCommand="{Binding FiltrageAuteurVM.NavigateAuthorPageCommand}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:AuthorVM">
                             <VerticalStackLayout>

@@ -4,6 +4,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:view="clr-namespace:LivreLand.View"
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+             xmlns:viewModel="clr-namespace:ViewModels;assembly=ViewModels"
              x:Class="LivreLand.View.DetailsLivreView"
              Title="DetailsLivreView">
     <Grid>
@@ -112,9 +113,20 @@
                         <Label Text="Auteur"
                                Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
-                        <Label Text="{Binding DetailsLivreVM.Book.Author}"
-                               Style="{StaticResource DetailsLivreBody}"
-                               Grid.Row="1"/>
+                        <CollectionView ItemsSource="{Binding DetailsLivreVM.Book.Authors}"
+                                        Grid.Row="1">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="viewModel:AuthorVM">
+                                    <Label Text="{Binding Name}"
+                                           Style="{StaticResource DetailsLivreBody}"
+                                           Margin="0,0,5,0"
+                                           Grid.Row="1"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </Grid>
 
                     <contentView:SeparatorCutStartView/>
@@ -125,18 +137,32 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        
                         <Label Text="Maison d'édition"
                                Style="{StaticResource DetailsLivreTitle}"
-                               Grid.Row="0"/>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Gallimard"/>
-                                    <Span Text="{Binding DetailsLivreVM.Book.PublishDate,StringFormat='({0})'}"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                               Grid.Row="0"
+                               Grid.Column="0"/>
+                        <Grid Grid.Row="1"
+                              Grid.Column="1">
+                            <CollectionView ItemsSource="{Binding DetailsLivreVM.Book.Publishers}">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Horizontal" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Text="oui"
+                                               Style="{StaticResource DetailsLivreBody}"
+                                               Margin="0,0,5,0"
+                                               Grid.Row="1"/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Label Text="{Binding DetailsLivreVM.Book.PublishDate,StringFormat=' ({0:yyyy})'}"/>
+                        </Grid>
                     </Grid>
 
                     <contentView:SeparatorCutStartView/>
@@ -291,12 +317,15 @@
                     <contentView:SeparatorCutStartView/>
 
                     <contentView:DetailsLivreButtonView ButtonIcon="rounded_plus"
-                                                        ButtonTitle="Ajouter à la liste À lire plus tard"/>
+                                                        ButtonTitle="Ajouter à la liste À lire plus tard"
+                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.UpdateToBeReadBookCommand}"
+                                                        ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <contentView:DetailsLivreButtonView ButtonIcon="eyeglasses.png"
-                                                        ButtonTitle="Changer le statut de lecture"/>
+                                                        ButtonTitle="Changer le statut de lecture"
+                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.UpdateStatusBookCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 

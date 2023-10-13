@@ -84,6 +84,8 @@ namespace ViewModels
 
         public RatingsVM SelectedRating { get; private set; }
 
+        public Status SelectedStatus { get; private set; }
+
         public string SearchTitle { get; private set; }
 
         public int Index 
@@ -113,8 +115,16 @@ namespace ViewModels
 
         public ICommand GetBooksFromCollectionCommand { get; private set; }
 
+        public ICommand UpdateBookCommand { get; private set; }
+
+        public ICommand UpdateStatusBookCommand { get; private set; }
+
+        public ICommand UpdateToBeReadBookCommand { get; private set; }
+
+        public ICommand RemoveBookCommand { get; private set; }
+
         public ICommand GetBooksByAuthorCommand { get; private set; }
-        
+
         public ICommand GetAllAuthorsCommand { get; private set; }
 
         public ICommand GetBooksByDateCommand { get; private set; }
@@ -128,6 +138,8 @@ namespace ViewModels
         public ICommand GetFavoriteBooksCommand { get; private set; }
 
         public ICommand AddToFavoritesCommand { get; private set; }
+
+        public ICommand RemoveFromFavoritesCommand { get; private set; }
 
         public ICommand GetCurrentLoansCommand { get; private set; }
 
@@ -148,6 +160,10 @@ namespace ViewModels
             PreviousCommand = new RelayCommand(() => Previous());
             NextCommand = new RelayCommand(() => Next());
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
+            UpdateBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateBook(bookVM));
+            UpdateStatusBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateStatusBook(bookVM));
+            UpdateToBeReadBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateToBeReadBook(bookVM));
+            RemoveBookCommand = new RelayCommand<BookVM>((bookVM) => RemoveBook(bookVM));
             GetBooksByAuthorCommand = new RelayCommand(() => GetBooksByAuthor());
             GetAllAuthorsCommand = new RelayCommand(() => GetAllAuthors());
             GetBooksByDateCommand = new RelayCommand(() => GetBooksByDate());
@@ -157,6 +173,7 @@ namespace ViewModels
             GetToBeReadBooksCommand = new RelayCommand(() => GetToBeReadBooks());
             GetFavoriteBooksCommand = new RelayCommand(() => GetFavoriteBooks());
             AddToFavoritesCommand = new RelayCommand<BookVM>(bookVM => AddToFavorites(bookVM));
+            RemoveFromFavoritesCommand = new RelayCommand<BookVM>(bookVM => RemoveFromFavorites(bookVM));
             GetCurrentLoansCommand = new RelayCommand(() =>  GetCurrentLoans());
             GetPastLoansCommand = new RelayCommand(() =>  GetPastLoans());
             GetCurrentBorrowingsCommand = new RelayCommand(() => GetCurrentBorrowings());
@@ -200,6 +217,32 @@ namespace ViewModels
                 books.Add(b);              
             }
             OnPropertyChanged(nameof(AllBooks));
+        }
+
+        private async Task UpdateBook(BookVM bookVM)
+        {
+            var book = await Model.GetBookById(bookVM.Id);
+            await Model.UpdateBook(book);
+        }
+        
+        private async Task UpdateStatusBook(BookVM bookVM)
+        {
+            var book = await Model.GetBookById(bookVM.Id);
+            book.Status = SelectedStatus;
+            await Model.UpdateBook(book);
+        }
+
+        private async Task UpdateToBeReadBook(BookVM bookVM)
+        {
+            var book = await Model.GetBookById(bookVM.Id);
+            book.Status = Status.ToBeRead;
+            await Model.UpdateBook(book);
+        }
+
+        private async Task RemoveBook(BookVM bookVM)
+        {
+            var book = await Model.GetBookById(bookVM.Id);
+            await Model.RemoveBook(book);
         }
 
         private async Task GetBooksByAuthor()
@@ -363,6 +406,13 @@ namespace ViewModels
             await GetFavoriteBooks();
         }
 
+        private async Task RemoveFromFavorites(BookVM bookVM)
+        {
+            var book = await Model.GetBookById(bookVM.Id);
+            await Model.RemoveFromFavorites(book.Id);
+            await GetFavoriteBooks();
+        }
+
         private async Task GetCurrentLoans()
         {
             var result = await Model.GetCurrentLoans(0, 20);
@@ -410,6 +460,11 @@ namespace ViewModels
             }
             OnPropertyChanged(nameof(AllPastBorrowings));
         }
+
+        //private async Task LendBook()
+        //{
+        //    await Model.LendBook();
+        //}
 
         #endregion
     }
