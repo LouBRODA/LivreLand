@@ -22,9 +22,9 @@
                          HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
-                         Grid.Row="0"
                          ButtonPlusTappedCommand="{Binding TousVM.Navigator.PopupHomePlusNavigationCommand}"
-                         ButtonBackTappedCommand="{Binding TousVM.Navigator.PopupBackButtonNavigationCommand}"/>
+                         ButtonBackTappedCommand="{Binding TousVM.Navigator.PopupBackButtonNavigationCommand}"
+                         Grid.Row="0"/>
         <ScrollView Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>
@@ -153,7 +153,9 @@
                                  Rotation="180"
                                  Command="{Binding TousVM.Manager.PreviousCommand}"
                                  Grid.Column="1"/>
-                    <Label Grid.Column="3">
+                    <Label Style="{StaticResource MasterTitleBookText}"
+                           VerticalOptions="FillAndExpand"
+                           Grid.Column="3">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding TousVM.Manager.Index}"/>

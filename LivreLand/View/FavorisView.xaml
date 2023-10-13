@@ -18,6 +18,8 @@
                          HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
+                         ButtonPlusTappedCommand="{Binding FavorisVM.Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding FavorisVM.Navigator.PopupBackButtonNavigationCommand}"
                          Grid.Row="0"/>
         <ScrollView Grid.Row="2">
             <Grid>

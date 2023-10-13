@@ -20,6 +20,8 @@
                          HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
+                         ButtonPlusTappedCommand="{Binding EmpruntsPretsVM.Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding EmpruntsPretsVM.Navigator.PopupBackButtonNavigationCommand}"
                          Grid.Row="0"/>
         <contentView:EmpruntsPretsButtonView Grid.Row="2"
                                              PretButtonBackgroundColor="{Binding EmpruntsPretsVM.PretButtonBackgroundColor}"

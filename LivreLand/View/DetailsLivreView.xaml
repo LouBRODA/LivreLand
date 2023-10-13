@@ -5,6 +5,7 @@
              xmlns:view="clr-namespace:LivreLand.View"
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
              xmlns:viewModel="clr-namespace:ViewModels;assembly=ViewModels"
+             xmlns:model="clr-namespace:Model;assembly=Model"
              x:Class="LivreLand.View.DetailsLivreView"
              Title="DetailsLivreView">
     <Grid>
@@ -19,7 +20,9 @@
                              HeaderBackButtonText="Tous"
                              HeaderPlusButtonVisible="False"
                              HeaderSwitchButtonVisible="False"
-                             HeaderColor="{StaticResource HeaderGray}"/>
+                             HeaderColor="{StaticResource HeaderGray}"
+                             ButtonPlusTappedCommand="{Binding DetailsLivreVM.Navigator.PopupHomePlusNavigationCommand}"
+                             ButtonBackTappedCommand="{Binding DetailsLivreVM.Navigator.PopupBackButtonNavigationCommand}"/>
             <contentView:SeparatorEntireView/>
         </VerticalStackLayout>
 
@@ -299,7 +302,8 @@
                     <contentView:SeparatorCutStartView/>
 
                 </VerticalStackLayout>
-
+                
+                <!--Buttons-->
                 <VerticalStackLayout Grid.Row="2">
 
                     <contentView:SeparatorCutStartView/>
@@ -316,7 +320,7 @@
 
                     <contentView:SeparatorCutStartView/>
 
-                    <contentView:DetailsLivreButtonView ButtonIcon="rounded_plus"
+                    <contentView:DetailsLivreButtonView ButtonIcon="rounded_plus.png"
                                                         ButtonTitle="Ajouter à la liste À lire plus tard"
                                                         ButtonCommand="{Binding DetailsLivreVM.Manager.UpdateToBeReadBookCommand}"
                                                         ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
@@ -325,14 +329,35 @@
 
                     <contentView:DetailsLivreButtonView ButtonIcon="eyeglasses.png"
                                                         ButtonTitle="Changer le statut de lecture"
-                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.UpdateStatusBookCommand}"/>
+                                                        ButtonCommand="{Binding DetailsLivreVM.ShowPickerCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
                     <contentView:DetailsLivreButtonView ButtonIcon="person.png"
                                                         ButtonTitle="Prêter le livre"/>
+
+                    <contentView:SeparatorCutStartView/>
+
+                    <contentView:DetailsLivreButtonView ButtonTitle="Supprimer le livre"
+                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.RemoveBookCommand}"
+                                                        ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
+
                 </VerticalStackLayout>
-                <!--Buttons-->
+
+                <Picker SelectedItem="{Binding DetailsLivreVM.Manager.SelectedStatus}"
+                        IsVisible="true"
+                        Grid.RowSpan="3"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type model:Status}"/>
+                    </Picker.ItemsSource>
+                    <Picker.Behaviors>
+                        <toolkit:EventToCommandBehavior Command="{Binding DetailsLivreVM.Manager.UpdateStatusBookCommand}"
+                                                        CommandParameter="{Binding DetailsLivreVM.Book}"/>
+                    </Picker.Behaviors>
+                </Picker>
+
             </Grid>
         </ScrollView>
     </Grid>

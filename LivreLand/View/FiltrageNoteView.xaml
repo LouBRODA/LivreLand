@@ -21,7 +21,9 @@
                          HeaderTitle="Note"
                          HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="False"
-                         HeaderSwitchButtonVisible="True"/>
+                         HeaderSwitchButtonVisible="True"
+                         ButtonPlusTappedCommand="{Binding FiltrageNoteVM.Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding FiltrageNoteVM.Navigator.PopupBackButtonNavigationCommand}"/>
 
         <VerticalStackLayout BackgroundColor="{DynamicResource Light}"
                              Spacing="10"

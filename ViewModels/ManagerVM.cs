@@ -84,7 +84,7 @@ namespace ViewModels
 
         public RatingsVM SelectedRating { get; private set; }
 
-        public Status SelectedStatus { get; private set; }
+        public Status SelectedStatus { get; set; }
 
         public string SearchTitle { get; private set; }
 
@@ -105,6 +105,7 @@ namespace ViewModels
                 OnPropertyChanged(nameof(NbPages));
             }
         }
+
         public int NbPages => (int)(NbBooks / Count);
 
         public ICommand PreviousCommand { get; private set; }
@@ -243,6 +244,8 @@ namespace ViewModels
         {
             var book = await Model.GetBookById(bookVM.Id);
             await Model.RemoveBook(book);
+            OnPropertyChanged(nameof(NbBooks));
+            await GetBooksFromCollection();
         }
 
         private async Task GetBooksByAuthor()

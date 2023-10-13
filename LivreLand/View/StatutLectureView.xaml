@@ -20,6 +20,8 @@
                          HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="True"
                          HeaderSwitchButtonVisible="True"
+                         ButtonPlusTappedCommand="{Binding StatutLectureVM.Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding StatutLectureVM.Navigator.PopupBackButtonNavigationCommand}"
                          Grid.Row="0"/>
         <contentView:SearchBarView Grid.Row="2"/>
         <ScrollView Grid.Row="4">

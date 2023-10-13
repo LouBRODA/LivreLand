@@ -20,6 +20,8 @@
         <view:HeaderPage HeaderTitle="Date de publication"
                          HeaderPlusButtonVisible="False"
                          HeaderSwitchButtonVisible="True"
+                         ButtonPlusTappedCommand="{Binding FiltrageDateVM.Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding FiltrageDateVM.Navigator.PopupBackButtonNavigationCommand}"
                          Grid.Row="0"/>
 
         <VerticalStackLayout BackgroundColor="{DynamicResource Light}"
