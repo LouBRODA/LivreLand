@@ -26,6 +26,9 @@
                TextColor="Red"
                VerticalOptions="Center"
                Grid.Column="2"/>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ButtonCommand}" CommandParameter="{Binding ButtonCommandParameter}"/>
+        </Grid.GestureRecognizers>
     </Grid>
     
 </ContentView>

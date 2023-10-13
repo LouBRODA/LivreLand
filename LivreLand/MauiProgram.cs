@@ -32,6 +32,7 @@ public static class MauiProgram
 			.AddSingleton<ALirePlusTardView>()
 			.AddSingleton<StatutLectureView>()
 			.AddSingleton<EmpruntsPretsView>()
+			.AddSingleton<FavorisView>()
 
             .AddSingleton<NavigatorVM>()
 
@@ -48,7 +49,8 @@ public static class MauiProgram
 			.AddSingleton<FiltrageNoteVM>()
 			.AddSingleton<ALirePlusTardVM>()
 			.AddSingleton<StatutLectureVM>()
-			.AddSingleton<EmpruntsPretsVM>();
+			.AddSingleton<EmpruntsPretsVM>()
+			.AddSingleton<FavorisVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();

@@ -16,6 +16,7 @@ namespace ViewModels
         private readonly ObservableCollection<PublishDateVM> publishDates = new ObservableCollection<PublishDateVM>();
         private readonly ObservableCollection<RatingsVM> ratings = new ObservableCollection<RatingsVM>();
         private readonly ObservableCollection<BookVM> toBeReadBooks = new ObservableCollection<BookVM>();
+        private readonly ObservableCollection<BookVM> favoriteBooks = new ObservableCollection<BookVM>();
         private readonly ObservableCollection<LoanVM> currentLoans = new ObservableCollection<LoanVM>();
         private readonly ObservableCollection<LoanVM> pastLoans = new ObservableCollection<LoanVM>();
         private readonly ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
@@ -50,6 +51,11 @@ namespace ViewModels
         public ObservableCollection<BookVM> ToBeReadBooks
         {
             get => toBeReadBooks;
+        }
+
+        public ObservableCollection<BookVM> AllFavoriteBooks
+        {
+            get => favoriteBooks;
         }
 
         public ObservableCollection<LoanVM> AllCurrentLoans
@@ -119,6 +125,10 @@ namespace ViewModels
 
         public ICommand GetToBeReadBooksCommand { get; private set; }
 
+        public ICommand GetFavoriteBooksCommand { get; private set; }
+
+        public ICommand AddToFavoritesCommand { get; private set; }
+
         public ICommand GetCurrentLoansCommand { get; private set; }
 
         public ICommand GetPastLoansCommand { get; private set; }
@@ -145,6 +155,8 @@ namespace ViewModels
             GetBooksByRatingCommand = new RelayCommand(() => GetBooksByRating());
             GetAllRatingsCommand = new RelayCommand(() => GetAllRatings());
             GetToBeReadBooksCommand = new RelayCommand(() => GetToBeReadBooks());
+            GetFavoriteBooksCommand = new RelayCommand(() => GetFavoriteBooks());
+            AddToFavoritesCommand = new RelayCommand<BookVM>(bookVM => AddToFavorites(bookVM));
             GetCurrentLoansCommand = new RelayCommand(() =>  GetCurrentLoans());
             GetPastLoansCommand = new RelayCommand(() =>  GetPastLoans());
             GetCurrentBorrowingsCommand = new RelayCommand(() => GetCurrentBorrowings());
@@ -328,6 +340,27 @@ namespace ViewModels
                     toBeReadBooks.Add(b);
                 }
             }
+            OnPropertyChanged(nameof(ToBeReadBooks));
+        }
+
+        private async Task GetFavoriteBooks()
+        {
+            var result = await Model.GetFavoritesBooks(Index, Count);
+            IEnumerable<Book> someBooks = result.books;
+            books.Clear();
+            favoriteBooks.Clear();
+            foreach (var b in someBooks.Select(b => new BookVM(b)))
+            {
+                favoriteBooks.Add(b);
+            }
+            OnPropertyChanged(nameof(AllFavoriteBooks));
+        }
+
+        private async Task AddToFavorites(BookVM bookVM)
+        {
+            var book = await Model.GetBookById(bookVM.Id);
+            await Model.AddToFavorites(book.Id);
+            await GetFavoriteBooks();
         }
 
         private async Task GetCurrentLoans()

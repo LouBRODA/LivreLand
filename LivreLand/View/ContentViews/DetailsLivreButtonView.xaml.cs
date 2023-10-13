@@ -1,3 +1,6 @@
+using System.Windows.Input;
+using ViewModels;
+
 namespace LivreLand.View.ContentViews;
 
 public partial class DetailsLivreButtonView : ContentView
@@ -14,6 +17,20 @@ public partial class DetailsLivreButtonView : ContentView
     {
         get => (string)GetValue(DetailsLivreButtonView.ButtonIconProperty);
         set => SetValue(DetailsLivreButtonView.ButtonIconProperty, value);
+    }
+
+    public static readonly BindableProperty ButtonCommandProperty = BindableProperty.Create(nameof(ButtonCommand), typeof(ICommand), typeof(DetailsLivreButtonView));
+    public ICommand ButtonCommand
+    {
+        get => (ICommand)GetValue(DetailsLivreButtonView.ButtonCommandProperty);
+        set => SetValue(DetailsLivreButtonView.ButtonCommandProperty, value);
+    }
+
+    public static readonly BindableProperty ButtonCommandParameterProperty = BindableProperty.Create(nameof(ButtonCommandParameter), typeof(BookVM), typeof(DetailsLivreButtonView));
+    public BookVM ButtonCommandParameter
+    {
+        get => (BookVM)GetValue(DetailsLivreButtonView.ButtonCommandParameterProperty);
+        set => SetValue(DetailsLivreButtonView.ButtonCommandParameterProperty, value);
     }
 
     public DetailsLivreButtonView()

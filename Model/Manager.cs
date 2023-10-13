@@ -70,6 +70,22 @@ namespace Model
             return Task.FromResult((result.Item1, result.Item2));
         }
 
+        public Task<(long count, IEnumerable<Book> books)> GetFavoritesBooks(int index, int count)
+        {
+            var result = UserLibraryManager.GetFavoritesBooks(index, count).Result;
+            return Task.FromResult((result.Item1, result.Item2));
+        }
+
+        public Task<bool> AddToFavorites(string id)
+        {
+            return UserLibraryManager.AddToFavorites(id);
+        }
+
+        public Task<bool> RemoveFromFavorites(string id)
+        {
+            return UserLibraryManager.RemoveFromFavorites(id);
+        }
+
         public Task<(long count, IEnumerable<Contact> contacts)> GetContacts(int index, int count)
         {
             var result = UserLibraryManager.GetContacts(index, count).Result;

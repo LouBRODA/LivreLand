@@ -1,23 +1,40 @@
 using LivreLand.Model;
+using LivreLand.ViewModel;
 
 namespace LivreLand.View;
 
 public partial class FavorisView : ContentPage
 {
-    public List<BookModel> FavorisBooks { get; set; } = new List<BookModel>()
-    {
-        new BookModel("La zone du dehors","Alain Damasio","Terminé", 0),
-        new BookModel("Le problème à trois corps","Cixin Liu","Terminé", 0)
-    };
+    #region Properties
 
-    public FavorisView()
+    public FavorisVM FavorisVM { get; set; }
+
+    #endregion
+
+    #region Constructor
+
+    public FavorisView(FavorisVM favorisVM)
 	{
-        BindingContext = this;
+        FavorisVM = favorisVM;
         InitializeComponent();
-	}
+        BindingContext = this;
+    }
+
+    #endregion
+
+    #region Methods
 
     void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         //App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        FavorisVM.Manager.GetFavoriteBooksCommand.Execute(null);
+    }
+
+    #endregion
 }

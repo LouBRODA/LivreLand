@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:LivreLand.View"
              xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+             xmlns:viewModel="clr-namespace:ViewModels;assembly=ViewModels"
              x:Class="LivreLand.View.FavorisView"
              Title="FavorisView">
 
@@ -38,12 +39,12 @@
                            Style="{StaticResource HeaderCollectionViewText}"
                            Grid.Column="1"/>
                 </Grid>
-                <CollectionView ItemsSource="{Binding FavorisBooks}"
+                <CollectionView ItemsSource="{Binding FavorisVM.Manager.AllFavoriteBooks}"
                                 SelectionMode="Single"
                                 SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="viewModel:BookVM">
                             <VerticalStackLayout Margin="10"
                                                  Spacing="20">
                                 <VisualStateManager.VisualStateGroups x:Name="SelectionStates">
@@ -82,7 +83,7 @@
                                                     Stroke="{StaticResource Gray}"
                                                     StrokeShape="RoundRectangle 3"
                                                     StrokeThickness="3">
-                                                <Image Source="couverture_la_horde_du_contrevent.png"
+                                                <Image Source="{Binding ImageSmall}"
                                                        Aspect="AspectFill"
                                                        Grid.Column="0"
                                                        Grid.RowSpan="5"/>
@@ -98,11 +99,11 @@
                                            Style="{StaticResource MasterTitleBookText}"
                                            Grid.Column="2"
                                            Grid.Row="0"/>
-                                    <Label Text="{Binding Author}"
+                                    <Label Text="Author"
                                            Style="{StaticResource MasterAuthorBookText}"
                                            Grid.Column="2"
                                            Grid.Row="1"/>
-                                    <Label Text="{Binding State}"
+                                    <Label Text="{Binding Status}"
                                            Style="{StaticResource MasterStateBookText}"                                   
                                            Grid.Column="2"
                                            Grid.Row="2"/>

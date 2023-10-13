@@ -17,6 +17,12 @@ namespace ViewModels
 
         #region Properties
 
+        public string Id
+        {
+            get => Model.Id;
+            set => SetProperty(Model.Id, value, v => Model.Id = value);
+        }
+
         public string ISBN13
         {
             get => Model.ISBN13;

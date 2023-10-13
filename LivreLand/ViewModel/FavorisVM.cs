@@ -8,22 +8,22 @@ using ViewModels;
 
 namespace LivreLand.ViewModel
 {
-    public class DetailsLivreVM : BaseViewModel
+    public class FavorisVM : BaseViewModel
     {
         #region Properties
 
-        public ManagerVM Manager { get; private set; }
+        public NavigatorVM Navigator { get; private set; }
 
-        public BookVM Book { get; private set; }
+        public ManagerVM Manager { get; private set; }
 
         #endregion
 
         #region Constructor
 
-        public DetailsLivreVM(ManagerVM managerVM, BookVM bookVM) 
+        public FavorisVM(NavigatorVM navigatorVM, ManagerVM managerVM)
         {
+            Navigator = navigatorVM;
             Manager = managerVM;
-            Book = bookVM;
         }
 
         #endregion

@@ -277,7 +277,14 @@
                 <VerticalStackLayout Grid.Row="2">
 
                     <contentView:SeparatorCutStartView/>
-                    
+
+                    <contentView:DetailsLivreButtonView ButtonIcon="heart.png"
+                                                        ButtonTitle="Ajouter aux favoris"
+                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.AddToFavoritesCommand}"
+                                                        ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
+
+                    <contentView:SeparatorCutStartView/>
+
                     <contentView:DetailsLivreButtonView ButtonIcon="folder.png"
                                                         ButtonTitle="Déplacer le livre"/>
 
