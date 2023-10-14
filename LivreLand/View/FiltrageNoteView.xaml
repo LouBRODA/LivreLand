@@ -38,8 +38,8 @@
                 <contentView:SeparatorEntireView/>
 
                 <CollectionView ItemsSource="{Binding FiltrageNoteVM.Manager.AllRatings}"
-                                SelectionChangedCommand="{Binding FiltrageNoteVM.Navigator.NavigationCommand}"
-                                SelectionChangedCommandParameter="/tous">
+                                SelectionMode="Single"
+                                SelectionChangedCommand="{Binding FiltrageNoteVM.NavigateRatingPageCommand}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:RatingsVM">
                             <VerticalStackLayout>

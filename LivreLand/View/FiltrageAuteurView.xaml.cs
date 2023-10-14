@@ -23,12 +23,5 @@ public partial class FiltrageAuteurView : ContentPage
 
     #region Methods
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        FiltrageAuteurVM.Manager.GetAllAuthorsCommand.Execute(null);
-    }
-
     #endregion
 }

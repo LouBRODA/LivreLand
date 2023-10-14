@@ -35,12 +35,5 @@ public partial class TousView : ContentPage
         }
 	}
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        TousVM.Manager.GetBooksFromCollectionCommand.Execute(null);
-    }
-
     #endregion
 }

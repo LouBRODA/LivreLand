@@ -27,6 +27,8 @@ namespace ViewModels
         private long nbBooks;
 
         private AuthorVM selectedAuthor;
+        private PublishDateVM selectedDate;
+        private RatingsVM selectedRating;
         private ContactVM selectedContact;
 
         private string givenFirstName;
@@ -105,9 +107,31 @@ namespace ViewModels
             }
         }
 
-        public PublishDateVM SelectedDate { get; private set; }
+        public PublishDateVM SelectedDate
+        {
+            get { return selectedDate; }
+            set
+            {
+                if (selectedDate != value)
+                {
+                    selectedDate = value;
+                    OnPropertyChanged(nameof(SelectedDate));
+                }
+            }
+        }
 
-        public RatingsVM SelectedRating { get; private set; }
+        public RatingsVM SelectedRating
+        {
+            get { return selectedRating; }
+            set
+            {
+                if (selectedRating != value)
+                {
+                    selectedRating = value;
+                    OnPropertyChanged(nameof(SelectedRating));
+                }
+            }
+        }
 
         public Status SelectedStatus { get; set; }
 

@@ -18,6 +18,7 @@
         </Grid.RowDefinitions>
 
         <view:HeaderPage HeaderTitle="Date de publication"
+                         HeaderBackButtonText="Mes livres"
                          HeaderPlusButtonVisible="False"
                          HeaderSwitchButtonVisible="True"
                          ButtonPlusTappedCommand="{Binding FiltrageDateVM.Navigator.PopupHomePlusNavigationCommand}"
@@ -37,9 +38,9 @@
                 <contentView:SeparatorEntireView/>
 
                 <CollectionView ItemsSource="{Binding FiltrageDateVM.Manager.AllPublishDates}"
+                                SelectionMode="Single"
                                 SelectedItem="{Binding FiltrageDateVM.Manager.SelectedDate}"
-                                SelectionChangedCommand="{Binding FiltrageDateVM.Navigator.NavigationCommand}"
-                                SelectionChangedCommandParameter="{Binding FiltrageDateVM.Manager.SelectedDate}">
+                                SelectionChangedCommand="{Binding FiltrageDateVM.NavigateDatePageCommand}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:PublishDateVM">
                             <VerticalStackLayout>

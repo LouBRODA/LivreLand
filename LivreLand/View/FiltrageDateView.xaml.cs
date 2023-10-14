@@ -23,12 +23,5 @@ public partial class FiltrageDateView : ContentPage
 
     #region Methods
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        FiltrageDateVM.Manager.GetAllPublishDatesCommand.Execute(null);
-    }
-
     #endregion
 }

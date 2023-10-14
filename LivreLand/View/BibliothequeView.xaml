@@ -55,8 +55,7 @@
                                                 ButtonNumber="{Binding BibliothequeVM.Manager.NbBooks}"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="tous/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllBooksNavigateCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -119,8 +118,7 @@
                                                 ButtonIcon="person_fill.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="auteur/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllAuthorsNavigateCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -129,8 +127,7 @@
                                                 ButtonIcon="calendar.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="date/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllDatesNavigateCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -139,8 +136,7 @@
                                                 ButtonIcon="sparkles.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="note/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllRatingsNavigateCommand}"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>

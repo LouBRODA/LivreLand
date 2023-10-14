@@ -23,12 +23,5 @@ public partial class FiltrageNoteView : ContentPage
 
     #region Methods
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        FiltrageNoteVM.Manager.GetAllRatingsCommand.Execute(null);
-    }
-
     #endregion
 }

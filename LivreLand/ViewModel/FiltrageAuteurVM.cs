@@ -34,7 +34,7 @@ namespace LivreLand.ViewModel
 
         #region Methods
 
-        private async Task NavigateAuthorPage()
+        private void NavigateAuthorPage()
         {
             Manager.GetBooksByAuthorCommand.Execute(null);
             Navigator.NavigationCommand.Execute("/tous");
