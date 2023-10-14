@@ -97,6 +97,12 @@ namespace Model
             return Task.FromResult((result.Item1, result.Item2));
         }
 
+        public Task<Contact> AddContact(Contact contact)
+        {
+            var result = UserLibraryManager.AddContact(contact).Result;
+            return Task.FromResult(result);
+        }
+
         public Task<(long count, IEnumerable<Loan> loans)> GetCurrentLoans(int index, int count)
         {
             var result = UserLibraryManager.GetCurrentLoans(index, count).Result;

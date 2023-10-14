@@ -21,6 +21,8 @@ namespace LivreLand.ViewModel
 
         public ManagerVM Manager { get; private set; }
 
+        public NavigatorVM Navigator { get; private set; }
+
         public BookVM Book { get; private set; }
 
         public bool IsPickerVisible
@@ -42,9 +44,10 @@ namespace LivreLand.ViewModel
 
         #region Constructor
 
-        public DetailsLivreVM(ManagerVM managerVM, BookVM bookVM) 
+        public DetailsLivreVM(ManagerVM managerVM, NavigatorVM navigatorVM, BookVM bookVM) 
         {
             Manager = managerVM;
+            Navigator = navigatorVM;
             Book = bookVM;
             ShowPickerCommand = new RelayCommand(() => ShowPicker());
         }

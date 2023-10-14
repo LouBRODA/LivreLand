@@ -334,7 +334,9 @@
                     <contentView:SeparatorCutStartView/>
 
                     <contentView:DetailsLivreButtonView ButtonIcon="person.png"
-                                                        ButtonTitle="Prêter le livre"/>
+                                                        ButtonTitle="Prêter le livre"
+                                                        ButtonCommand="{Binding DetailsLivreVM.Navigator.NavigationCommand}"
+                                                        ButtonCommandParameter="/contacts"/>
 
                     <contentView:SeparatorCutStartView/>
 

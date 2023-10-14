@@ -37,6 +37,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <CollectionView ItemsSource="{Binding TousVM.Manager.AllBooks}"
+                                SelectedItem="{Binding TousVM.Manager.SelectedBook}"
                                 SelectionMode="Single"
                                 SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">

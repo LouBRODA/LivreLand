@@ -26,10 +26,10 @@ public partial class DetailsLivreButtonView : ContentView
         set => SetValue(DetailsLivreButtonView.ButtonCommandProperty, value);
     }
 
-    public static readonly BindableProperty ButtonCommandParameterProperty = BindableProperty.Create(nameof(ButtonCommandParameter), typeof(BookVM), typeof(DetailsLivreButtonView));
-    public BookVM ButtonCommandParameter
+    public static readonly BindableProperty ButtonCommandParameterProperty = BindableProperty.Create(nameof(ButtonCommandParameter), typeof(object), typeof(DetailsLivreButtonView));
+    public object ButtonCommandParameter
     {
-        get => (BookVM)GetValue(DetailsLivreButtonView.ButtonCommandParameterProperty);
+        get => (object)GetValue(DetailsLivreButtonView.ButtonCommandParameterProperty);
         set => SetValue(DetailsLivreButtonView.ButtonCommandParameterProperty, value);
     }
 

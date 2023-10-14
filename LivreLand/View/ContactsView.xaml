@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:LivreLand.View"
+             xmlns:contentView="clr-namespace:LivreLand.View.ContentViews"
+             xmlns:viewModel="clr-namespace:ViewModels;assembly=ViewModels"
+             x:Class="LivreLand.View.ContactsView"
+             Title="ContactsView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <view:HeaderPage HeaderTitle="Contacts"
+                         HeaderBackButtonText="Mes livres"
+                         HeaderPlusButtonVisible="True"
+                         HeaderSwitchButtonVisible="True"
+                         ButtonPlusTappedCommand="{Binding ContactsVM.Navigator.PopupHomePlusNavigationCommand}"
+                         ButtonBackTappedCommand="{Binding ContactsVM.Navigator.PopupBackButtonNavigationCommand}"
+                         Grid.Row="0"/>
+        <ScrollView Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
+                      Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Contacts"
+                           VerticalOptions="Center"
+                           Style="{StaticResource HeaderCollectionViewText}"
+                           Grid.Column="1"/>
+                </Grid>
+                <CollectionView ItemsSource="{Binding ContactsVM.Manager.AllContacts}"
+                                SelectedItem="{Binding ContactsVM.Manager.SelectedContact}"
+                                SelectionChangedCommand="{Binding ContactsVM.Manager.LendBookCommand}"
+                                SelectionChangedCommandParameter="{Binding ContactsVM.Manager.SelectedContact}"
+                                SelectionMode="Single"
+                                Grid.Row="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="viewModel:ContactVM">
+                            <VerticalStackLayout>
+                                <Grid HorizontalOptions="Center">
+                                    <Label>
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding Path="FirstName" />
+                                                <Binding Path="LastName" />
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                </Grid>
+                                <contentView:SeparatorEntireView/>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ScrollView>
+        <Grid HorizontalOptions="End"
+              VerticalOptions="Center"
+              Grid.RowSpan="3">
+            <contentView:AlphabetVerticalMenuView/>
+        </Grid>
+    </Grid>
+    
+</ContentPage>

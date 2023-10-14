@@ -21,9 +21,13 @@ namespace ViewModels
         private readonly ObservableCollection<LoanVM> pastLoans = new ObservableCollection<LoanVM>();
         private readonly ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
         private readonly ObservableCollection<BorrowingVM> currentBorrowings = new ObservableCollection<BorrowingVM>();
+        private readonly ObservableCollection<ContactVM> contacts= new ObservableCollection<ContactVM>();
         private int index;
         private long nbBooks;
-         
+
+        private AuthorVM selectedAuthor;
+        private ContactVM selectedContact;
+
         #endregion
 
         #region Properties 
@@ -78,13 +82,44 @@ namespace ViewModels
             get => pastBorrowings;
         }
 
-        public AuthorVM SelectedAuthor { get; private set; }
+        public ObservableCollection<ContactVM> AllContacts
+        {
+            get => contacts;
+        }
+
+        public BookVM SelectedBook { get; set; }
+
+        public AuthorVM SelectedAuthor
+        {
+            get { return selectedAuthor; }
+            set
+            {
+                if (selectedAuthor != value)
+                {
+                    selectedAuthor = value;
+                    OnPropertyChanged(nameof(SelectedAuthor));
+                }
+            }
+        }
 
         public PublishDateVM SelectedDate { get; private set; }
 
         public RatingsVM SelectedRating { get; private set; }
 
         public Status SelectedStatus { get; set; }
+
+        public ContactVM SelectedContact
+        {
+            get { return selectedContact; }
+            set
+            {
+                if (selectedContact != value)
+                {
+                    selectedContact = value;
+                    OnPropertyChanged(nameof(SelectedContact));
+                }
+            }
+        }
 
         public string SearchTitle { get; private set; }
 
@@ -132,6 +167,8 @@ namespace ViewModels
 
         public ICommand GetAllPublishDatesCommand { get; private set; }
 
+        public ICommand GetBooksByRatingCommand { get; private set; }
+
         public ICommand GetAllRatingsCommand { get; private set; }
 
         public ICommand GetToBeReadBooksCommand { get; private set; }
@@ -150,7 +187,11 @@ namespace ViewModels
 
         public ICommand GetPastBorrowingsCommand { get; private set; }
 
-        public ICommand GetBooksByRatingCommand { get; private set; }
+        public ICommand LendBookCommand { get; private set; }
+
+        public ICommand GetContactsCommand { get; private set; } 
+
+        public ICommand AddContactCommand { get; private set; }
 
         #endregion
 
@@ -179,6 +220,9 @@ namespace ViewModels
             GetPastLoansCommand = new RelayCommand(() =>  GetPastLoans());
             GetCurrentBorrowingsCommand = new RelayCommand(() => GetCurrentBorrowings());
             GetPastBorrowingsCommand = new RelayCommand(() => GetPastBorrowings());
+            LendBookCommand = new RelayCommand<ContactVM>((contactVM) => LendBook(contactVM));
+            GetContactsCommand = new RelayCommand(() => GetContacts());
+            AddContactCommand = new RelayCommand<ContactVM>((contactVM) => AddContact(contactVM));
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
@@ -464,10 +508,55 @@ namespace ViewModels
             OnPropertyChanged(nameof(AllPastBorrowings));
         }
 
-        //private async Task LendBook()
-        //{
-        //    await Model.LendBook();
-        //}
+        private async Task LendBook(ContactVM contactVM)
+        {
+            var book = await Model.GetBookById(SelectedBook.Id);
+            Model.Contact contact = new Model.Contact();
+            var resultContacts = await Model.GetContacts(Index, Count);
+            var allContacts = resultContacts.contacts;
+            foreach (var c in allContacts)
+            {
+                if (c.Id == contactVM.Id)
+                {
+                    contact = c;
+                }
+            }
+            if (contact != null)
+            {
+                await Model.LendBook(book, contact, null);
+            }
+        }
+
+        private async Task GetContacts()
+        {
+            var result = await Model.GetContacts(Index, Count);
+            IEnumerable<Model.Contact> someContacts = result.contacts;
+            someContacts = someContacts.OrderBy(c => c.FirstName);
+            contacts.Clear();
+            foreach (var c in someContacts.Select(c => new ContactVM(c)))
+            {
+                contacts.Add(c);
+            }
+            OnPropertyChanged(nameof(AllContacts));
+        }
+
+        private async Task AddContact(ContactVM contactVM)
+        {
+            Model.Contact contact = new Model.Contact();
+            var resultContacts = await Model.GetContacts(Index, Count);
+            var allContacts = resultContacts.contacts;
+            foreach (var c in allContacts)
+            {
+                if (c.Id == contactVM.Id)
+                {
+                    contact = c;
+                }
+            }
+            if (contact != null)
+            {
+                await Model.AddContact(contact);
+            }
+        }
 
         #endregion
     }
