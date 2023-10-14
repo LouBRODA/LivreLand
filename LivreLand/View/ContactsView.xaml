@@ -26,7 +26,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="10"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
@@ -44,33 +44,30 @@
                            Grid.Column="1"/>
                 </Grid>
                 <Grid HorizontalOptions="Center"
-                      Grid.Column="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <HorizontalStackLayout Spacing="10"
-                                           Grid.Column="0">
-                        <Image Source="plus.png"/>
-                        <Label Text="Add new contact"/>
-                    </HorizontalStackLayout>
-                    <!--<VerticalStackLayout IsVisible=""
-                                         Grid.Column="2">
-                        <Grid FlowDirection="LeftToRight">
+                      Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="+ Add new contact"
+                           Grid.Row="0"/>
+                    <VerticalStackLayout IsVisible="{Binding ContactsVM.DataFormIsVisible}"
+                                         Grid.Row="2">
                             <Label Text="Prénom :" />
-                            <Entry Placeholder="Saisissez le prénom"/>
-
+                            <Entry Placeholder="Saisissez le prénom"
+                                   Text="{Binding ContactsVM.Manager.GivenFirstName}"/>
                             <Label Text="Nom :"/>
-                            <Entry Placeholder="Saisissez le nom"/>
-
+                            <Entry Placeholder="Saisissez le nom"
+                                   Text="{Binding ContactsVM.Manager.GivenLastName}"/>
                             <Button Text="Enregistrer"
-                                    Command="{Binding ContactsVM.Navigator.AddContactCommand}"/>
-                        </Grid>
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Black"
+                                    Command="{Binding ContactsVM.Manager.AddContactCommand}"/>
                     </VerticalStackLayout>
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ContactsVM.}"/>
-                    </Grid.GestureRecognizers>-->
+                        <TapGestureRecognizer Command="{Binding ContactsVM.AddContactDataFormCommand}"/>
+                    </Grid.GestureRecognizers>
                 </Grid>
                 <CollectionView ItemsSource="{Binding ContactsVM.Manager.AllContacts}"
                                 SelectedItem="{Binding ContactsVM.Manager.SelectedContact}"

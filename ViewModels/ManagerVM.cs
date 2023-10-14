@@ -2,6 +2,7 @@
 using PersonalMVVMToolkit;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 
 namespace ViewModels
@@ -28,6 +29,8 @@ namespace ViewModels
         private AuthorVM selectedAuthor;
         private ContactVM selectedContact;
 
+        private string givenFirstName;
+        private string givenLastName;
         #endregion
 
         #region Properties 
@@ -117,6 +120,32 @@ namespace ViewModels
                 {
                     selectedContact = value;
                     OnPropertyChanged(nameof(SelectedContact));
+                }
+            }
+        }
+
+        public string GivenFirstName
+        {
+            get { return givenFirstName; }
+            set
+            {
+                if (givenFirstName != value)
+                {
+                    givenFirstName = value;
+                    OnPropertyChanged(nameof(GivenFirstName));
+                }
+            }
+        }
+
+        public string GivenLastName
+        {
+            get { return givenLastName; }
+            set
+            {
+                if (givenLastName != value)
+                {
+                    givenLastName = value;
+                    OnPropertyChanged(nameof(GivenLastName));
                 }
             }
         }
@@ -222,7 +251,7 @@ namespace ViewModels
             GetPastBorrowingsCommand = new RelayCommand(() => GetPastBorrowings());
             LendBookCommand = new RelayCommand<ContactVM>((contactVM) => LendBook(contactVM));
             GetContactsCommand = new RelayCommand(() => GetContacts());
-            AddContactCommand = new RelayCommand<ContactVM>((contactVM) => AddContact(contactVM));
+            AddContactCommand = new RelayCommand(() => AddContact());
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
@@ -540,22 +569,33 @@ namespace ViewModels
             OnPropertyChanged(nameof(AllContacts));
         }
 
-        private async Task AddContact(ContactVM contactVM)
+        private async Task AddContact()
         {
-            Model.Contact contact = new Model.Contact();
-            var resultContacts = await Model.GetContacts(Index, Count);
-            var allContacts = resultContacts.contacts;
-            foreach (var c in allContacts)
+            var result = await Model.GetContacts(Index, Count);
+            IEnumerable<Model.Contact> someContacts = result.contacts;
+
+            int lastSequence = someContacts
+                .Where(c => Regex.IsMatch(c.Id, @"^/contacts/\d+$"))
+                .Select(c => int.Parse(Regex.Match(c.Id, @"\d+").Value))
+                .DefaultIfEmpty(0)
+                .Max();
+
+            int newSequence = lastSequence + 1;
+
+            string newId = $"/contacts/{newSequence:D2}";
+
+            var newContact = new Model.Contact
             {
-                if (c.Id == contactVM.Id)
-                {
-                    contact = c;
-                }
-            }
-            if (contact != null)
-            {
-                await Model.AddContact(contact);
-            }
+                Id = newId,
+                FirstName = GivenFirstName,
+                LastName = GivenLastName
+            };
+
+            GivenFirstName = null;
+            GivenLastName = null;
+
+            await Model.AddContact(newContact);
+            OnPropertyChanged(nameof(AllContacts));
         }
 
         #endregion
