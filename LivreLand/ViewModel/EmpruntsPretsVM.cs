@@ -30,38 +30,80 @@ namespace LivreLand.ViewModel
 
         public Color PretButtonBackgroundColor
         {
-            get => pretButtonBackgroundColor;
-            set => pretButtonBackgroundColor = value;
+            get { return pretButtonBackgroundColor; }
+            set
+            {
+                if (pretButtonBackgroundColor != value)
+                {
+                    pretButtonBackgroundColor = value;
+                    OnPropertyChanged(nameof(PretButtonBackgroundColor));
+                }
+            }
         }
 
         public bool PretButtonIsEnabled
         {
-            get => pretButtonIsEnabled;
-            set => pretButtonIsEnabled = value;
+            get { return pretButtonIsEnabled; }
+            set
+            {
+                if (pretButtonIsEnabled != value)
+                {
+                    pretButtonIsEnabled = value;
+                    OnPropertyChanged(nameof(PretButtonIsEnabled));
+                }
+            }
         }
 
         public Color EmpruntButtonBackgroundColor
         {
-            get => empruntButtonBackgroundColor;
-            set => empruntButtonBackgroundColor = value;
+            get { return empruntButtonBackgroundColor; }
+            set
+            {
+                if (empruntButtonBackgroundColor != value)
+                {
+                    empruntButtonBackgroundColor = value;
+                    OnPropertyChanged(nameof(EmpruntButtonBackgroundColor));
+                }
+            }
         }
 
         public bool EmpruntButtonIsEnabled
         {
-            get => empruntButtonIsEnabled;
-            set => empruntButtonIsEnabled = value;
+            get { return empruntButtonIsEnabled; }
+            set
+            {
+                if (empruntButtonIsEnabled != value)
+                {
+                    empruntButtonIsEnabled = value;
+                    OnPropertyChanged(nameof(EmpruntButtonIsEnabled));
+                }
+            }
         }
 
         public bool EmpruntCollectionIsVisible
         {
-            get => empruntCollectionIsVisible;
-            set => empruntCollectionIsVisible = value;
+            get { return empruntCollectionIsVisible; }
+            set
+            {
+                if (empruntCollectionIsVisible != value)
+                {
+                    empruntCollectionIsVisible = value;
+                    OnPropertyChanged(nameof(EmpruntCollectionIsVisible));
+                }
+            }
         }
 
         public bool PretCollectionIsVisible
         {
-            get => pretCollectionIsVisible;
-            set => pretCollectionIsVisible = value;
+            get { return pretCollectionIsVisible; }
+            set
+            {
+                if (pretCollectionIsVisible != value)
+                {
+                    pretCollectionIsVisible = value;
+                    OnPropertyChanged(nameof(PretCollectionIsVisible));
+                }
+            }
         }
 
         public ICommand PretsButtonCommand { get; private set; }
@@ -88,40 +130,40 @@ namespace LivreLand.ViewModel
         {
             if (App.Current.PlatformAppTheme == AppTheme.Light)
             {
-                pretButtonBackgroundColor = Colors.Transparent;
-                pretButtonIsEnabled = false;
-                empruntButtonBackgroundColor = Colors.White;
-                empruntButtonIsEnabled = true;
+                PretButtonBackgroundColor = Colors.Transparent;
+                PretButtonIsEnabled = false;
+                EmpruntButtonBackgroundColor = Colors.White;
+                EmpruntButtonIsEnabled = true;
             }
             else
             {
-                pretButtonBackgroundColor = Colors.Transparent;
-                pretButtonIsEnabled = false;
-                empruntButtonBackgroundColor = Colors.Black;
-                empruntButtonIsEnabled = true;
+                PretButtonBackgroundColor = Colors.Transparent;
+                PretButtonIsEnabled = false;
+                EmpruntButtonBackgroundColor = Colors.Black;
+                EmpruntButtonIsEnabled = true;
             }
-            pretCollectionIsVisible = false;
-            empruntCollectionIsVisible = true;
+            PretCollectionIsVisible = false;
+            EmpruntCollectionIsVisible = true;
         }
 
         public void EmpruntsButtonClicked()
         {
             if (App.Current.PlatformAppTheme == AppTheme.Light)
             {
-                pretButtonBackgroundColor = Colors.White;
-                pretButtonIsEnabled = true;
-                empruntButtonBackgroundColor = Colors.Transparent;
-                empruntButtonIsEnabled = false;
+                PretButtonBackgroundColor = Colors.White;
+                PretButtonIsEnabled = true;
+                EmpruntButtonBackgroundColor = Colors.Transparent;
+                EmpruntButtonIsEnabled = false;
             }
             else
             {
-                pretButtonBackgroundColor = Colors.Black;
-                pretButtonIsEnabled = true;
-                empruntButtonBackgroundColor = Colors.Transparent;
-                empruntButtonIsEnabled = false;
+                PretButtonBackgroundColor = Colors.Black;
+                PretButtonIsEnabled = true;
+                EmpruntButtonBackgroundColor = Colors.Transparent;
+                EmpruntButtonIsEnabled = false;
             }
-            pretCollectionIsVisible = true;
-            empruntCollectionIsVisible = false;
+            PretCollectionIsVisible = true;
+            EmpruntCollectionIsVisible = false;
         }
 
         #endregion

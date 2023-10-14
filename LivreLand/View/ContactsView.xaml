@@ -27,6 +27,8 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
                       Grid.Row="0">
@@ -41,12 +43,41 @@
                            Style="{StaticResource HeaderCollectionViewText}"
                            Grid.Column="1"/>
                 </Grid>
+                <Grid HorizontalOptions="Center"
+                      Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <HorizontalStackLayout Spacing="10"
+                                           Grid.Column="0">
+                        <Image Source="plus.png"/>
+                        <Label Text="Add new contact"/>
+                    </HorizontalStackLayout>
+                    <!--<VerticalStackLayout IsVisible=""
+                                         Grid.Column="2">
+                        <Grid FlowDirection="LeftToRight">
+                            <Label Text="Prénom :" />
+                            <Entry Placeholder="Saisissez le prénom"/>
+
+                            <Label Text="Nom :"/>
+                            <Entry Placeholder="Saisissez le nom"/>
+
+                            <Button Text="Enregistrer"
+                                    Command="{Binding ContactsVM.Navigator.AddContactCommand}"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ContactsVM.}"/>
+                    </Grid.GestureRecognizers>-->
+                </Grid>
                 <CollectionView ItemsSource="{Binding ContactsVM.Manager.AllContacts}"
                                 SelectedItem="{Binding ContactsVM.Manager.SelectedContact}"
                                 SelectionChangedCommand="{Binding ContactsVM.Manager.LendBookCommand}"
                                 SelectionChangedCommandParameter="{Binding ContactsVM.Manager.SelectedContact}"
                                 SelectionMode="Single"
-                                Grid.Row="2">
+                                Grid.Row="4">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:ContactVM">
                             <VerticalStackLayout>
