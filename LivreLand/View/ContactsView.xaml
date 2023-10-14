@@ -71,7 +71,7 @@
                 </Grid>
                 <CollectionView ItemsSource="{Binding ContactsVM.Manager.AllContacts}"
                                 SelectedItem="{Binding ContactsVM.Manager.SelectedContact}"
-                                SelectionChangedCommand="{Binding ContactsVM.Manager.LendBookCommand}"
+                                SelectionChangedCommand="{Binding ContactsVM.BookLendedCommand}"
                                 SelectionChangedCommandParameter="{Binding ContactsVM.Manager.SelectedContact}"
                                 SelectionMode="Single"
                                 Grid.Row="4">

@@ -310,7 +310,7 @@
 
                     <contentView:DetailsLivreButtonView ButtonIcon="heart.png"
                                                         ButtonTitle="Ajouter aux favoris"
-                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.AddToFavoritesCommand}"
+                                                        ButtonCommand="{Binding DetailsLivreVM.AddBookToFavoritesCommand}"
                                                         ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -322,7 +322,7 @@
 
                     <contentView:DetailsLivreButtonView ButtonIcon="rounded_plus.png"
                                                         ButtonTitle="Ajouter à la liste À lire plus tard"
-                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.UpdateToBeReadBookCommand}"
+                                                        ButtonCommand="{Binding DetailsLivreVM.AddBookToReadListCommand}"
                                                         ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
 
                     <contentView:SeparatorCutStartView/>
@@ -341,7 +341,7 @@
                     <contentView:SeparatorCutStartView/>
 
                     <contentView:DetailsLivreButtonView ButtonTitle="Supprimer le livre"
-                                                        ButtonCommand="{Binding DetailsLivreVM.Manager.RemoveBookCommand}"
+                                                        ButtonCommand="{Binding DetailsLivreVM.RemoveBookCommand}"
                                                         ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
 
                 </VerticalStackLayout>

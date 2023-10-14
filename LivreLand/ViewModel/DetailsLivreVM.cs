@@ -1,4 +1,5 @@
-﻿using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Maui.Alerts;
+using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,12 @@ namespace LivreLand.ViewModel
 
         public ICommand ShowPickerCommand { get; private set; }
 
+        public ICommand AddBookToFavoritesCommand { get; private set; }
+
+        public ICommand AddBookToReadListCommand { get; private set; }
+
+        public ICommand RemoveBookCommand { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -50,6 +57,9 @@ namespace LivreLand.ViewModel
             Navigator = navigatorVM;
             Book = bookVM;
             ShowPickerCommand = new RelayCommand(() => ShowPicker());
+            AddBookToFavoritesCommand = new RelayCommand<BookVM>((bookVM) => AddBookToFavorites(bookVM));
+            AddBookToReadListCommand = new RelayCommand<BookVM>((bookVM) => AddBookToReadList(bookVM));
+            RemoveBookCommand = new RelayCommand<BookVM>((bookVM) => RemoveBook(bookVM));
         }
 
         #endregion
@@ -59,6 +69,36 @@ namespace LivreLand.ViewModel
         private void ShowPicker()
         {
             IsPickerVisible = true;
+        }
+
+        private async Task AddBookToFavorites(BookVM bookVM)
+        {
+            Manager.AddToFavoritesCommand.Execute(bookVM);
+
+            var toast = Toast.Make("Livre ajouté aux favoris !", CommunityToolkit.Maui.Core.ToastDuration.Short);
+            await toast.Show();
+
+            Navigator.NavigationCommand.Execute("/favoris");
+        }
+
+        private async Task AddBookToReadList(BookVM bookVM)
+        {
+            Manager.UpdateToBeReadBookCommand.Execute(bookVM);
+
+            var toast = Toast.Make("Livre ajouté à la liste À lire plus tard !", CommunityToolkit.Maui.Core.ToastDuration.Short);
+            await toast.Show();
+
+            Navigator.NavigationCommand.Execute("/later");
+        }
+
+        private async Task RemoveBook(BookVM bookVM)
+        {
+            Manager.RemoveBookCommand.Execute(bookVM);
+
+            var toast = Toast.Make("Livre supprimé !", CommunityToolkit.Maui.Core.ToastDuration.Short);
+            await toast.Show();
+
+            Navigator.PopupBackButtonNavigationCommand.Execute(null);
         }
 
         #endregion
