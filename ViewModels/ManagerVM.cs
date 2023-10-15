@@ -22,13 +22,15 @@ namespace ViewModels
         private readonly ObservableCollection<LoanVM> pastLoans = new ObservableCollection<LoanVM>();
         private readonly ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
         private readonly ObservableCollection<BorrowingVM> currentBorrowings = new ObservableCollection<BorrowingVM>();
-        private readonly ObservableCollection<ContactVM> contacts= new ObservableCollection<ContactVM>();
+        private readonly ObservableCollection<ContactVM> contacts = new ObservableCollection<ContactVM>();
+        private readonly ObservableCollection<Status> status = new ObservableCollection<Status>();
         private int index;
         private long nbBooks;
 
         private AuthorVM selectedAuthor;
         private PublishDateVM selectedDate;
         private RatingsVM selectedRating;
+        private Status selectedStatus;
         private ContactVM selectedContact;
 
         private string givenFirstName;
@@ -92,6 +94,11 @@ namespace ViewModels
             get => contacts;
         }
 
+        public ObservableCollection<Status> AllStatus
+        {
+            get => status;
+        }
+
         public BookVM SelectedBook { get; set; }
 
         public AuthorVM SelectedAuthor
@@ -133,7 +140,18 @@ namespace ViewModels
             }
         }
 
-        public Status SelectedStatus { get; set; }
+        public Status SelectedStatus
+        {
+            get { return selectedStatus; }
+            set
+            {
+                if (selectedStatus != value)
+                {
+                    selectedStatus = value;
+                    OnPropertyChanged(nameof(SelectedStatus));
+                }
+            }
+        }
 
         public ContactVM SelectedContact
         {
@@ -224,6 +242,8 @@ namespace ViewModels
 
         public ICommand GetAllRatingsCommand { get; private set; }
 
+        public ICommand GetAllStatusCommand { get; private set; } 
+
         public ICommand GetToBeReadBooksCommand { get; private set; }
 
         public ICommand GetFavoriteBooksCommand { get; private set; }
@@ -265,6 +285,7 @@ namespace ViewModels
             GetAllPublishDatesCommand = new RelayCommand(() => GetAllPublishDates());
             GetBooksByRatingCommand = new RelayCommand(() => GetBooksByRating());
             GetAllRatingsCommand = new RelayCommand(() => GetAllRatings());
+            GetAllStatusCommand = new RelayCommand(() => GetAllStatus());
             GetToBeReadBooksCommand = new RelayCommand(() => GetToBeReadBooks());
             GetFavoriteBooksCommand = new RelayCommand(() => GetFavoriteBooks());
             AddToFavoritesCommand = new RelayCommand<BookVM>(bookVM => AddToFavorites(bookVM));
@@ -468,6 +489,16 @@ namespace ViewModels
             }
 
             OnPropertyChanged(nameof(AllRatings));
+        }
+
+        private async Task GetAllStatus()
+        {
+            var allStatusValues = Enum.GetValues(typeof(Status)).OfType<Status>();
+            foreach (var s in allStatusValues)
+            {
+                status.Add(s);
+            }
+            OnPropertyChanged(nameof(AllStatus));
         }
 
         private async Task GetToBeReadBooks()

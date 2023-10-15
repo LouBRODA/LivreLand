@@ -14,7 +14,7 @@ namespace LivreLand.ViewModel
     {
         #region Fields
 
-        private bool isPickerVisible;
+        private bool isPickerVisible = false;
 
         #endregion
 
@@ -68,6 +68,7 @@ namespace LivreLand.ViewModel
 
         private void ShowPicker()
         {
+            Manager.GetAllStatusCommand.Execute(null);
             IsPickerVisible = true;
         }
 
