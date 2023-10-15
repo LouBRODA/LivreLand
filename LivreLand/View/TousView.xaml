@@ -39,7 +39,8 @@
                 <CollectionView ItemsSource="{Binding TousVM.Manager.AllBooks}"
                                 SelectedItem="{Binding TousVM.Manager.SelectedBook}"
                                 SelectionMode="Single"
-                                SelectionChanged="OnSelectionChanged"
+                                SelectionChangedCommand="{Binding TousVM.OnSelectionChangedCommand}"
+                                SelectionChangedCommandParameter="{Binding TousVM.Manager.SelectedBook}"
                                 Grid.Row="2">
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate x:DataType="viewModel:BookVM">

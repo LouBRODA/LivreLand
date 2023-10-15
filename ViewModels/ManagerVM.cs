@@ -27,6 +27,7 @@ namespace ViewModels
         private int index;
         private long nbBooks;
 
+        private BookVM selectedBook;
         private AuthorVM selectedAuthor;
         private PublishDateVM selectedDate;
         private RatingsVM selectedRating;
@@ -99,7 +100,18 @@ namespace ViewModels
             get => status;
         }
 
-        public BookVM SelectedBook { get; set; }
+        public BookVM SelectedBook
+        {
+            get { return selectedBook; }
+            set
+            {
+                if (selectedBook != value)
+                {
+                    selectedBook = value;
+                    OnPropertyChanged(nameof(SelectedBook));
+                }
+            }
+        }
 
         public AuthorVM SelectedAuthor
         {
