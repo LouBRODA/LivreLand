@@ -36,6 +36,8 @@ namespace ViewModels
 
         private string givenFirstName;
         private string givenLastName;
+        private bool isFavorite;
+
         #endregion
 
         #region Properties 
@@ -204,6 +206,19 @@ namespace ViewModels
             }
         }
 
+        public bool IsFavorite
+        {
+            get { return isFavorite; }
+            set
+            {
+                if (isFavorite != value)
+                {
+                    isFavorite = value;
+                    OnPropertyChanged(nameof(IsFavorite));
+                }
+            }
+        }
+
         public string SearchTitle { get; private set; }
 
         public int Index 
@@ -264,6 +279,8 @@ namespace ViewModels
 
         public ICommand RemoveFromFavoritesCommand { get; private set; }
 
+        public ICommand CheckBookIsFavoriteCommand { get; private set; }
+
         public ICommand GetCurrentLoansCommand { get; private set; }
 
         public ICommand GetPastLoansCommand { get; private set; }
@@ -302,6 +319,7 @@ namespace ViewModels
             GetFavoriteBooksCommand = new RelayCommand(() => GetFavoriteBooks());
             AddToFavoritesCommand = new RelayCommand<BookVM>(bookVM => AddToFavorites(bookVM));
             RemoveFromFavoritesCommand = new RelayCommand<BookVM>(bookVM => RemoveFromFavorites(bookVM));
+            CheckBookIsFavoriteCommand = new RelayCommand<BookVM>(bookVM => CheckBookIsFavorite(bookVM));
             GetCurrentLoansCommand = new RelayCommand(() =>  GetCurrentLoans());
             GetPastLoansCommand = new RelayCommand(() =>  GetPastLoans());
             GetCurrentBorrowingsCommand = new RelayCommand(() => GetCurrentBorrowings());
@@ -554,6 +572,21 @@ namespace ViewModels
             var book = await Model.GetBookById(bookVM.Id);
             await Model.RemoveFromFavorites(book.Id);
             await GetFavoriteBooks();
+        }
+
+        private async Task CheckBookIsFavorite(BookVM bookVM)
+        {
+            await GetFavoriteBooks();
+            if (AllFavoriteBooks.Any(favoriteBook => favoriteBook.Id == bookVM.Id))
+            {
+                IsFavorite = true;
+                OnPropertyChanged(nameof(IsFavorite));
+            }
+            else
+            {
+                IsFavorite = false;
+                OnPropertyChanged(nameof(IsFavorite));
+            }
         }
 
         private async Task GetCurrentLoans()

@@ -36,8 +36,11 @@ namespace LivreLand.ViewModel
 
         private void OnSelectionChanged(BookVM bookVM)
         {
-            var result = new DetailsLivreVM(Manager, Navigator, bookVM);
-            App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView(result));
+            if (bookVM != null)
+            {
+                var result = new DetailsLivreVM(Manager, Navigator, bookVM);
+                App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView(result));
+            }
         }
 
         #endregion

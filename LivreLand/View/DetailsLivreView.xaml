@@ -309,8 +309,8 @@
                     <contentView:SeparatorCutStartView/>
 
                     <contentView:DetailsLivreButtonView ButtonIcon="heart.png"
-                                                        ButtonTitle="Ajouter aux favoris"
-                                                        ButtonCommand="{Binding DetailsLivreVM.AddBookToFavoritesCommand}"
+                                                        ButtonTitle="{Binding DetailsLivreVM.AddFavorisButtonText}"
+                                                        ButtonCommand="{Binding DetailsLivreVM.AddRemoveBookToFavoritesCommand}"
                                                         ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
 
                     <contentView:SeparatorCutStartView/>

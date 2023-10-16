@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Alerts;
+using Model;
 using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace LivreLand.ViewModel
         #region Fields
 
         private bool isPickerVisible = false;
+        private string addFavorisButtonText;
 
         #endregion
 
@@ -38,10 +40,34 @@ namespace LivreLand.ViewModel
                 }
             }
         }
+        
+        public string AddFavorisButtonText
+        {
+            get
+            {
+                Manager.GetFavoriteBooksCommand.Execute(null);
+                if (Manager.AllFavoriteBooks.Any(favoriteBook => favoriteBook.Id == Book.Id))
+                {
+                    return addFavorisButtonText = "Supprimer des favoris";
+                }
+                else
+                {
+                    return addFavorisButtonText = "Ajouter aux favoris";
+                }
+            }
+            set
+            {
+                if (addFavorisButtonText != value)
+                {
+                    addFavorisButtonText = value;
+                    OnPropertyChanged(nameof(AddFavorisButtonText));
+                }
+            }
+        }
 
         public ICommand ShowPickerCommand { get; private set; }
 
-        public ICommand AddBookToFavoritesCommand { get; private set; }
+        public ICommand AddRemoveBookToFavoritesCommand { get; private set; }
 
         public ICommand AddBookToReadListCommand { get; private set; }
 
@@ -57,7 +83,7 @@ namespace LivreLand.ViewModel
             Navigator = navigatorVM;
             Book = bookVM;
             ShowPickerCommand = new RelayCommand(() => ShowPicker());
-            AddBookToFavoritesCommand = new RelayCommand<BookVM>((bookVM) => AddBookToFavorites(bookVM));
+            AddRemoveBookToFavoritesCommand = new RelayCommand<BookVM>((bookVM) => AddRemoveBookToFavorites(bookVM));
             AddBookToReadListCommand = new RelayCommand<BookVM>((bookVM) => AddBookToReadList(bookVM));
             RemoveBookCommand = new RelayCommand<BookVM>((bookVM) => RemoveBook(bookVM));
         }
@@ -72,14 +98,31 @@ namespace LivreLand.ViewModel
             IsPickerVisible = true;
         }
 
-        private async Task AddBookToFavorites(BookVM bookVM)
+        private async Task AddRemoveBookToFavorites(BookVM bookVM)
         {
-            Manager.AddToFavoritesCommand.Execute(bookVM);
+            Manager.CheckBookIsFavoriteCommand.Execute(bookVM);
+            if (Manager.IsFavorite == false)
+            {
+                Manager.AddToFavoritesCommand.Execute(bookVM);
+                AddFavorisButtonText = "Supprimer des favoris";
+                OnPropertyChanged(nameof(AddFavorisButtonText));
 
-            var toast = Toast.Make("Livre ajouté aux favoris !", CommunityToolkit.Maui.Core.ToastDuration.Short);
-            await toast.Show();
+                var toast = Toast.Make("Livre ajouté aux favoris !", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                await toast.Show();
 
-            Navigator.NavigationCommand.Execute("/favoris");
+                Navigator.NavigationCommand.Execute("/favoris");
+            }
+            else
+            {
+                Manager.RemoveFromFavoritesCommand.Execute(bookVM);
+                AddFavorisButtonText = "Ajouter aux favoris";
+                OnPropertyChanged(nameof(AddFavorisButtonText));
+
+                var toast = Toast.Make("Livre supprimé des favoris !", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                await toast.Show();
+
+                Navigator.NavigationCommand.Execute("/favoris");
+            }
         }
 
         private async Task AddBookToReadList(BookVM bookVM)
