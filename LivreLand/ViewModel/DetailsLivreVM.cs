@@ -65,6 +65,8 @@ namespace LivreLand.ViewModel
             }
         }
 
+        public ICommand BackButtonCommand { get; private set; }
+
         public ICommand ShowPickerCommand { get; private set; }
 
         public ICommand AddRemoveBookToFavoritesCommand { get; private set; }
@@ -82,6 +84,7 @@ namespace LivreLand.ViewModel
             Manager = managerVM;
             Navigator = navigatorVM;
             Book = bookVM;
+            BackButtonCommand = new RelayCommand(() => BackButton());
             ShowPickerCommand = new RelayCommand(() => ShowPicker());
             AddRemoveBookToFavoritesCommand = new RelayCommand<BookVM>((bookVM) => AddRemoveBookToFavorites(bookVM));
             AddBookToReadListCommand = new RelayCommand<BookVM>((bookVM) => AddBookToReadList(bookVM));
@@ -91,6 +94,11 @@ namespace LivreLand.ViewModel
         #endregion
 
         #region Methods
+
+        private void BackButton()
+        {
+            Navigator.PopupBackButtonNavigationCommand.Execute(null);
+        }
 
         private void ShowPicker()
         {

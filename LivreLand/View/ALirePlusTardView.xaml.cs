@@ -24,11 +24,6 @@ public partial class ALirePlusTardView : ContentPage
 
     #region Methods
 
-    void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        //App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
-    }
-
     protected override void OnAppearing()
     {
         base.OnAppearing();

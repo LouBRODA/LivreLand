@@ -33,6 +33,8 @@ namespace ViewModels
         private RatingsVM selectedRating;
         private Status selectedStatus;
         private ContactVM selectedContact;
+        private LoanVM selectedLoan;
+        private BorrowingVM selectedBorrowing;
 
         private string givenFirstName;
         private string givenLastName;
@@ -180,6 +182,32 @@ namespace ViewModels
             }
         }
 
+        public LoanVM SelectedLoan
+        {
+            get { return selectedLoan; }
+            set
+            {
+                if (selectedLoan != value)
+                {
+                    selectedLoan = value;
+                    OnPropertyChanged(nameof(SelectedLoan));
+                }
+            }
+        }
+
+        public BorrowingVM SelectedBorrowing
+        {
+            get { return selectedBorrowing; }
+            set
+            {
+                if (selectedBorrowing != value)
+                {
+                    selectedBorrowing = value;
+                    OnPropertyChanged(nameof(SelectedBorrowing));
+                }
+            }
+        }
+
         public string GivenFirstName
         {
             get { return givenFirstName; }
@@ -249,6 +277,8 @@ namespace ViewModels
 
         public ICommand GetBooksFromCollectionCommand { get; private set; }
 
+        public ICommand AddBookCommand { get; private set; }
+
         public ICommand UpdateBookCommand { get; private set; }
 
         public ICommand UpdateStatusBookCommand { get; private set; }
@@ -304,6 +334,7 @@ namespace ViewModels
             PreviousCommand = new RelayCommand(() => Previous());
             NextCommand = new RelayCommand(() => Next());
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
+            AddBookCommand = new RelayCommand<BookVM>((bookVM) => AddBook(bookVM));
             UpdateBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateBook(bookVM));
             UpdateStatusBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateStatusBook(bookVM));
             UpdateToBeReadBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateToBeReadBook(bookVM));
@@ -366,6 +397,12 @@ namespace ViewModels
                 books.Add(b);              
             }
             OnPropertyChanged(nameof(AllBooks));
+        }
+
+        private async Task AddBook(BookVM bookVM)
+        {
+            await Model.AddBookToCollection(bookVM.Id);
+            GetBooksFromCollectionCommand.Execute(null);
         }
 
         private async Task UpdateBook(BookVM bookVM)

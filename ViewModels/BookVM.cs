@@ -64,6 +64,12 @@ namespace ViewModels
             set => SetProperty(Model.NbPages, value, v => Model.NbPages = value);
         }
 
+        public Languages Language
+        {
+            get => Model.Language;
+            set => SetProperty(Model.Language, value, v => Model.Language = value);
+        }
+
         public string ImageSmall
         {
             get => Model.ImageSmall;

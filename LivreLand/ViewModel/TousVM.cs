@@ -19,6 +19,7 @@ namespace LivreLand.ViewModel
         public ManagerVM Manager { get; private set; }
 
         public ICommand OnSelectionChangedCommand { get; private set; }
+
         #endregion
 
         #region Constructor

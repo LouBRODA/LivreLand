@@ -27,8 +27,10 @@
         <ScrollView Grid.Row="4">
             <Grid>
                 <CollectionView ItemsSource="{Binding StatutLectureVM.Manager.AllBooks}"
+                                SelectedItem="{Binding StatutLectureVM.Manager.SelectedBook}"
                                 SelectionMode="Single"
-                                SelectionChanged="OnSelectionChanged"
+                                SelectionChangedCommand="{Binding StatutLectureVM.OnSelectionChangedCommand}"
+                                SelectionChangedCommandParameter="{Binding StatutLectureVM.Manager.SelectedBook}"
                                 Grid.Row="2">
                     <CollectionView.GroupHeaderTemplate>
                         <DataTemplate x:DataType="viewModel:BookVM">

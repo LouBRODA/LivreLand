@@ -31,10 +31,5 @@ public partial class StatutLectureView : ContentPage
         StatutLectureVM.Manager.GetBooksFromCollectionCommand.Execute(null);
     }
 
-    void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        //App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
-    }
-
     #endregion
 }

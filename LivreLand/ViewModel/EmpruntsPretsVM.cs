@@ -1,4 +1,6 @@
-﻿using PersonalMVVMToolkit;
+﻿using LivreLand.View;
+using Model;
+using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +108,10 @@ namespace LivreLand.ViewModel
             }
         }
 
+        public ICommand OnSelectionLoanChangedCommand { get; private set; }
+
+        public ICommand OnSelectionBorrowingChangedCommand { get; private set; }
+
         public ICommand PretsButtonCommand { get; private set; }
 
         public ICommand EmpruntsButtonCommand { get; private set; }
@@ -118,6 +124,8 @@ namespace LivreLand.ViewModel
         {
             Navigator = navigatorVM;
             Manager = managerVM;
+            OnSelectionLoanChangedCommand = new RelayCommand<LoanVM>((loanVM) => OnSelectionLoanChanged(loanVM));
+            OnSelectionBorrowingChangedCommand = new RelayCommand<BorrowingVM>((borrowingVM) => OnSelectionBorrowingChanged(borrowingVM));
             PretsButtonCommand = new RelayCommand(() => PretsButtonClicked());
             EmpruntsButtonCommand = new RelayCommand(() => EmpruntsButtonClicked());
         }
@@ -125,6 +133,38 @@ namespace LivreLand.ViewModel
         #endregion
 
         #region Methods
+
+        private void OnSelectionLoanChanged(LoanVM loanVM)
+        {
+            if (loanVM == null)
+            {
+                foreach (var b in Manager.AllCurrentLoans)
+                {
+                    if (b.Book.Id == loanVM.Book.Id)
+                    {
+                        var bookCorresponding = b.Book;
+                        var result = new DetailsLivreVM(Manager, Navigator, bookCorresponding);
+                        App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView(result));
+                    }
+                }
+            }
+        }
+
+        private void OnSelectionBorrowingChanged(BorrowingVM borrowingVM)
+        {
+            if (borrowingVM != null)
+            {
+                foreach (var b in Manager.AllCurrentBorrowings)
+                {
+                    if (b.Book.Id == borrowingVM.Book.Id)
+                    {
+                        var bookCorresponding = b.Book;
+                        var result = new DetailsLivreVM(Manager, Navigator, bookCorresponding);
+                        App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView(result));
+                    }
+                }
+            }
+        }
 
         public void PretsButtonClicked()
         {

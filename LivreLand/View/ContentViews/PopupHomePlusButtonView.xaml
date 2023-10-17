@@ -26,6 +26,10 @@
                   Margin="10,5,10,5">
                 <Label Text="Ajouter un livre"
                        Style="{StaticResource MasterStateBookText}"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Navigator.NavigationCommand}" 
+                                          CommandParameter="/add"/>
+                </Grid.GestureRecognizers>
             </Grid>
 
             <contentView:SeparatorEntireView Grid.Row="1"/>

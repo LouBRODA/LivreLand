@@ -22,7 +22,7 @@
                              HeaderSwitchButtonVisible="False"
                              HeaderColor="{StaticResource HeaderGray}"
                              ButtonPlusTappedCommand="{Binding DetailsLivreVM.Navigator.PopupHomePlusNavigationCommand}"
-                             ButtonBackTappedCommand="{Binding DetailsLivreVM.Navigator.PopupBackButtonNavigationCommand}"/>
+                             ButtonBackTappedCommand="{Binding DetailsLivreVM.BackButtonCommand}"/>
             <contentView:SeparatorEntireView/>
         </VerticalStackLayout>
 
@@ -140,31 +140,31 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        
+
                         <Label Text="Maison d'édition"
                                Style="{StaticResource DetailsLivreTitle}"
-                               Grid.Row="0"
-                               Grid.Column="0"/>
-                        <Grid Grid.Row="1"
-                              Grid.Column="1">
-                            <CollectionView ItemsSource="{Binding DetailsLivreVM.Book.Publishers}">
+                               Grid.Row="0"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <CollectionView ItemsSource="{Binding DetailsLivreVM.Book.Publishers}"
+                                            Grid.Column="0">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Horizontal" />
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Label Text="oui"
+                                        <Label Text="{Binding .}"
                                                Style="{StaticResource DetailsLivreBody}"
                                                Margin="0,0,5,0"
                                                Grid.Row="1"/>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
-                            <Label Text="{Binding DetailsLivreVM.Book.PublishDate,StringFormat=' ({0:yyyy})'}"/>
+                            <Label Text="{Binding DetailsLivreVM.Book.PublishDate,StringFormat=' ({0:yyyy})'}"
+                                   Grid.Column="1"/>
                         </Grid>
                     </Grid>
 
@@ -223,7 +223,7 @@
                             <Label Text="Langue"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="0"/>
-                            <Label Text="français"
+                            <Label Text="{Binding DetailsLivreVM.Book.Language}"
                                    Style="{StaticResource DetailsLivreBody}"
                                    Grid.Column="2"/>
                         </Grid>
