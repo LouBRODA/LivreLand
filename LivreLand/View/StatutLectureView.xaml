@@ -26,14 +26,15 @@
         <contentView:SearchBarView Grid.Row="2"/>
         <ScrollView Grid.Row="4">
             <Grid>
-                <CollectionView ItemsSource="{Binding StatutLectureVM.Manager.AllBooks}"
+                <CollectionView ItemsSource="{Binding StatutLectureVM.Manager.GroupedStatusBooks}"
                                 SelectedItem="{Binding StatutLectureVM.Manager.SelectedBook}"
                                 SelectionMode="Single"
                                 SelectionChangedCommand="{Binding StatutLectureVM.OnSelectionChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding StatutLectureVM.Manager.SelectedBook}"
+                                IsGrouped="True"
                                 Grid.Row="2">
                     <CollectionView.GroupHeaderTemplate>
-                        <DataTemplate x:DataType="viewModel:BookVM">
+                        <DataTemplate>
                             <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
                                   Grid.Row="0">
                                 <Grid.ColumnDefinitions>
@@ -41,8 +42,7 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-
-                                <Label Text="{Binding Status}"
+                                <Label Text="{Binding Key}"
                                        VerticalOptions="Center"
                                        Style="{StaticResource HeaderCollectionViewText}"
                                        Grid.Column="1"/>

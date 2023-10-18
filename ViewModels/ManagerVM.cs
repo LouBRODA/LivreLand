@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ViewModels
 {
@@ -13,17 +14,29 @@ namespace ViewModels
         #region Fields
 
         private readonly ObservableCollection<BookVM> books = new ObservableCollection<BookVM>();
+        private IEnumerable<IGrouping<string, BookVM>> groupedBooks;
+        private IEnumerable<IGrouping<Status, BookVM>> groupedStatusBooks;
+
         private readonly ObservableCollection<AuthorVM> authors = new ObservableCollection<AuthorVM>();
         private readonly ObservableCollection<PublishDateVM> publishDates = new ObservableCollection<PublishDateVM>();
         private readonly ObservableCollection<RatingsVM> ratings = new ObservableCollection<RatingsVM>();
+
         private readonly ObservableCollection<BookVM> toBeReadBooks = new ObservableCollection<BookVM>();
         private readonly ObservableCollection<BookVM> favoriteBooks = new ObservableCollection<BookVM>();
+        
         private readonly ObservableCollection<LoanVM> currentLoans = new ObservableCollection<LoanVM>();
+        private IEnumerable<IGrouping<ContactVM, LoanVM>> currentGroupedLoans;
         private readonly ObservableCollection<LoanVM> pastLoans = new ObservableCollection<LoanVM>();
-        private readonly ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
+        private IEnumerable<IGrouping<ContactVM, LoanVM>> pastGroupedLoans;
+
         private readonly ObservableCollection<BorrowingVM> currentBorrowings = new ObservableCollection<BorrowingVM>();
+        private IEnumerable<IGrouping<ContactVM, BorrowingVM>> currentGroupedBorrowings;
+        private readonly ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
+        private IEnumerable<IGrouping<ContactVM, BorrowingVM>> pastGroupedBorrowings;
+
         private readonly ObservableCollection<ContactVM> contacts = new ObservableCollection<ContactVM>();
         private readonly ObservableCollection<Status> status = new ObservableCollection<Status>();
+        
         private int index;
         private long nbBooks;
 
@@ -47,6 +60,18 @@ namespace ViewModels
         public ObservableCollection<BookVM> AllBooks 
         {
             get => books; 
+        }
+
+        public IEnumerable<IGrouping<string, BookVM>> GroupedBooks
+        {
+            get => groupedBooks;
+            set => SetProperty(ref groupedBooks, value);
+        }
+
+        public IEnumerable<IGrouping<Status, BookVM>> GroupedStatusBooks
+        {
+            get => groupedStatusBooks;
+            set => SetProperty(ref groupedStatusBooks, value);
         }
 
         public ObservableCollection<AuthorVM> AllAuthors
@@ -79,9 +104,21 @@ namespace ViewModels
             get => currentLoans;
         }
 
+        public IEnumerable<IGrouping<ContactVM, LoanVM>> AllCurrentGroupedLoans
+        {
+            get => currentGroupedLoans;
+            set => SetProperty(ref currentGroupedLoans, value);
+        }
+
         public ObservableCollection<LoanVM> AllPastLoans
         {
             get => pastLoans;
+        }
+
+        public IEnumerable<IGrouping<ContactVM, LoanVM>> AllPastGroupedLoans
+        {
+            get => pastGroupedLoans;
+            set => SetProperty(ref pastGroupedLoans, value);
         }
 
         public ObservableCollection<BorrowingVM> AllCurrentBorrowings
@@ -89,9 +126,21 @@ namespace ViewModels
             get => currentBorrowings;
         }
 
+        public IEnumerable<IGrouping<ContactVM, BorrowingVM>> AllCurrentGroupedBorrowings
+        {
+            get => currentGroupedBorrowings;
+            set => SetProperty(ref currentGroupedBorrowings, value);
+        }
+
         public ObservableCollection<BorrowingVM> AllPastBorrowings
         {
             get => pastBorrowings;
+        }
+
+        public IEnumerable<IGrouping<ContactVM, BorrowingVM>> AllPastGroupedBorrowings
+        {
+            get => pastGroupedBorrowings;
+            set => SetProperty(ref pastGroupedBorrowings, value);
         }
 
         public ObservableCollection<ContactVM> AllContacts
@@ -267,7 +316,7 @@ namespace ViewModels
             }
         }
 
-        public int NbPages => (int)(NbBooks / Count);
+        public int NbPages => (int)((NbBooks - 1) / Count);
 
         public ICommand PreviousCommand { get; private set; }
 
@@ -394,7 +443,9 @@ namespace ViewModels
             books.Clear();
             foreach (var b in someBooks.Select(b => new BookVM(b))) 
             {
-                books.Add(b);              
+                books.Add(b); 
+                GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
+                GroupedStatusBooks = AllBooks.GroupBy(b => b.Status).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(AllBooks));
         }
@@ -628,48 +679,52 @@ namespace ViewModels
 
         private async Task GetCurrentLoans()
         {
-            var result = await Model.GetCurrentLoans(0, 20);
+            var result = await Model.GetCurrentLoans(0, 1000);
             IEnumerable<Loan> someLoans = result.loans;
             currentLoans.Clear();
             foreach (var l in someLoans.Select(l => new LoanVM(l)))
             {
                 currentLoans.Add(l);
+                AllCurrentGroupedLoans = AllCurrentLoans.GroupBy(l => l.Loaner).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(AllCurrentLoans));
         }
 
         private async Task GetPastLoans()
         {
-            var result = await Model.GetPastLoans(0, 20);
+            var result = await Model.GetPastLoans(0, 1000);
             IEnumerable<Loan> someLoans = result.loans;
             pastLoans.Clear();
             foreach (var l in someLoans.Select(l => new LoanVM(l)))
             {
                 pastLoans.Add(l);
+                AllPastGroupedLoans = AllPastLoans.GroupBy(l => l.Loaner).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(AllPastLoans));
         }
 
         private async Task GetCurrentBorrowings()
         {
-            var result = await Model.GetCurrentBorrowings(0, 20);
+            var result = await Model.GetCurrentBorrowings(0, 1000);
             IEnumerable<Borrowing> someBorrowings = result.borrowings;
             currentBorrowings.Clear();
             foreach (var b in someBorrowings.Select(b => new BorrowingVM(b)))
             {
                 currentBorrowings.Add(b);
+                AllCurrentGroupedBorrowings = AllCurrentBorrowings.GroupBy(b => b.Owner).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(AllCurrentBorrowings));
         }
 
         private async Task GetPastBorrowings()
         {
-            var result = await Model.GetPastBorrowings(0, 20);
+            var result = await Model.GetPastBorrowings(0, 1000);
             IEnumerable<Borrowing> someBorrowings = result.borrowings;
             pastBorrowings.Clear();
             foreach (var b in someBorrowings.Select(b => new BorrowingVM(b)))
             {
                 pastBorrowings.Add(b);
+                AllPastGroupedBorrowings = AllPastBorrowings.GroupBy(b => b.Owner).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(AllPastBorrowings));
         }

@@ -32,12 +32,35 @@
                                              EmpruntsButtonCommand="{Binding EmpruntsPretsVM.EmpruntsButtonCommand}"/>
         <ScrollView Grid.Row="4">
             <Grid>
-                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.AllCurrentLoans}"
+                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.AllCurrentGroupedLoans}"
                                 SelectedItem="{Binding EmpruntsPretsVM.Manager.SelectedLoan}"
                                 SelectionMode="Single"
                                 SelectionChangedCommand="{Binding EmpruntsPretsVM.OnSelectionLoanChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding EmpruntsPretsVM.Manager.SelectedBook}"
-                                IsVisible="{Binding EmpruntsPretsVM.PretCollectionIsVisible}">
+                                IsVisible="{Binding EmpruntsPretsVM.PretCollectionIsVisible}"
+                                IsGrouped="True">
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
+                                  Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label VerticalOptions="Center"
+                                       Style="{StaticResource HeaderCollectionViewText}"
+                                       Grid.Column="1">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="Key.FirstName" />
+                                            <Binding Path="Key.LastName" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:LoanVM">
                             <VerticalStackLayout Margin="10"
@@ -110,12 +133,35 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.AllCurrentBorrowings}"
+                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.AllCurrentGroupedBorrowings}"
                                 SelectedItem="{Binding EmpruntsPretsVM.Manager.SelectedBorrowing}"
                                 SelectionMode="Single"
                                 SelectionChangedCommand="{Binding EmpruntsPretsVM.OnSelectionBorrowingChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding EmpruntsPretsVM.Manager.SelectedBorrowing}"
-                                IsVisible="{Binding EmpruntsPretsVM.EmpruntCollectionIsVisible}">
+                                IsVisible="{Binding EmpruntsPretsVM.EmpruntCollectionIsVisible}"
+                                IsGrouped="True">
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="{AppThemeBinding Light={StaticResource HeaderGray}, Dark={StaticResource Gray900}}"
+                                  Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label VerticalOptions="Center"
+                                       Style="{StaticResource HeaderCollectionViewText}"
+                                       Grid.Column="1">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="Key.FirstName" />
+                                            <Binding Path="Key.LastName" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:BorrowingVM">
                             <VerticalStackLayout Margin="10"

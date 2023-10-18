@@ -20,31 +20,26 @@ namespace ViewModels
         public string Id
         {
             get => Model.Id;
-            set => SetProperty(Model.Id, value, v => Model.Id = value);
         }
 
         public string ISBN13
         {
             get => Model.ISBN13;
-            set => SetProperty(Model.ISBN13, value, v => Model.ISBN13 = value);
         }
 
         public string Title
         {
             get => Model.Title;
-            set => SetProperty(Model.Title, value, v => Model.Title = value);
         }
 
         public List<string> Publishers
         {
             get => Model.Publishers;
-            set => SetProperty(Model.Publishers, value, v => Model.Publishers = value);
         }
 
         public DateTime PublishDate
         {
             get => Model.PublishDate;
-            set => SetProperty(Model.PublishDate, value, v => Model.PublishDate = value);
         }
 
         public List<AuthorVM> Authors
@@ -52,22 +47,21 @@ namespace ViewModels
             get => Model.Authors.Select(a => new AuthorVM(a)).ToList();
         }
 
+        public string Author => Model.Authors.Count > 0 ? Model.Authors.First().Name : "Auteur inconnu";
+
         public Status Status
         {
             get => Model.Status;
-            set => SetProperty(Model.Status, value, v => Model.Status = value);
         }
 
         public int NbPages
         {
             get => Model.NbPages;
-            set => SetProperty(Model.NbPages, value, v => Model.NbPages = value);
         }
 
         public Languages Language
         {
             get => Model.Language;
-            set => SetProperty(Model.Language, value, v => Model.Language = value);
         }
 
         public string ImageSmall
