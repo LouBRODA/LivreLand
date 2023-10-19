@@ -106,6 +106,7 @@ namespace LivreLand.ViewModel
         private void ShowPicker()
         {
             Manager.GetAllStatusCommand.Execute(null);
+            Manager.SelectedStatus = this.Book.Status;
             IsPickerVisible = true;
         }
 

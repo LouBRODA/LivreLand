@@ -461,6 +461,7 @@ namespace ViewModels
                 GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
                 GroupedStatusBooks = AllBooks.GroupBy(b => b.Status).OrderBy(group => group.Key);
             }
+            OnPropertyChanged(nameof(GroupedBooks));
             OnPropertyChanged(nameof(AllBooks));
         }
 
@@ -503,7 +504,7 @@ namespace ViewModels
 
         private async Task GetBooksByAuthor()
         {
-            var result = await Model.GetBooksByAuthor(SelectedAuthor.Name, Index, Count);
+            var result = await Model.GetBooksByAuthor(SelectedAuthor.Name, 0, 1000);
             NbBooks = result.count;
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
@@ -512,6 +513,7 @@ namespace ViewModels
                 books.Add(b);
                 GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
             }
+            OnPropertyChanged(nameof(GroupedBooks));
             OnPropertyChanged(nameof(AllBooks));
         }
 
@@ -534,7 +536,7 @@ namespace ViewModels
 
         private async Task GetBooksByDate()
         {
-            var result = await Model.GetBooksFromCollection(Index, Count);
+            var result = await Model.GetBooksFromCollection(0, 1000);
             NbBooks = result.count;
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
@@ -543,9 +545,10 @@ namespace ViewModels
                 if (b.PublishDate.Year == SelectedDate.PublishDate.Year)
                 {
                     books.Add(b);
-                    GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
+                    GroupedBooks = AllBooks.GroupBy(b => b.PublishDate.Year.ToString()).OrderBy(group => group.Key);
                 }                
             }
+            OnPropertyChanged(nameof(GroupedBooks));
             OnPropertyChanged(nameof(AllBooks));
         }
 
@@ -574,20 +577,24 @@ namespace ViewModels
 
         private async Task GetBooksByRating()
         {
-            var result = await Model.GetBooksFromCollection(Index, Count);
+            var result = await Model.GetBooksFromCollection(0, 1000);
             NbBooks = result.count;
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
-            foreach (var book in someBooks.Select(b => new BookVM(b)))
-            {
-                if (book.UserRating == SelectedRating.Average)
-                {
-                    //books.Add(new BookVM(book));
-                    GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
-                }
-            }
+
+            var groupedBooks = someBooks
+                .Where(book => book.UserRating.HasValue)
+                .Select(book => new BookVM(book))
+                .GroupBy(book => Math.Floor(book.UserRating.Value).ToString("0"))
+                .OrderBy(group => group.Key);
+
+            GroupedBooks = groupedBooks;
+
+            OnPropertyChanged(nameof(GroupedBooks));
             OnPropertyChanged(nameof(AllBooks));
         }
+
+
 
         private async Task GetAllRatings()
         {

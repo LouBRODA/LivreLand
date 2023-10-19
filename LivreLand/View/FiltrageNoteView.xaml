@@ -39,6 +39,7 @@
 
                 <CollectionView ItemsSource="{Binding FiltrageNoteVM.Manager.AllRatings}"
                                 SelectionMode="Single"
+                                SelectedItem="{Binding FiltrageNoteVM.Manager.SelectedRating}"
                                 SelectionChangedCommand="{Binding FiltrageNoteVM.NavigateRatingPageCommand}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:RatingsVM">
