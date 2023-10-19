@@ -34,6 +34,7 @@ public static class MauiProgram
 			.AddSingleton<EmpruntsPretsView>()
 			.AddSingleton<FavorisView>()
 			.AddSingleton<ContactsView>()
+			.AddSingleton<PopupISBNView>()
 
             .AddSingleton<NavigatorVM>()
 
@@ -52,7 +53,8 @@ public static class MauiProgram
 			.AddSingleton<StatutLectureVM>()
 			.AddSingleton<EmpruntsPretsVM>()
 			.AddSingleton<FavorisVM>()
-			.AddSingleton<ContactsVM>();
+			.AddSingleton<ContactsVM>()
+			.AddSingleton<PopupISBNVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();

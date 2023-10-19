@@ -23,12 +23,5 @@ public partial class ContactsView : ContentPage
 
     #region Methods
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        ContactsVM.Manager.GetContactsCommand.Execute(null);
-    }
-
     #endregion
 }

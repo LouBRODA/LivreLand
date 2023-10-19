@@ -24,12 +24,5 @@ public partial class ALirePlusTardView : ContentPage
 
     #region Methods
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        ALirePlusTardVM.Manager.GetToBeReadBooksCommand.Execute(null);
-    }
-
     #endregion
 }

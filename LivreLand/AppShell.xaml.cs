@@ -16,7 +16,6 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute("library/note/", typeof(FiltrageNoteView));
 		Routing.RegisterRoute("library/contacts/", typeof(ContactsView));
         Routing.RegisterRoute("library/tous/details/", typeof(DetailsLivreView));
-        Routing.RegisterRoute("library/add/", typeof(AddBookView));
         InitializeComponent();
 	}
 }

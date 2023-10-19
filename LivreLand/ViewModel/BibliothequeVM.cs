@@ -19,6 +19,14 @@ namespace LivreLand.ViewModel
 
         public ICommand AllBooksNavigateCommand { get; private set; }
 
+        public ICommand AllLoansBorrowingsNavigateCommand { get; private set; }
+
+        public ICommand AllFavorisBooksNavigateCommand { get; private set; }
+
+        public ICommand AllStatusBooksNavigateCommand { get; private set; }
+
+        public ICommand AllToReadBooksNavigateCommand { get; private set; }
+
         public ICommand AllAuthorsNavigateCommand { get; private set; }
 
         public ICommand AllDatesNavigateCommand { get; private set; }
@@ -34,6 +42,10 @@ namespace LivreLand.ViewModel
             Navigator = navigatorVM;
             Manager = managerVM;
             AllBooksNavigateCommand = new RelayCommand(() => AllBooksNavigate());
+            AllLoansBorrowingsNavigateCommand = new RelayCommand(() => AllLoansBorrowingsNavigate());
+            AllFavorisBooksNavigateCommand = new RelayCommand(() => AllFavorisBooksNavigate());
+            AllStatusBooksNavigateCommand = new RelayCommand(() => AllStatusBooksNavigate());
+            AllToReadBooksNavigateCommand = new RelayCommand(() => AllToReadBooksNavigate());
             AllAuthorsNavigateCommand = new RelayCommand(() => AllAuthorsNavigate());
             AllDatesNavigateCommand = new RelayCommand(() => AllDatesNavigate());
             AllRatingsNavigateCommand = new RelayCommand(() => AllRatingsNavigate());
@@ -47,6 +59,31 @@ namespace LivreLand.ViewModel
         {
             Manager.GetBooksFromCollectionCommand.Execute(null);
             Navigator.NavigationCommand.Execute("/tous");
+        }
+
+        private void AllLoansBorrowingsNavigate()
+        {
+            Manager.GetCurrentLoansCommand.Execute(null);
+            Manager.GetCurrentBorrowingsCommand.Execute(null);
+            Navigator.NavigationCommand.Execute("/pret");
+        }
+
+        private void AllFavorisBooksNavigate()
+        {
+            Manager.GetFavoriteBooksCommand.Execute(null);
+            Navigator.NavigationCommand.Execute("/favoris");
+        }
+
+        private void AllStatusBooksNavigate()
+        {
+            Manager.GetBooksFromCollectionCommand.Execute(null);
+            Navigator.NavigationCommand.Execute("/statut");
+        }
+
+        private void AllToReadBooksNavigate()
+        {
+            Manager.GetToBeReadBooksCommand.Execute(null);
+            Navigator.NavigationCommand.Execute("/later");
         }
 
         private void AllAuthorsNavigate()

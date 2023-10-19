@@ -69,7 +69,9 @@ namespace LivreLand.ViewModel
             var toast = Toast.Make("Livre prêté !", CommunityToolkit.Maui.Core.ToastDuration.Short);
             await toast.Show();
 
-            Navigator.PopupBackButtonNavigationCommand.Execute(null);
+            Manager.GetCurrentLoansCommand.Execute(null);
+            Manager.GetCurrentBorrowingsCommand.Execute(null);
+            Navigator.NavigationCommand.Execute("/pret");
         }
 
         #endregion

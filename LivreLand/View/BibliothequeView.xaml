@@ -65,8 +65,7 @@
                                                 ButtonNumber="1"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="pret/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllLoansBorrowingsNavigateCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -75,8 +74,7 @@
                                                 ButtonIcon="arrow_forward.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="later/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllToReadBooksNavigateCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -85,8 +83,7 @@
                                                 ButtonIcon="eyeglasses.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="statut/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllStatusBooksNavigateCommand}"/>
 
                     <contentView:SeparatorCutStartView/>
 
@@ -95,8 +92,7 @@
                                                 ButtonIcon="heart_fill.png"
                                                 ButtonRedIconVisible="False"
                                                 ButtonBlackIconVisible="True"
-                                                ButtonTappedCommand="{Binding BibliothequeVM.Navigator.NavigationCommand}"
-                                                CommandParameter="favoris/"/>
+                                                ButtonTappedCommand="{Binding BibliothequeVM.AllFavorisBooksNavigateCommand}"/>
 
                     <contentView:SeparatorEntireView/>
                 </VerticalStackLayout>

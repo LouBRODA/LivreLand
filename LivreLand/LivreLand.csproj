@@ -65,9 +65,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\AddBookView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\ALirePlusTardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

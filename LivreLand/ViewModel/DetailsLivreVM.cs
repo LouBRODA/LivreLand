@@ -73,6 +73,8 @@ namespace LivreLand.ViewModel
 
         public ICommand AddBookToReadListCommand { get; private set; }
 
+        public ICommand LoanBookCommand { get; private set; }
+
         public ICommand RemoveBookCommand { get; private set; }
 
         #endregion
@@ -88,6 +90,7 @@ namespace LivreLand.ViewModel
             ShowPickerCommand = new RelayCommand(() => ShowPicker());
             AddRemoveBookToFavoritesCommand = new RelayCommand<BookVM>((bookVM) => AddRemoveBookToFavorites(bookVM));
             AddBookToReadListCommand = new RelayCommand<BookVM>((bookVM) => AddBookToReadList(bookVM));
+            LoanBookCommand = new RelayCommand<BookVM>((bookVM) => LoanBook(bookVM));
             RemoveBookCommand = new RelayCommand<BookVM>((bookVM) => RemoveBook(bookVM));
         }
 
@@ -118,6 +121,7 @@ namespace LivreLand.ViewModel
                 var toast = Toast.Make("Livre ajouté aux favoris !", CommunityToolkit.Maui.Core.ToastDuration.Short);
                 await toast.Show();
 
+                Manager.GetFavoriteBooksCommand.Execute(null);
                 Navigator.NavigationCommand.Execute("/favoris");
             }
             else
@@ -129,6 +133,7 @@ namespace LivreLand.ViewModel
                 var toast = Toast.Make("Livre supprimé des favoris !", CommunityToolkit.Maui.Core.ToastDuration.Short);
                 await toast.Show();
 
+                Manager.GetFavoriteBooksCommand.Execute(null);
                 Navigator.NavigationCommand.Execute("/favoris");
             }
         }
@@ -140,7 +145,15 @@ namespace LivreLand.ViewModel
             var toast = Toast.Make("Livre ajouté à la liste À lire plus tard !", CommunityToolkit.Maui.Core.ToastDuration.Short);
             await toast.Show();
 
+            Manager.GetToBeReadBooksCommand.Execute(null);
             Navigator.NavigationCommand.Execute("/later");
+        }
+
+        private void LoanBook(BookVM bookVM)
+        {
+            Manager.SelectedBook = bookVM;
+            Manager.GetContactsCommand.Execute(null);
+            Navigator.NavigationCommand.Execute("contacts");
         }
 
         private async Task RemoveBook(BookVM bookVM)

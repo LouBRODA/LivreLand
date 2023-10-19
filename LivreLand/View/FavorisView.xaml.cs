@@ -29,12 +29,5 @@ public partial class FavorisView : ContentPage
         //App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView());
     }
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        FavorisVM.Manager.GetFavoriteBooksCommand.Execute(null);
-    }
-
     #endregion
 }

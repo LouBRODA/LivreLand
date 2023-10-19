@@ -24,12 +24,5 @@ public partial class StatutLectureView : ContentPage
 
     #region Methods
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        StatutLectureVM.Manager.GetBooksFromCollectionCommand.Execute(null);
-    }
-
     #endregion
 }

@@ -28,7 +28,7 @@ namespace LivreLand.ViewModel
             NavigationCommand = new Command(async (target) => await Shell.Current.GoToAsync($"//library/{target}"));
 
             PopupHomePlusNavigationCommand = new Command(() => App.Current.MainPage.ShowPopup(new PopupHomePlusButtonView(this)));
-            PopupISBNNavigationCommand = new Command(() => App.Current.MainPage.ShowPopup(new PopupISBNView()));
+            PopupISBNNavigationCommand = new Command(() => App.Current.MainPage.ShowPopup(new PopupISBNView(Application.Current.Handler.MauiContext.Services.GetService<PopupISBNVM>())));
             PopupBackButtonNavigationCommand = new Command(() => App.Current.MainPage.Navigation.PopAsync());
         }
 

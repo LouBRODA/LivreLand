@@ -24,13 +24,5 @@ public partial class EmpruntsPretsView : ContentPage
 
     #region Methods
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        EmpruntsPretsVM.Manager.GetCurrentLoansCommand.Execute(null);
-        EmpruntsPretsVM.Manager.GetCurrentBorrowingsCommand.Execute(null);
-    }
-
     #endregion
 }

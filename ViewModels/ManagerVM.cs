@@ -48,6 +48,7 @@ namespace ViewModels
         private ContactVM selectedContact;
         private LoanVM selectedLoan;
         private BorrowingVM selectedBorrowing;
+        private string entryText;
 
         private string givenFirstName;
         private string givenLastName;
@@ -257,6 +258,19 @@ namespace ViewModels
             }
         }
 
+        public string EntryText
+        {
+            get { return entryText; }
+            set
+            {
+                if (entryText != value)
+                {
+                    entryText = value;
+                    OnPropertyChanged(nameof(EntryText));
+                }
+            }
+        }
+
         public string GivenFirstName
         {
             get { return givenFirstName; }
@@ -383,7 +397,7 @@ namespace ViewModels
             PreviousCommand = new RelayCommand(() => Previous());
             NextCommand = new RelayCommand(() => Next());
             GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
-            AddBookCommand = new RelayCommand<BookVM>((bookVM) => AddBook(bookVM));
+            AddBookCommand = new RelayCommand<string>((isbn) => AddBook(isbn));
             UpdateBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateBook(bookVM));
             UpdateStatusBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateStatusBook(bookVM));
             UpdateToBeReadBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateToBeReadBook(bookVM));
@@ -450,10 +464,13 @@ namespace ViewModels
             OnPropertyChanged(nameof(AllBooks));
         }
 
-        private async Task AddBook(BookVM bookVM)
+        private async Task AddBook(string isbn)
         {
-            await Model.AddBookToCollection(bookVM.Id);
-            GetBooksFromCollectionCommand.Execute(null);
+            var result = await Model.GetBookByISBN(isbn);
+            if (result != null)
+            {
+                await Model.AddBookToCollection(result.Id);
+            }
         }
 
         private async Task UpdateBook(BookVM bookVM)
@@ -493,13 +510,14 @@ namespace ViewModels
             foreach (var b in someBooks.Select(b => new BookVM(b)))
             {
                 books.Add(b);
+                GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(AllBooks));
         }
 
         private async Task GetAllAuthors()
         {
-            var result = await Model.GetBooksFromCollection(0, 20);
+            var result = await Model.GetBooksFromCollection(0, 1000);
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
             authors.Clear();
@@ -522,9 +540,10 @@ namespace ViewModels
             books.Clear();
             foreach (var b in someBooks.Select(b => new BookVM(b)))
             {
-                if (b.PublishDate == SelectedDate.PublishDate)
+                if (b.PublishDate.Year == SelectedDate.PublishDate.Year)
                 {
                     books.Add(b);
+                    GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
                 }                
             }
             OnPropertyChanged(nameof(AllBooks));
@@ -532,7 +551,7 @@ namespace ViewModels
 
         private async Task GetAllPublishDates()
         {
-            var result = await Model.GetBooksFromCollection(0, 20);
+            var result = await Model.GetBooksFromCollection(0, 1000);
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
             publishDates.Clear();
@@ -559,17 +578,20 @@ namespace ViewModels
             NbBooks = result.count;
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
-            var filteredBooks = someBooks.Where(b => b.UserRating.HasValue && Math.Floor(b.UserRating.Value) == SelectedRating.Average);
-            foreach (var book in filteredBooks)
+            foreach (var book in someBooks.Select(b => new BookVM(b)))
             {
-                books.Add(new BookVM(book));
+                if (book.UserRating == SelectedRating.Average)
+                {
+                    //books.Add(new BookVM(book));
+                    GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
+                }
             }
             OnPropertyChanged(nameof(AllBooks));
         }
 
         private async Task GetAllRatings()
         {
-            var result = await Model.GetBooksFromCollection(0, 20);
+            var result = await Model.GetBooksFromCollection(0, 1000);
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
             ratings.Clear();
@@ -621,7 +643,7 @@ namespace ViewModels
 
         private async Task GetToBeReadBooks()
         {
-            var result = await Model.GetBooksFromCollection(0, 20);
+            var result = await Model.GetBooksFromCollection(0, 1000);
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
             toBeReadBooks.Clear();
@@ -637,7 +659,7 @@ namespace ViewModels
 
         private async Task GetFavoriteBooks()
         {
-            var result = await Model.GetFavoritesBooks(Index, Count);
+            var result = await Model.GetFavoritesBooks(0, 1000);
             IEnumerable<Book> someBooks = result.books;
             books.Clear();
             favoriteBooks.Clear();
