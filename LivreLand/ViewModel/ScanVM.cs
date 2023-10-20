@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ViewModels;
+using ZXing;
 
 namespace LivreLand.ViewModel
 {
@@ -15,26 +16,40 @@ namespace LivreLand.ViewModel
     {
         #region Fields
 
+        private CameraView cameraView;
         private CameraInfo camera = null;
         private ObservableCollection<CameraInfo> cameras = new();
         private int camerasCount;
+        private Result[] result;
         private string barcodeText = "ISBN";
 
         #endregion
 
         #region Properties
 
+        public CameraView CameraView
+        {
+            get => cameraView;
+            set
+            {
+                if (cameraView != value)
+                {
+                    cameraView = value;
+                    OnPropertyChanged(nameof(CameraView));
+                }
+            }
+        }
+
         public CameraInfo Camera
         {
             get => camera;
             set
             {
-                camera = value;
-                OnPropertyChanged(nameof(Camera));
-                AutoStartPreview = false;
-                OnPropertyChanged(nameof(AutoStartPreview));
-                AutoStartPreview = true;
-                OnPropertyChanged(nameof(AutoStartPreview));
+                if (camera != value)
+                {
+                    camera = value;
+                    OnPropertyChanged(nameof(Camera));
+                }
             }
         }
 
@@ -63,6 +78,19 @@ namespace LivreLand.ViewModel
             }
         }
 
+        public Result[] BarCodeResult
+        {
+            get => result;
+            set
+            {
+                if (result != value)
+                {
+                    result = value;
+                    OnPropertyChanged(nameof(BarCodeResult));
+                }
+            }
+        }
+
         public string BarcodeText
         {
             get => barcodeText;
@@ -84,11 +112,9 @@ namespace LivreLand.ViewModel
 
         public ManagerVM Manager { get; private set; }
 
-        public ICommand StartCameraCommand { get; private set; }
+        public ICommand CamerasLoadCommand { get; private set; }
 
         public ICommand BarcodeDetectCommand { get; private set; }
-
-        public ICommand StartRecordingCommand { get; private set; }
 
         #endregion
 
@@ -98,30 +124,33 @@ namespace LivreLand.ViewModel
         {
             Navigator = navigatorVM;
             Manager = managerVM;
-            StartCameraCommand = new RelayCommand(() => StartCamera());
+            CamerasLoadCommand = new RelayCommand(() => CamerasLoad());
             BarcodeDetectCommand = new RelayCommand(() => BarcodeDetect());
-            StartRecordingCommand = new RelayCommand(() => StartRecording());
         }
 
         #endregion
 
         #region Methods
 
-        private async Task StartCamera()
+        private async Task CamerasLoad()
         {
-            AutoStartPreview = true;
-            OnPropertyChanged(nameof(AutoStartPreview));
+            if (Cameras.Count > 0)
+            {
+                Camera = Cameras.First();
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await CameraView.StopCameraAsync();
+                    await CameraView.StartCameraAsync();
+                });
+            }
         }
 
         private async Task BarcodeDetect()
         {
-
-        }
-
-        private async Task StartRecording()
-        {
-            AutoStartRecording = true;
-            OnPropertyChanged(nameof(AutoStartRecording));
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                BarcodeText = BarCodeResult[0].Text;
+            });
         }
 
         #endregion

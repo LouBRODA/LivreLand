@@ -16,6 +16,7 @@ public partial class ScanView : ContentPage
 	{
         ScanVM = scanVM;
 		InitializeComponent();
+        ScanVM.CameraView = cameraView;
         BindingContext = this;
 	}
 
