@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using Camera.MAUI;
+using CommunityToolkit.Maui;
 using LivreLand.View;
 using LivreLand.View.ContentViews;
 using LivreLand.ViewModel;
@@ -17,6 +18,7 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
+			.UseMauiCameraView()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("SF-Compact-Display-Black.otf", "SFCompactDisplayBlack");
@@ -35,6 +37,7 @@ public static class MauiProgram
 			.AddSingleton<FavorisView>()
 			.AddSingleton<ContactsView>()
 			.AddSingleton<PopupISBNView>()
+			.AddSingleton<ScanView>()
 
             .AddSingleton<NavigatorVM>()
 
@@ -54,7 +57,8 @@ public static class MauiProgram
 			.AddSingleton<EmpruntsPretsVM>()
 			.AddSingleton<FavorisVM>()
 			.AddSingleton<ContactsVM>()
-			.AddSingleton<PopupISBNVM>();
+			.AddSingleton<PopupISBNVM>()
+			.AddSingleton<ScanVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();

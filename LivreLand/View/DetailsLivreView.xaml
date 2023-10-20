@@ -351,7 +351,8 @@
                         HorizontalOptions="Center"
                         VerticalOptions="Center">
                     <Picker.Behaviors>
-                        <toolkit:EventToCommandBehavior Command="{Binding DetailsLivreVM.Manager.UpdateStatusBookCommand}"
+                        <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                                        Command="{Binding DetailsLivreVM.Manager.UpdateStatusBookCommand}"
                                                         CommandParameter="{Binding DetailsLivreVM.Book}"/>
                     </Picker.Behaviors>
                 </Picker>

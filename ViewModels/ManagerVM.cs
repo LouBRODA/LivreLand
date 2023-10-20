@@ -485,6 +485,9 @@ namespace ViewModels
             var book = await Model.GetBookById(bookVM.Id);
             book.Status = SelectedStatus;
             await Model.UpdateBook(book);
+            var updatedBook = new BookVM(book);
+            bookVM = updatedBook;
+            OnPropertyChanged(nameof(bookVM));
         }
 
         private async Task UpdateToBeReadBook(BookVM bookVM)
