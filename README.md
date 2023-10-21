@@ -24,6 +24,10 @@ Disponible sur :
   
 > **Warning**: L'application est fonctionnelle sous Windows et Android mais n'a pas été testée sous IOS.   
 
+- Dans la branche **Master**, vous retrouverez l'intégralité de l'application avec les fonctionnalités du `TP2` ainsi que le scan de code-barres.  
+
+- Dans la branche **TP3**, vous retrouverez l'implémentation du `MVVM Community Toolkit` dans notre application.  
+
 *******
 
 <div id='progression'/>
