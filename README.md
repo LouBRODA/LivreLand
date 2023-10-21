@@ -129,7 +129,7 @@ Retrouver tous vos livres préférés en un clic.
     * l'ajout en favoris fonctionne, cependant lorque je choisis à partir de la page BooksPage d'ajouter un livre qui ne se trouve pas sur la première page alors celui-ci supprime tous les livres déjà en favoris
 - [x] Filtrer les livres par Auteur, Date de publication, Note 
     * le filtrage fonctionne, au deuxième clique sur une date par exemple une fois une première date visitée, je remarque des soucis avec de temps à autre une exception
-- [ ] Ajouter un livre à sa collection en saisissant l'ISBN
+- [x] Ajouter un livre à sa collection en saisissant l'ISBN
     * le livre est ajouté mais ne s'affiche pas encore directement dans la liste
 - [x] Supprimer un livre  
 - [x] Prêter un livre (et ajouter un contact si besoin)  
