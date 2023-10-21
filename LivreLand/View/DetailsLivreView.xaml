@@ -300,7 +300,21 @@
                     <contentView:SeparatorCutStartView/>
 
                 </VerticalStackLayout>
-                
+
+
+                <Picker ItemsSource="{Binding DetailsLivreVM.Manager.AllStatus}"
+                        SelectedItem="{Binding DetailsLivreVM.Manager.SelectedStatus}"
+                        IsVisible="{Binding DetailsLivreVM.IsPickerVisible}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="1">
+                    <Picker.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                                        Command="{Binding DetailsLivreVM.Manager.UpdateStatusBookCommand}"
+                                                        CommandParameter="{Binding DetailsLivreVM.Book}"/>
+                    </Picker.Behaviors>
+                </Picker>
+
                 <!--Buttons-->
                 <VerticalStackLayout Grid.Row="2">
 
@@ -343,19 +357,6 @@
                                                         ButtonCommandParameter="{Binding DetailsLivreVM.Book}"/>
 
                 </VerticalStackLayout>
-
-                <Picker ItemsSource="{Binding DetailsLivreVM.Manager.AllStatus}"
-                        SelectedItem="{Binding DetailsLivreVM.Manager.SelectedStatus}"
-                        IsVisible="{Binding DetailsLivreVM.IsPickerVisible}"
-                        Grid.RowSpan="3"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center">
-                    <Picker.Behaviors>
-                        <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
-                                                        Command="{Binding DetailsLivreVM.Manager.UpdateStatusBookCommand}"
-                                                        CommandParameter="{Binding DetailsLivreVM.Book}"/>
-                    </Picker.Behaviors>
-                </Picker>
 
             </Grid>
         </ScrollView>

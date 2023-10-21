@@ -136,7 +136,7 @@ namespace LivreLand.ViewModel
 
         private void OnSelectionLoanChanged(LoanVM loanVM)
         {
-            if (loanVM == null)
+            if (loanVM != null)
             {
                 foreach (var b in Manager.AllCurrentLoans)
                 {
