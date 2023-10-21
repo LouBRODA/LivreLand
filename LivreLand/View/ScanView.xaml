@@ -40,10 +40,25 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <Label Text="Annuler"
-                   TextColor="{StaticResource Blue100Accent}"
-                   Grid.Column="0"/>
+            <Grid Grid.Column="0">
+                <Label Text="Annuler"
+                       TextColor="{StaticResource Blue100Accent}"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ScanVM.Navigator.PopupBackButtonNavigationCommand}"/>
+                </Grid.GestureRecognizers>
+            </Grid>
+            
 
+            <Grid IsVisible="{Binding ScanVM.AddIsVisible}"
+                  Grid.Column="2">
+                <Label Text="Ajouter le livre !"
+                       TextColor="{StaticResource Blue100Accent}"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ScanVM.AddBookISBNDetectedCommand}"
+                                          CommandParameter="{Binding ScanVM.BarcodeText}"/>
+                </Grid.GestureRecognizers>
+            </Grid>
+                
             <Label Text="{Binding ScanVM.BarcodeText}"
                    TextColor="{StaticResource Blue100Accent}"
                    Grid.Column="4"/>

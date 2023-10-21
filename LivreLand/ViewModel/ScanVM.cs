@@ -1,4 +1,5 @@
 ﻿using Camera.MAUI;
+using CommunityToolkit.Maui.Alerts;
 using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,9 @@ namespace LivreLand.ViewModel
         private CameraView cameraView;
         private CameraInfo camera = null;
         private ObservableCollection<CameraInfo> cameras = new();
-        private int camerasCount;
         private Result[] result;
         private string barcodeText = "ISBN";
+        private bool addIsVisible = false;
 
         #endregion
 
@@ -68,7 +69,7 @@ namespace LivreLand.ViewModel
 
         public int CamerasCount
         {
-            get => camerasCount = Cameras.Count();
+            get => Cameras.Count();
             set
             {
                 if (value > 0)
@@ -104,9 +105,18 @@ namespace LivreLand.ViewModel
             }
         }
 
-        public bool AutoStartPreview { get; set; } = false;
-        
-        public bool AutoStartRecording { get; set; } = false;
+        public bool AddIsVisible
+        {
+            get => addIsVisible;
+            set
+            {
+                if (addIsVisible != value)
+                {
+                    addIsVisible = value;
+                    OnPropertyChanged(nameof(AddIsVisible));
+                }
+            }
+        }
 
         public NavigatorVM Navigator { get; private set; }
 
@@ -115,6 +125,8 @@ namespace LivreLand.ViewModel
         public ICommand CamerasLoadCommand { get; private set; }
 
         public ICommand BarcodeDetectCommand { get; private set; }
+
+        public ICommand AddBookISBNDetectedCommand { get; private set; }
 
         #endregion
 
@@ -126,6 +138,7 @@ namespace LivreLand.ViewModel
             Manager = managerVM;
             CamerasLoadCommand = new RelayCommand(() => CamerasLoad());
             BarcodeDetectCommand = new RelayCommand(() => BarcodeDetect());
+            AddBookISBNDetectedCommand = new RelayCommand<string>((isbn) => AddBookISBNDetected(isbn));
         }
 
         #endregion
@@ -146,11 +159,23 @@ namespace LivreLand.ViewModel
         }
 
         private async Task BarcodeDetect()
-        {
+        { 
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 BarcodeText = BarCodeResult[0].Text;
+                AddIsVisible = true;
             });
+        }
+
+        private async Task AddBookISBNDetected(string isbn)
+        {
+            Manager.AddBookCommand.Execute(isbn);
+
+            var toast = Toast.Make("Livre ajouté !", CommunityToolkit.Maui.Core.ToastDuration.Short);
+            await toast.Show();
+
+            Manager.GetBooksFromCollectionCommand.Execute(null);
+            Navigator.NavigationCommand.Execute("/tous");
         }
 
         #endregion

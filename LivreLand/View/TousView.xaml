@@ -155,7 +155,11 @@
                     <ImageButton Source="chevron_right.png"
                                  Rotation="180"
                                  Command="{Binding TousVM.Manager.PreviousCommand}"
-                                 Grid.Column="1"/>
+                                 Grid.Column="1">
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        </ImageButton.Behaviors>
+                    </ImageButton>
                     <Label Style="{StaticResource MasterTitleBookText}"
                            VerticalOptions="FillAndExpand"
                            Grid.Column="3">
@@ -169,7 +173,11 @@
                     </Label>
                     <ImageButton Source="chevron_right.png"
                                  Command="{Binding TousVM.Manager.NextCommand}"
-                                 Grid.Column="5"/>
+                                 Grid.Column="5">
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                        </ImageButton.Behaviors>
+                    </ImageButton>
                 </Grid>
             </Grid>
         </ScrollView>

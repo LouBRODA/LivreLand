@@ -16,7 +16,7 @@ public partial class ScanView : ContentPage
 	{
         ScanVM = scanVM;
 		InitializeComponent();
-        ScanVM.CameraView = cameraView;
+        ScanVM.CameraView = cameraView; //ToRemove
         BindingContext = this;
 	}
 
