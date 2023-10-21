@@ -472,6 +472,7 @@ namespace ViewModels
             {
                 await Model.AddBookToCollection(result.Id);
             }
+            GetBooksFromCollectionCommand.Execute(null);
         }
 
         private async Task UpdateBook(BookVM bookVM)

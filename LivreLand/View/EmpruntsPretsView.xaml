@@ -36,7 +36,7 @@
                                 SelectedItem="{Binding EmpruntsPretsVM.Manager.SelectedLoan}"
                                 SelectionMode="Single"
                                 SelectionChangedCommand="{Binding EmpruntsPretsVM.OnSelectionLoanChangedCommand}"
-                                SelectionChangedCommandParameter="{Binding EmpruntsPretsVM.Manager.SelectedBook}"
+                                SelectionChangedCommandParameter="{Binding EmpruntsPretsVM.Manager.SelectedLoan}"
                                 IsVisible="{Binding EmpruntsPretsVM.PretCollectionIsVisible}"
                                 IsGrouped="True">
                     <CollectionView.GroupHeaderTemplate>
