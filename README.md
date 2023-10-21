@@ -136,11 +136,10 @@ Retrouver tous vos livres préférés en un clic.
 - [x] Changer le statut de lecture d'un livre
     * la mise à jour du statut de livre se fait si l'on recharge les livres en revenant sur la BooksPage, cependant elle ne se fait pas encore directement sur la page de détails pour le moment
 - [x] Ajouter un livre aux favoris  
-    * l'ajout en favoris fonctionne, cependant lorque je choisis à partir de la page BooksPage d'ajouter un livre qui ne se trouve pas sur la première page alors celui-ci supprime tous les livres déjà en favoris
+    * l'ajout en favoris fonctionne, cependant lorque je choisis à partir de la page BooksPage d'ajouter un livre qui ne se trouve pas sur la première page alors celui-ci supprime souvent tous les livres déjà en favoris
 - [x] Filtrer les livres par Auteur, Date de publication, Note 
     * le filtrage fonctionne, au deuxième clique sur une date par exemple une fois une première date visitée, je remarque des soucis avec de temps à autre une exception
 - [x] Ajouter un livre à sa collection en saisissant l'ISBN
-    * le livre est ajouté mais ne s'affiche pas encore directement dans la liste
 - [x] Supprimer un livre  
 - [x] Prêter un livre (et ajouter un contact si besoin)  
     * la page avec les contacts n'est pas esthétiquement très réussie
