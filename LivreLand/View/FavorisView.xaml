@@ -42,8 +42,10 @@
                            Grid.Column="1"/>
                 </Grid>
                 <CollectionView ItemsSource="{Binding FavorisVM.Manager.AllFavoriteBooks}"
-                                SelectionMode="Single"
-                                SelectionChanged="OnSelectionChanged"
+                                SelectedItem="{Binding FavorisVM.Manager.SelectedBook}"
+                                SelectionMode="Single"  
+                                SelectionChangedCommand="{Binding FavorisVM.OnSelectionChangedCommand}"
+                                SelectionChangedCommandParameter="{Binding FavorisVM.Manager.SelectedBook}"
                                 Grid.Row="2">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewModel:BookVM">
