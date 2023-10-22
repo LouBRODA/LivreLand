@@ -137,8 +137,7 @@ Retrouver tous vos livres préférés en un clic.
 - [x] Filtrage par auteur et par date de publication : afficher dans la vue de filtrage (FilterPage)  
   
 **TP2 - Ajouts** :  
-- [x] Changer le statut de lecture d'un livre
-    * la mise à jour du statut de livre se fait si l'on recharge les livres en revenant sur la BooksPage, cependant elle ne se fait pas encore directement sur la page de détails pour le moment
+- [x] Changer le statut de lecture d'un livre  
 - [x] Ajouter un livre aux favoris  
     * l'ajout en favoris fonctionne, cependant lorque je choisis à partir de la page BooksPage d'ajouter un livre qui ne se trouve pas sur la première page alors celui-ci supprime souvent tous les livres déjà en favoris
 - [x] Filtrer les livres par Auteur, Date de publication, Note 
@@ -151,7 +150,8 @@ Retrouver tous vos livres préférés en un clic.
     * j'ai fait le choix de n'afficher que les livres _actuellement_ prêtés ou empruntés
   
 **TP3** :
-- [ ] Modifier l'intégralité du code pour que l'application utilise désormais le MVVM Community Toolkit à la place du toolkit personnel
+- [X] Modifier l'intégralité du code pour que l'application utilise désormais le MVVM Community Toolkit à la place du toolkit personnel
+    * lecture de la documentation et début de l'implémentation effectuée  
   
 **TP 4** :  
 Ajouter les vues et les VM nécessaires pour permettre :  
