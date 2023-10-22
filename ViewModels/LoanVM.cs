@@ -8,29 +8,43 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    [ObservableObject]
-    public partial class LoanVM
+    public class LoanVM : ObservableObject
     {
         #region Fields
-
-        [ObservableProperty]
-        private string id;
-
-        [ObservableProperty]
-        private BookVM book;
-
-        [ObservableProperty]
-        private ContactVM loaner;
-
-        [ObservableProperty]
-        private DateTime loanedAt;
-
-        [ObservableProperty]
-        private DateTime? returnedAt;
 
         #endregion
 
         #region Properties
+
+        public Loan Model { get; }
+
+        public string Id
+        {
+            get => Model.Id;
+            set => SetProperty(Model.Id, value, v => Model.Id = value);
+        }
+
+        public BookVM Book
+        {
+            get => new BookVM(Model.Book);
+        }
+
+        public ContactVM Loaner
+        {
+            get => new ContactVM(Model.Loaner);
+        }
+
+        public DateTime LoanedAt
+        {
+            get => Model.LoanedAt;
+            set => SetProperty(Model.LoanedAt, value, v => Model.LoanedAt = value);
+        }
+
+        public DateTime? ReturnedAt
+        {
+            get => Model.ReturnedAt;
+            set => SetProperty(Model.ReturnedAt, value, v => Model.ReturnedAt = value);
+        }
 
         #endregion
 
@@ -38,7 +52,7 @@ namespace ViewModels
 
         public LoanVM(Loan l)
         {
-
+            Model = l;
         }
 
         #endregion

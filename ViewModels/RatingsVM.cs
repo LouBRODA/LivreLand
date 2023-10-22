@@ -8,23 +8,28 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    [ObservableObject]
-    public partial class RatingsVM
+    public partial class RatingsVM : ObservableObject
     {
         #region Fields
 
-        [ObservableProperty]
-        private int nbBooksWritten;
-
-        [ObservableProperty]
-        private float? average;
-
-        [ObservableProperty]
-        private int count;
+        private int nbBooksWritten { get; set; }
 
         #endregion
 
         #region Properties
+
+        public float? Average { get; set; }
+
+        public int Count { get; set; }
+
+        public int NbBooksWritten
+        {
+            get => nbBooksWritten;
+            set
+            {
+                nbBooksWritten = value;
+            }
+        }
 
         #endregion
 

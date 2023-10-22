@@ -8,51 +8,79 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    [ObservableObject]
-    public partial class BookVM
+    public class BookVM : ObservableObject
     {
 
         #region Fields
 
-        [ObservableProperty]
-        private string id;
-
-        [ObservableProperty]
-        private string isbn13;
-
-        [ObservableProperty]
-        private string title;
-
-        [ObservableProperty]
-        private List<string> publishers;
-
-        [ObservableProperty]
-        private DateTime publishDate;
-
-        [ObservableProperty]
-        private List<AuthorVM> authors;
-
-        [ObservableProperty]
-        private string author;
-
-        [ObservableProperty]
-        private Status status;
-
-        [ObservableProperty]
-        private int nbPages;
-
-        [ObservableProperty]
-        private Languages language;
-
-        [ObservableProperty]
-        private string imageSmall;
-
-        [ObservableProperty]
-        private float? userRating;
-
         #endregion
 
         #region Properties
+
+        public Book Model { get; }
+
+        public string Id
+        {
+            get => Model.Id;
+        }
+
+        public string ISBN13
+        {
+            get => Model.ISBN13;
+        }
+
+        public string Title
+        {
+            get => Model.Title;
+        }
+
+        public List<string> Publishers
+        {
+            get => Model.Publishers;
+        }
+
+        public DateTime PublishDate
+        {
+            get => Model.PublishDate;
+        }
+
+        public List<AuthorVM> Authors
+        {
+            get => Model.Authors.Select(a => new AuthorVM(a)).ToList();
+        }
+
+        public string Author => Model.Authors.Count > 0 ? Model.Authors.First().Name : "Auteur inconnu";
+
+        public Status Status
+        {
+            get => Model.Status;
+            set => SetProperty(Model.Status, value, status => Model.Status = status);
+        }
+
+        public int NbPages
+        {
+            get => Model.NbPages;
+        }
+
+        public Languages Language
+        {
+            get => Model.Language;
+        }
+
+        public string ImageSmall
+        {
+            get => Model.ImageSmall;
+        }
+
+        public float? UserRating
+        {
+            get => Model?.UserRating;
+            set
+            {
+                if (Model == null) return;
+                SetProperty(Model.UserRating, value, rating => Model.UserRating = rating);
+            }
+        }
 
         #endregion
 
@@ -60,7 +88,7 @@ namespace ViewModels
 
         public BookVM(Book b)
         {
-            
+            Model = b;
         }
 
         #endregion

@@ -8,21 +8,36 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    [ObservableObject]
-    public partial class AuthorVM
+    public class AuthorVM : ObservableObject
     {
 
         #region Fields
 
-        [ObservableProperty]
-        private int nbBooksWritten;
-
-        [ObservableProperty]
-        private string name;
+        private int nbBooksWritten { get; set; }
 
         #endregion
 
         #region Properties
+
+        public Author Model { get; }
+
+        public string Name
+        {
+            get => Model.Name;
+            set
+            {
+                Model.Name = value;
+            }
+        }
+
+        public int NbBooksWritten
+        {
+            get => nbBooksWritten;
+            set
+            {
+                nbBooksWritten = value;
+            }
+        }
 
         #endregion
 
@@ -30,7 +45,7 @@ namespace ViewModels
 
         public AuthorVM(Author model)
         {
-
+            Model = model;
         }
 
         #endregion

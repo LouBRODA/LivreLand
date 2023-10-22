@@ -8,23 +8,33 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    [ObservableObject]
-    public partial class ContactVM
+    public class ContactVM : ObservableObject
     {
         #region Fields
-
-        [ObservableProperty]
-        private string id;
-
-        [ObservableProperty]
-        private string firstName;
-
-        [ObservableProperty]
-        private string lastName;
 
         #endregion
 
         #region Properties
+
+        public Model.Contact Model { get; }
+
+        public string Id
+        {
+            get => Model.Id;
+            set => SetProperty(Model.Id, value, v => Model.Id = value);
+        }
+
+        public string FirstName
+        {
+            get => Model.FirstName;
+            set => SetProperty(Model.FirstName, value, v => Model.FirstName = value);
+        }
+
+        public string LastName
+        {
+            get => Model.LastName;
+            set => SetProperty(Model.LastName, value, v => Model.LastName = value);
+        }
 
         #endregion
 
@@ -32,7 +42,7 @@ namespace ViewModels
 
         public ContactVM(Model.Contact c)
         {
-
+            Model = c;
         }
 
         #endregion
