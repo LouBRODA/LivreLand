@@ -39,7 +39,7 @@
                 <CollectionView ItemsSource="{Binding TousVM.Manager.GroupedBooks}"
                                 SelectedItem="{Binding TousVM.Manager.SelectedBook}"
                                 SelectionMode="Single"
-                                SelectionChangedCommand="{Binding TousVM.OnSelectionChangedCommand}"
+                                SelectionChangedCommand="{Binding TousVM.SelectionChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding TousVM.Manager.SelectedBook}"
                                 IsGrouped="True"
                                 Grid.Row="2">

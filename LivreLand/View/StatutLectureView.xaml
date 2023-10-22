@@ -29,7 +29,7 @@
                 <CollectionView ItemsSource="{Binding StatutLectureVM.Manager.GroupedStatusBooks}"
                                 SelectedItem="{Binding StatutLectureVM.Manager.SelectedBook}"
                                 SelectionMode="Single"
-                                SelectionChangedCommand="{Binding StatutLectureVM.OnSelectionChangedCommand}"
+                                SelectionChangedCommand="{Binding StatutLectureVM.SelectionChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding StatutLectureVM.Manager.SelectedBook}"
                                 IsGrouped="True"
                                 Grid.Row="2">

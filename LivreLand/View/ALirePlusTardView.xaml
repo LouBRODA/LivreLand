@@ -44,7 +44,7 @@
                 <CollectionView ItemsSource="{Binding ALirePlusTardVM.Manager.ToBeReadBooks}"
                                 SelectedItem="{Binding ALirePlusTardVM.Manager.SelectedBook}"
                                 SelectionMode="Single"
-                                SelectionChangedCommand="{Binding ALirePlusTardVM.OnSelectionChangedCommand}"
+                                SelectionChangedCommand="{Binding ALirePlusTardVM.SelectionChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding ALirePlusTardVM.Manager.SelectedBook}"
                                 Grid.Row="2">
                     <CollectionView.ItemTemplate>

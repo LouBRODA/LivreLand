@@ -35,7 +35,7 @@
                 <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.CurrentGroupedLoans}"
                                 SelectedItem="{Binding EmpruntsPretsVM.Manager.SelectedLoan}"
                                 SelectionMode="Single"
-                                SelectionChangedCommand="{Binding EmpruntsPretsVM.OnSelectionLoanChangedCommand}"
+                                SelectionChangedCommand="{Binding EmpruntsPretsVM.SelectionLoanChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding EmpruntsPretsVM.Manager.SelectedLoan}"
                                 IsVisible="{Binding EmpruntsPretsVM.PretCollectionIsVisible}"
                                 IsGrouped="True">
@@ -136,7 +136,7 @@
                 <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.CurrentGroupedBorrowings}"
                                 SelectedItem="{Binding EmpruntsPretsVM.Manager.SelectedBorrowing}"
                                 SelectionMode="Single"
-                                SelectionChangedCommand="{Binding EmpruntsPretsVM.OnSelectionBorrowingChangedCommand}"
+                                SelectionChangedCommand="{Binding EmpruntsPretsVM.SelectionBorrowingChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding EmpruntsPretsVM.Manager.SelectedBorrowing}"
                                 IsVisible="{Binding EmpruntsPretsVM.EmpruntCollectionIsVisible}"
                                 IsGrouped="True">
