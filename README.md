@@ -88,7 +88,7 @@ BaseViewModel --|> ObservableObject
 RelayCommand ..|> ICommand
 ```
   
-Cette strcuture est une version remplaçant pour le moment le `Community Toolkit` mis en place par Microsoft qui permet aussi de supprimer beaucoup de code inutile en remplaçant celui-ci par des annotations et des classes partielles.  
+Cette structure est une version remplaçant pour le moment le `Community Toolkit` mis en place par Microsoft qui permet aussi de supprimer beaucoup de code inutile en remplaçant celui-ci par des annotations et des classes partielles.  
 
 ---
 
@@ -114,6 +114,86 @@ Le schéma suivant montre bien les relations entre les grandes parties du `patro
 ![Schema_MVVM](documentation/schema_mvvm.png)
  
 Le **diagramme de classes** pouvant être extrèmement grand à cause des multiples classes au sein de notre projet, j'ai décidé de représenter une partie de celui-ci qui pourrait se répéter pour toutes les autres parties. L'objectif principal étant de comprendre comment fonctionne le **modèle MVVM** et comment les classes intéragissent entre elles, j'ai choisi de faire mon exemple avec la partie des livres qui est la plus générale du sujet.  
+
+```mermaid
+classDiagram
+    class Book {
+        Id: string
+        Title: string
+        Publishers: List<string>
+        PublishDate: DateTime
+        ISBN13: string
+        Series: List<string>
+        NbPages: int
+        Format: string
+        Language: Languages
+        Contributors: List<Contributor>
+        ImageSmall: string
+        ImageMedium: string
+        ImageLarge: string
+        Works: List<Work>
+        Authors: List<Author>
+        Status: Status
+        UserTags: List<string>
+        UserRating: float?
+        UserNote: string
+        Equals(other: Book): bool
+        GetHashCode(): int
+    }
+
+    class DetailsLivreView {
+        DetailsLivreVM: DetailsLivreVM
+    }
+
+    class DetailsLivreVM {
+        isPickerVisible: bool
+        addFavorisButtonText: string
+        Manager: ManagerVM
+        Navigator: NavigatorVM
+        Book: BookVM
+        IsPickerVisible: bool
+        AddFavorisButtonText: string
+        BackButtonCommand: ICommand
+        ShowPickerCommand: ICommand
+        AddRemoveBookToFavoritesCommand: ICommand
+        AddBookToReadListCommand: ICommand
+        LoanBookCommand: ICommand
+        RemoveBookCommand: ICommand
+        OpenInfoCommand: ICommand
+        BackButton()
+        ShowPicker()
+        AddRemoveBookToFavorites(bookVM: BookVM)
+        AddBookToReadList(bookVM: BookVM)
+        LoanBook(bookVM: BookVM)
+        RemoveBook(bookVM: BookVM)
+        OpenInfo()
+    }
+
+    class BookVM {
+        Id: string
+        ISBN13: string
+        Title: string
+        Publishers: List<string>
+        PublishDate: DateTime
+        Works: List<WorkVM>
+        WorkDescription: string
+        Authors: List<AuthorVM>
+        Author: string
+        Status: Status
+        NbPages: int
+        Language: Languages
+        ImageSmall: string
+        UserRating: float?
+    }
+
+    DetailsLivreView --> DetailsLivreVM
+    DetailsLivreVM --> BookVM
+    DetailsLivreVM --> ManagerVM
+    DetailsLivreVM --> NavigatorVM
+    BookVM --> Book
+    BookVM --> WorkVM
+    BookVM --> AuthorVM
+```
 
 *******
 
