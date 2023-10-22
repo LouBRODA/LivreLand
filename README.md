@@ -139,7 +139,6 @@ Retrouver tous vos livres préférés en un clic.
 **TP2 - Ajouts** :  
 - [x] Changer le statut de lecture d'un livre  
 - [x] Ajouter un livre aux favoris  
-    * l'ajout en favoris fonctionne, cependant lorque je choisis à partir de la page BooksPage d'ajouter un livre qui ne se trouve pas sur la première page alors celui-ci supprime souvent tous les livres déjà en favoris
 - [x] Filtrer les livres par Auteur, Date de publication, Note 
     * le filtrage fonctionne, au deuxième clique sur une date par exemple une fois une première date visitée, je remarque des soucis avec de temps à autre une exception
 - [x] Ajouter un livre à sa collection en saisissant l'ISBN
@@ -147,7 +146,11 @@ Retrouver tous vos livres préférés en un clic.
 - [x] Prêter un livre (et ajouter un contact si besoin)  
     * la page avec les contacts n'est pas esthétiquement très réussie
 - [x] Consulter la liste des livres prêtés
-    * j'ai fait le choix de n'afficher que les livres _actuellement_ prêtés ou empruntés
+    * j'ai fait le choix de n'afficher que les livres _actuellement_ prêtés ou empruntés  
+  
+_Erreurs rencontrées_ :
+* L'ajout en favoris fonctionne, cependant il m'ait arrivé lorque je choisissais à partir de la page BooksPage d'ajouter un livre qui ne se trouve pas sur la première page, que celui-ci supprime souvent tous les livres déjà en favoris.  
+* J'ai également eu à certains moments des problèmes avec l'accession à la page de détails et une double page qui s'ouvrait; dans ce cas je relance généralement l'application.  
   
 **TP3** :
 - [X] Modifier l'intégralité du code pour que l'application utilise désormais le MVVM Community Toolkit à la place du toolkit personnel
@@ -157,7 +160,8 @@ Retrouver tous vos livres préférés en un clic.
 Ajouter les vues et les VM nécessaires pour permettre :  
 - [x] Le scan de code-barres afin d'ajouter de nouveaux livres  
     * le scan de code-barres fonctionne mais le livre n'est pas encore directement ajouté dans la liste
-- [ ] La recherche en ligne (via le web service)  
+- [X] La recherche en ligne (via le web service)
+    * il est possible d'accéder à la page d'un livre en ligne en cliquant dans la partie "Infos en ligne" de la page Détails
 
 *******
 
