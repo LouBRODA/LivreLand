@@ -234,7 +234,7 @@ _Erreurs rencontrées_ :
   
 **TP3** :
 - [X] Modifier l'intégralité du code pour que l'application utilise désormais le MVVM Community Toolkit à la place du toolkit personnel
-    * lecture de la documentation et début de l'implémentation effectuée  
+    * lecture de la documentation et implémentation dans la branche `TP3` (à affiner pour respecter parfaitement le Toolkit)  
   
 **TP 4** :  
 Ajouter les vues et les VM nécessaires pour permettre :  
