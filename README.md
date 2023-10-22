@@ -213,7 +213,7 @@ Retrouver tous vos livres préférés en un clic.
 **TP2 - Base** : 
 - [x] Page d'accueil  
 - [x] Affichage des livres de l'utilisateur : afficher tous les livres de l'utilisateur dans la vue BooksPage et permettre la sélection d'un livre et la navigation vers la page BookPage  
-    * seule la note n'est pas encore affichée sous la forme d'étoiles
+    * seule la note n'est pas encore affichée sous la forme d'étoiles (commencée dans `star-notation-22-10`)
 - [x] Filtrage par auteur et par date de publication : afficher dans la vue de filtrage (FilterPage)  
   
 **TP2 - Ajouts** :  
