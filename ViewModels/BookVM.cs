@@ -52,6 +52,7 @@ namespace ViewModels
         public Status Status
         {
             get => Model.Status;
+            set => SetProperty(Model.Status, value, status => Model.Status = status);
         }
 
         public int NbPages
