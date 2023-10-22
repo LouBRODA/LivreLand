@@ -159,7 +159,7 @@ _Erreurs rencontrées_ :
 **TP 4** :  
 Ajouter les vues et les VM nécessaires pour permettre :  
 - [x] Le scan de code-barres afin d'ajouter de nouveaux livres  
-    * le scan de code-barres fonctionne mais le livre n'est pas encore directement ajouté dans la liste
+    * le scan de code-barres fonctionne mais le livre n'est pas encore directement ajouté dans la liste (affichage de l'isbn dans en bas de page & du bouton d'ajout du livre)
 - [X] La recherche en ligne (via le web service)
     * il est possible d'accéder à la page d'un livre en ligne en cliquant dans la partie "Infos en ligne" de la page Détails
 
