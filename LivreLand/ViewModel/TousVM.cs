@@ -41,6 +41,18 @@ namespace LivreLand.ViewModel
             {
                 var result = new DetailsLivreVM(Manager, Navigator, bookVM);
                 App.Current.MainPage.Navigation.PushAsync(new DetailsLivreView(result));
+
+                var bookRating = bookVM.UserRating;
+                StarNotationVM starNotationVM = new StarNotationVM(this.Manager);
+
+                for (int i = 1; i <= 5; i++)
+                {
+                    if (bookRating >= i)
+                    {
+                        var starProperty = typeof(StarNotationVM).GetProperty($"Star{i}IsVisible");
+                        starProperty?.SetValue(starNotationVM, true);
+                    }
+                }
             }
         }
 

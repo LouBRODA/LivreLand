@@ -8,6 +8,7 @@
              xmlns:model="clr-namespace:Model;assembly=Model"
              x:Class="LivreLand.View.DetailsLivreView"
              Title="DetailsLivreView">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

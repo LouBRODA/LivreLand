@@ -27,7 +27,7 @@ public static class MauiProgram
 
 		builder.Services
 			.AddSingleton<BibliothequeView>()
-			.AddSingleton<TousView>()
+            .AddSingleton<TousView>()
 			.AddSingleton<FiltrageAuteurView>()
 			.AddSingleton<FiltrageDateView>()
 			.AddSingleton<FiltrageNoteView>()
@@ -58,7 +58,8 @@ public static class MauiProgram
 			.AddSingleton<FavorisVM>()
 			.AddSingleton<ContactsVM>()
 			.AddSingleton<PopupISBNVM>()
-			.AddSingleton<ScanVM>();
+			.AddSingleton<ScanVM>()
+			.AddSingleton<StarNotationVM>();
 
 #if DEBUG
         builder.Logging.AddDebug();
