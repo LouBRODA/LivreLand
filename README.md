@@ -28,7 +28,9 @@ Ici encore, il existe d'autres annotations pour gérer par exemple les exception
 ### Mise en place
 
 Je pense avoir plutôt bien compris le fonctionnement de ce Toolkit malgré le peu de temps en ma possession ayant fait le TP4 avant celui-ci. 
-Je n'ai fait face qu'à un seul problème que je n'ai pas encore réussit à régler et qui m'empêche d'utiliser l'application de la même façon que je pouvais l'utiliser avec mon toolkit personnel. Ce soucis est lié aux commandes qui malgré l'implémentation que je juge correcte ne fonctionnent pour l'instant pas...  
+Je ne suis pas sûr d'avoir pu exploiter toutes les capacités du toolkit mais j'ai abordé les principales ressources de l'outil. J'ai réussi à obtenir une version semblable à celle que j'ai sur ma branche master.
+
+> *Warning* : Les dernières fonctionnalités développées sur la branche master ne sont pas disponibles sur cette branche.
 
 *******
 
