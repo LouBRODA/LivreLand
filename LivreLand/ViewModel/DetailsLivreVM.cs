@@ -77,6 +77,8 @@ namespace LivreLand.ViewModel
 
         public ICommand RemoveBookCommand { get; private set; }
 
+        public ICommand OpenInfoCommand { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -92,6 +94,7 @@ namespace LivreLand.ViewModel
             AddBookToReadListCommand = new RelayCommand<BookVM>((bookVM) => AddBookToReadList(bookVM));
             LoanBookCommand = new RelayCommand<BookVM>((bookVM) => LoanBook(bookVM));
             RemoveBookCommand = new RelayCommand<BookVM>((bookVM) => RemoveBook(bookVM));
+            OpenInfoCommand = new RelayCommand(() => OpenInfo());
         }
 
         #endregion
@@ -165,6 +168,13 @@ namespace LivreLand.ViewModel
             await toast.Show();
 
             Navigator.PopupBackButtonNavigationCommand.Execute(null);
+        }
+
+        private async Task OpenInfo()
+        {
+            var isbn = Manager.SelectedBook.ISBN13;
+            string url = "https://openlibrary.org/isbn/" + isbn;
+            await Launcher.OpenAsync(url);
         }
 
         #endregion

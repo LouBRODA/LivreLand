@@ -42,6 +42,13 @@ namespace ViewModels
             get => Model.PublishDate;
         }
 
+        public List<WorkVM> Works
+        {
+            get => Model.Works.Select(w => new WorkVM(w)).ToList();
+        }
+
+        public string WorkDescription => Model.Works.Count > 0 ? Model.Works.First().Description : " ";
+
         public List<AuthorVM> Authors
         {
             get => Model.Authors.Select(a => new AuthorVM(a)).ToList();

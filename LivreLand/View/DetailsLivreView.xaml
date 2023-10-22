@@ -102,6 +102,9 @@
                                 <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
                             </Image.Behaviors>
                         </Image>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DetailsLivreVM.OpenInfoCommand}"/>
+                        </Grid.GestureRecognizers>
                     </Grid>
 
                     <contentView:SeparatorCutStartView/>
@@ -178,7 +181,7 @@
                         <Label Text="Résumé"
                                Style="{StaticResource DetailsLivreTitle}"
                                Grid.Row="0"/>
-                        <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas integer eget aliquet. Nunc sed id semper risus. Nisl purus in mollis nunc sed id semper risus. Egestas congue quisque egestas diam in arcu cursus euismod. Elementum integer enim neque volutpat ac tincidunt vitae. Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Sollicitudin tempor id eu nisl nunc. Eget mauris pharetra et ultrices neque. In vitae turpis massa sed elementum tempus. Posuere ac ut consequat semper viverra nam. Quisque non tellus orci ac auctor augue mauris augue. Cursus in hac habitasse platea dictumst. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Vel fringilla est ullamcorper eget nulla facilisi etiam."
+                        <Label Text="{Binding DetailsLivreVM.Book.WorkDescription}"
                                Style="{StaticResource DetailsLivreBody}"
                                Grid.Row="1"/>
                     </Grid>
