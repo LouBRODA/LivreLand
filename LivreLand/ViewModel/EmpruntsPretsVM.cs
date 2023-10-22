@@ -1,6 +1,7 @@
-﻿using LivreLand.View;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using LivreLand.View;
 using Model;
-using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,110 +12,38 @@ using ViewModels;
 
 namespace LivreLand.ViewModel
 {
-    public class EmpruntsPretsVM : BaseViewModel
+    [ObservableObject]
+    public partial class EmpruntsPretsVM
     {
         #region Fields
 
+        [ObservableProperty]
+        private NavigatorVM navigator;
+
+        [ObservableProperty]
+        private ManagerVM manager;
+
+        [ObservableProperty]
         private Color pretButtonBackgroundColor = Colors.White;
+
+        [ObservableProperty]
         private bool pretButtonIsEnabled = true;
+
+        [ObservableProperty]
         private Color empruntButtonBackgroundColor = Colors.Transparent;
+
+        [ObservableProperty]
         private bool empruntButtonIsEnabled = false;
+
+        [ObservableProperty]
         private bool pretCollectionIsVisible = true;
+
+        [ObservableProperty]
         private bool empruntCollectionIsVisible = false;
 
         #endregion
 
         #region Properties
-
-        public NavigatorVM Navigator { get; private set; }
-
-        public ManagerVM Manager { get; private set; }
-
-        public Color PretButtonBackgroundColor
-        {
-            get { return pretButtonBackgroundColor; }
-            set
-            {
-                if (pretButtonBackgroundColor != value)
-                {
-                    pretButtonBackgroundColor = value;
-                    OnPropertyChanged(nameof(PretButtonBackgroundColor));
-                }
-            }
-        }
-
-        public bool PretButtonIsEnabled
-        {
-            get { return pretButtonIsEnabled; }
-            set
-            {
-                if (pretButtonIsEnabled != value)
-                {
-                    pretButtonIsEnabled = value;
-                    OnPropertyChanged(nameof(PretButtonIsEnabled));
-                }
-            }
-        }
-
-        public Color EmpruntButtonBackgroundColor
-        {
-            get { return empruntButtonBackgroundColor; }
-            set
-            {
-                if (empruntButtonBackgroundColor != value)
-                {
-                    empruntButtonBackgroundColor = value;
-                    OnPropertyChanged(nameof(EmpruntButtonBackgroundColor));
-                }
-            }
-        }
-
-        public bool EmpruntButtonIsEnabled
-        {
-            get { return empruntButtonIsEnabled; }
-            set
-            {
-                if (empruntButtonIsEnabled != value)
-                {
-                    empruntButtonIsEnabled = value;
-                    OnPropertyChanged(nameof(EmpruntButtonIsEnabled));
-                }
-            }
-        }
-
-        public bool EmpruntCollectionIsVisible
-        {
-            get { return empruntCollectionIsVisible; }
-            set
-            {
-                if (empruntCollectionIsVisible != value)
-                {
-                    empruntCollectionIsVisible = value;
-                    OnPropertyChanged(nameof(EmpruntCollectionIsVisible));
-                }
-            }
-        }
-
-        public bool PretCollectionIsVisible
-        {
-            get { return pretCollectionIsVisible; }
-            set
-            {
-                if (pretCollectionIsVisible != value)
-                {
-                    pretCollectionIsVisible = value;
-                    OnPropertyChanged(nameof(PretCollectionIsVisible));
-                }
-            }
-        }
-
-        public ICommand OnSelectionLoanChangedCommand { get; private set; }
-
-        public ICommand OnSelectionBorrowingChangedCommand { get; private set; }
-
-        public ICommand PretsButtonCommand { get; private set; }
-
-        public ICommand EmpruntsButtonCommand { get; private set; }
 
         #endregion
 
@@ -124,21 +53,18 @@ namespace LivreLand.ViewModel
         {
             Navigator = navigatorVM;
             Manager = managerVM;
-            OnSelectionLoanChangedCommand = new RelayCommand<LoanVM>((loanVM) => OnSelectionLoanChanged(loanVM));
-            OnSelectionBorrowingChangedCommand = new RelayCommand<BorrowingVM>((borrowingVM) => OnSelectionBorrowingChanged(borrowingVM));
-            PretsButtonCommand = new RelayCommand(() => PretsButtonClicked());
-            EmpruntsButtonCommand = new RelayCommand(() => EmpruntsButtonClicked());
         }
 
         #endregion
 
         #region Methods
 
+        [RelayCommand]
         private void OnSelectionLoanChanged(LoanVM loanVM)
         {
             if (loanVM != null)
             {
-                foreach (var b in Manager.AllCurrentLoans)
+                foreach (var b in Manager.CurrentLoans)
                 {
                     if (b.Book.Id == loanVM.Book.Id)
                     {
@@ -150,11 +76,12 @@ namespace LivreLand.ViewModel
             }
         }
 
+        [RelayCommand]
         private void OnSelectionBorrowingChanged(BorrowingVM borrowingVM)
         {
             if (borrowingVM != null)
             {
-                foreach (var b in Manager.AllCurrentBorrowings)
+                foreach (var b in Manager.CurrentBorrowings)
                 {
                     if (b.Book.Id == borrowingVM.Book.Id)
                     {
@@ -166,6 +93,7 @@ namespace LivreLand.ViewModel
             }
         }
 
+        [RelayCommand]
         public void PretsButtonClicked()
         {
             if (App.Current.PlatformAppTheme == AppTheme.Light)
@@ -186,6 +114,7 @@ namespace LivreLand.ViewModel
             EmpruntCollectionIsVisible = true;
         }
 
+        [RelayCommand]
         public void EmpruntsButtonClicked()
         {
             if (App.Current.PlatformAppTheme == AppTheme.Light)

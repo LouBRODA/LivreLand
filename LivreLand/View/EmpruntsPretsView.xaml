@@ -32,7 +32,7 @@
                                              EmpruntsButtonCommand="{Binding EmpruntsPretsVM.EmpruntsButtonCommand}"/>
         <ScrollView Grid.Row="4">
             <Grid>
-                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.AllCurrentGroupedLoans}"
+                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.CurrentGroupedLoans}"
                                 SelectedItem="{Binding EmpruntsPretsVM.Manager.SelectedLoan}"
                                 SelectionMode="Single"
                                 SelectionChangedCommand="{Binding EmpruntsPretsVM.OnSelectionLoanChangedCommand}"
@@ -133,7 +133,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.AllCurrentGroupedBorrowings}"
+                <CollectionView ItemsSource="{Binding EmpruntsPretsVM.Manager.CurrentGroupedBorrowings}"
                                 SelectedItem="{Binding EmpruntsPretsVM.Manager.SelectedBorrowing}"
                                 SelectionMode="Single"
                                 SelectionChangedCommand="{Binding EmpruntsPretsVM.OnSelectionBorrowingChangedCommand}"

@@ -41,7 +41,7 @@
                            Style="{StaticResource HeaderCollectionViewText}"
                            Grid.Column="1"/>
                 </Grid>
-                <CollectionView ItemsSource="{Binding FavorisVM.Manager.AllFavoriteBooks}"
+                <CollectionView ItemsSource="{Binding FavorisVM.Manager.FavoriteBooks}"
                                 SelectionMode="Single"
                                 SelectionChanged="OnSelectionChanged"
                                 Grid.Row="2">

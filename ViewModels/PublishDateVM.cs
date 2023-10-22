@@ -1,4 +1,4 @@
-﻿using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    public class PublishDateVM : BaseViewModel
+    [ObservableObject]
+    public partial class PublishDateVM
     {
+        #region Fields
+
+        [ObservableProperty]
+        private DateTime publishDate;
+
+        [ObservableProperty]
+        private int nbBooksWritten;
+
+        #endregion
+
         #region Properties
-
-        public DateTime PublishDate { get; set; }
-
-        public int NbBooksWritten { get; set; }
 
         #endregion
 

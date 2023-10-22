@@ -1,5 +1,5 @@
-﻿using Model;
-using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +8,27 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    public class AuthorVM : BaseViewModel<Author>
+    [ObservableObject]
+    public partial class AuthorVM
     {
 
         #region Fields
 
-        private int nbBooksWritten {  get; set; }
+        [ObservableProperty]
+        private int nbBooksWritten;
+
+        [ObservableProperty]
+        private string name;
 
         #endregion
 
         #region Properties
 
-        public string Name
-        {
-            get => Model.Name;
-            set
-            {
-                Model.Name = value;
-            }
-        }
-
-        public int NbBooksWritten
-        {
-            get => nbBooksWritten;
-            set
-            {
-                nbBooksWritten = value;
-            }
-        }
-
         #endregion
 
         #region Constructor
 
-        public AuthorVM(Author model) : base(model)
+        public AuthorVM(Author model)
         {
 
         }

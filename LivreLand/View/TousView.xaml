@@ -165,7 +165,7 @@
                            Grid.Column="3">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding TousVM.Manager.Index}"/>
+                                <Span Text="{Binding TousVM.Manager.IndexPage}"/>
                                 <Span Text="/"/>
                                 <Span Text="{Binding TousVM.Manager.NbPages}"/>
                             </FormattedString>

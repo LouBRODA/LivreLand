@@ -1,6 +1,7 @@
 ﻿using Camera.MAUI;
 using CommunityToolkit.Maui.Alerts;
-using PersonalMVVMToolkit;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,59 +14,38 @@ using ZXing;
 
 namespace LivreLand.ViewModel
 {
-    public class ScanVM : BaseViewModel
+    [ObservableObject]
+    public partial class ScanVM
     {
         #region Fields
 
+        [ObservableProperty]
+        private NavigatorVM navigator;
+
+        [ObservableProperty]
+        private ManagerVM manager;
+
+        [ObservableProperty]
         private CameraView cameraView;
+
+        [ObservableProperty]
         private CameraInfo camera = null;
+
+        [ObservableProperty]
         private ObservableCollection<CameraInfo> cameras = new();
+
+        [ObservableProperty]
         private Result[] result;
+
+        [ObservableProperty]
         private string barcodeText = "ISBN";
+
+        [ObservableProperty]
         private bool addIsVisible = false;
 
         #endregion
 
         #region Properties
-
-        public CameraView CameraView
-        {
-            get => cameraView;
-            set
-            {
-                if (cameraView != value)
-                {
-                    cameraView = value;
-                    OnPropertyChanged(nameof(CameraView));
-                }
-            }
-        }
-
-        public CameraInfo Camera
-        {
-            get => camera;
-            set
-            {
-                if (camera != value)
-                {
-                    camera = value;
-                    OnPropertyChanged(nameof(Camera));
-                }
-            }
-        }
-
-        public ObservableCollection<CameraInfo> Cameras
-        {
-            get => cameras;
-            set
-            {
-                if (cameras != value)
-                {
-                    cameras = value;
-                    OnPropertyChanged(nameof(Cameras));
-                }
-            }
-        }
 
         public int CamerasCount
         {
@@ -92,42 +72,6 @@ namespace LivreLand.ViewModel
             }
         }
 
-        public string BarcodeText
-        {
-            get => barcodeText;
-            set
-            {
-                if (barcodeText != value)
-                {
-                    barcodeText = value;
-                    OnPropertyChanged(nameof(BarcodeText));
-                }
-            }
-        }
-
-        public bool AddIsVisible
-        {
-            get => addIsVisible;
-            set
-            {
-                if (addIsVisible != value)
-                {
-                    addIsVisible = value;
-                    OnPropertyChanged(nameof(AddIsVisible));
-                }
-            }
-        }
-
-        public NavigatorVM Navigator { get; private set; }
-
-        public ManagerVM Manager { get; private set; }
-
-        public ICommand CamerasLoadCommand { get; private set; }
-
-        public ICommand BarcodeDetectCommand { get; private set; }
-
-        public ICommand AddBookISBNDetectedCommand { get; private set; }
-
         #endregion
 
         #region Constructor
@@ -136,15 +80,13 @@ namespace LivreLand.ViewModel
         {
             Navigator = navigatorVM;
             Manager = managerVM;
-            CamerasLoadCommand = new RelayCommand(() => CamerasLoad());
-            BarcodeDetectCommand = new RelayCommand(() => BarcodeDetect());
-            AddBookISBNDetectedCommand = new RelayCommand<string>((isbn) => AddBookISBNDetected(isbn));
         }
 
         #endregion
 
         #region Methods
 
+        [RelayCommand]
         private async Task CamerasLoad()
         {
             if (Cameras.Count > 0)
@@ -158,6 +100,7 @@ namespace LivreLand.ViewModel
             }
         }
 
+        [RelayCommand]
         private async Task BarcodeDetect()
         { 
             MainThread.BeginInvokeOnMainThread(() =>
@@ -167,6 +110,7 @@ namespace LivreLand.ViewModel
             });
         }
 
+        [RelayCommand]
         private async Task AddBookISBNDetected(string isbn)
         {
             Manager.AddBookCommand.Execute(isbn);

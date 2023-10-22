@@ -1,4 +1,5 @@
-﻿using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,20 @@ using ViewModels;
 
 namespace LivreLand.ViewModel
 {
-    public class FiltrageDateVM : BaseViewModel
+    [ObservableObject]
+    public partial class FiltrageDateVM
     {
+        #region Fields
+
+        [ObservableProperty]
+        private NavigatorVM navigator;
+
+        [ObservableProperty]
+        private ManagerVM manager;
+
+        #endregion
+
         #region Properties
-
-        public NavigatorVM Navigator { get; private set; }
-
-        public ManagerVM Manager { get; private set; }
-
-        public ICommand NavigateDatePageCommand { get; private set; }
 
         #endregion
 
@@ -27,13 +33,13 @@ namespace LivreLand.ViewModel
         {
             Navigator = navigatorVM;
             Manager = managerVM;
-            NavigateDatePageCommand = new RelayCommand(() =>  NavigateDatePage());
         }
 
         #endregion
 
         #region Methods
 
+        [RelayCommand]
         private void NavigateDatePage()
         {
             Manager.GetBooksByDateCommand.Execute(null);

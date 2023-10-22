@@ -1,5 +1,5 @@
-﻿using Model;
-using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,28 +8,23 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    public class RatingsVM
+    [ObservableObject]
+    public partial class RatingsVM
     {
         #region Fields
 
-        private int nbBooksWritten { get; set; }
+        [ObservableProperty]
+        private int nbBooksWritten;
+
+        [ObservableProperty]
+        private float? average;
+
+        [ObservableProperty]
+        private int count;
 
         #endregion
 
         #region Properties
-
-        public float? Average { get; set; }
-
-        public int Count { get; set; }
-
-        public int NbBooksWritten
-        {
-            get => nbBooksWritten;
-            set
-            {
-                nbBooksWritten = value;
-            }
-        }
 
         #endregion
 

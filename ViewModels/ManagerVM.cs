@@ -1,5 +1,6 @@
-﻿using Model;
-using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Model;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -8,419 +9,128 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ViewModels
 {
-    public class ManagerVM : BaseViewModel<Manager>
+    [ObservableObject]
+    public partial class ManagerVM
     {
 
         #region Fields
 
-        private readonly ObservableCollection<BookVM> books = new ObservableCollection<BookVM>();
+        [ObservableProperty]
+        private Manager model;
+
+        [ObservableProperty]
+        private ObservableCollection<BookVM> books = new ObservableCollection<BookVM>();
+
+        [ObservableProperty]
         private IEnumerable<IGrouping<string, BookVM>> groupedBooks;
+
+        [ObservableProperty]
         private IEnumerable<IGrouping<Status, BookVM>> groupedStatusBooks;
 
-        private readonly ObservableCollection<AuthorVM> authors = new ObservableCollection<AuthorVM>();
-        private readonly ObservableCollection<PublishDateVM> publishDates = new ObservableCollection<PublishDateVM>();
-        private readonly ObservableCollection<RatingsVM> ratings = new ObservableCollection<RatingsVM>();
+        [ObservableProperty]
+        private ObservableCollection<AuthorVM> authors = new ObservableCollection<AuthorVM>();
 
-        private readonly ObservableCollection<BookVM> toBeReadBooks = new ObservableCollection<BookVM>();
-        private readonly ObservableCollection<BookVM> favoriteBooks = new ObservableCollection<BookVM>();
-        
-        private readonly ObservableCollection<LoanVM> currentLoans = new ObservableCollection<LoanVM>();
+        [ObservableProperty]
+        private ObservableCollection<PublishDateVM> publishDates = new ObservableCollection<PublishDateVM>();
+
+        [ObservableProperty]
+        private ObservableCollection<RatingsVM> ratings = new ObservableCollection<RatingsVM>();
+
+        [ObservableProperty]
+        private ObservableCollection<BookVM> toBeReadBooks = new ObservableCollection<BookVM>();
+
+        [ObservableProperty]
+        private ObservableCollection<BookVM> favoriteBooks = new ObservableCollection<BookVM>();
+
+        [ObservableProperty]
+        private ObservableCollection<LoanVM> currentLoans = new ObservableCollection<LoanVM>();
+
+        [ObservableProperty]
         private IEnumerable<IGrouping<ContactVM, LoanVM>> currentGroupedLoans;
-        private readonly ObservableCollection<LoanVM> pastLoans = new ObservableCollection<LoanVM>();
+
+        [ObservableProperty] 
+        private ObservableCollection<LoanVM> pastLoans = new ObservableCollection<LoanVM>();
+
+        [ObservableProperty]
         private IEnumerable<IGrouping<ContactVM, LoanVM>> pastGroupedLoans;
 
-        private readonly ObservableCollection<BorrowingVM> currentBorrowings = new ObservableCollection<BorrowingVM>();
+        [ObservableProperty]
+        private ObservableCollection<BorrowingVM> currentBorrowings = new ObservableCollection<BorrowingVM>();
+
+        [ObservableProperty]
         private IEnumerable<IGrouping<ContactVM, BorrowingVM>> currentGroupedBorrowings;
-        private readonly ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
+
+        [ObservableProperty]
+        private ObservableCollection<BorrowingVM> pastBorrowings = new ObservableCollection<BorrowingVM>();
+
+        [ObservableProperty]
         private IEnumerable<IGrouping<ContactVM, BorrowingVM>> pastGroupedBorrowings;
 
-        private readonly ObservableCollection<ContactVM> contacts = new ObservableCollection<ContactVM>();
-        private readonly ObservableCollection<Status> status = new ObservableCollection<Status>();
-        
-        private int index;
+        [ObservableProperty]
+        private ObservableCollection<ContactVM> contacts = new ObservableCollection<ContactVM>();
+
+        [ObservableProperty]
+        private ObservableCollection<Status> allStatus = new ObservableCollection<Status>();
+
+        [ObservableProperty]
+        private int indexPage;
+
+        [ObservableProperty]
         private long nbBooks;
 
+        [ObservableProperty]
         private BookVM selectedBook;
+
+        [ObservableProperty]
         private AuthorVM selectedAuthor;
+
+        [ObservableProperty]
         private PublishDateVM selectedDate;
+
+        [ObservableProperty]
         private RatingsVM selectedRating;
+
+        [ObservableProperty]
         private Status selectedStatus;
+
+        [ObservableProperty]
         private ContactVM selectedContact;
+
+        [ObservableProperty]
         private LoanVM selectedLoan;
+
+        [ObservableProperty]
         private BorrowingVM selectedBorrowing;
+
+        [ObservableProperty]
         private string entryText;
 
+        [ObservableProperty]
         private string givenFirstName;
+
+        [ObservableProperty]
         private string givenLastName;
+
+        [ObservableProperty]
         private bool isFavorite;
 
         #endregion
 
         #region Properties 
 
-        public ObservableCollection<BookVM> AllBooks 
-        {
-            get => books; 
-        }
-
-        public IEnumerable<IGrouping<string, BookVM>> GroupedBooks
-        {
-            get => groupedBooks;
-            set => SetProperty(ref groupedBooks, value);
-        }
-
-        public IEnumerable<IGrouping<Status, BookVM>> GroupedStatusBooks
-        {
-            get => groupedStatusBooks;
-            set => SetProperty(ref groupedStatusBooks, value);
-        }
-
-        public ObservableCollection<AuthorVM> AllAuthors
-        {
-            get => authors;
-        }
-
-        public ObservableCollection<PublishDateVM> AllPublishDates
-        {
-            get => publishDates;
-        }
-
-        public ObservableCollection<RatingsVM> AllRatings
-        {
-            get => ratings;
-        }
-
-        public ObservableCollection<BookVM> ToBeReadBooks
-        {
-            get => toBeReadBooks;
-        }
-
-        public ObservableCollection<BookVM> AllFavoriteBooks
-        {
-            get => favoriteBooks;
-        }
-
-        public ObservableCollection<LoanVM> AllCurrentLoans
-        {
-            get => currentLoans;
-        }
-
-        public IEnumerable<IGrouping<ContactVM, LoanVM>> AllCurrentGroupedLoans
-        {
-            get => currentGroupedLoans;
-            set => SetProperty(ref currentGroupedLoans, value);
-        }
-
-        public ObservableCollection<LoanVM> AllPastLoans
-        {
-            get => pastLoans;
-        }
-
-        public IEnumerable<IGrouping<ContactVM, LoanVM>> AllPastGroupedLoans
-        {
-            get => pastGroupedLoans;
-            set => SetProperty(ref pastGroupedLoans, value);
-        }
-
-        public ObservableCollection<BorrowingVM> AllCurrentBorrowings
-        {
-            get => currentBorrowings;
-        }
-
-        public IEnumerable<IGrouping<ContactVM, BorrowingVM>> AllCurrentGroupedBorrowings
-        {
-            get => currentGroupedBorrowings;
-            set => SetProperty(ref currentGroupedBorrowings, value);
-        }
-
-        public ObservableCollection<BorrowingVM> AllPastBorrowings
-        {
-            get => pastBorrowings;
-        }
-
-        public IEnumerable<IGrouping<ContactVM, BorrowingVM>> AllPastGroupedBorrowings
-        {
-            get => pastGroupedBorrowings;
-            set => SetProperty(ref pastGroupedBorrowings, value);
-        }
-
-        public ObservableCollection<ContactVM> AllContacts
-        {
-            get => contacts;
-        }
-
-        public ObservableCollection<Status> AllStatus
-        {
-            get => status;
-        }
-
-        public BookVM SelectedBook
-        {
-            get { return selectedBook; }
-            set
-            {
-                if (selectedBook != value)
-                {
-                    selectedBook = value;
-                    OnPropertyChanged(nameof(SelectedBook));
-                }
-            }
-        }
-
-        public AuthorVM SelectedAuthor
-        {
-            get { return selectedAuthor; }
-            set
-            {
-                if (selectedAuthor != value)
-                {
-                    selectedAuthor = value;
-                    OnPropertyChanged(nameof(SelectedAuthor));
-                }
-            }
-        }
-
-        public PublishDateVM SelectedDate
-        {
-            get { return selectedDate; }
-            set
-            {
-                if (selectedDate != value)
-                {
-                    selectedDate = value;
-                    OnPropertyChanged(nameof(SelectedDate));
-                }
-            }
-        }
-
-        public RatingsVM SelectedRating
-        {
-            get { return selectedRating; }
-            set
-            {
-                if (selectedRating != value)
-                {
-                    selectedRating = value;
-                    OnPropertyChanged(nameof(SelectedRating));
-                }
-            }
-        }
-
-        public Status SelectedStatus
-        {
-            get { return selectedStatus; }
-            set
-            {
-                if (selectedStatus != value)
-                {
-                    selectedStatus = value;
-                    OnPropertyChanged(nameof(SelectedStatus));
-                }
-            }
-        }
-
-        public ContactVM SelectedContact
-        {
-            get { return selectedContact; }
-            set
-            {
-                if (selectedContact != value)
-                {
-                    selectedContact = value;
-                    OnPropertyChanged(nameof(SelectedContact));
-                }
-            }
-        }
-
-        public LoanVM SelectedLoan
-        {
-            get { return selectedLoan; }
-            set
-            {
-                if (selectedLoan != value)
-                {
-                    selectedLoan = value;
-                    OnPropertyChanged(nameof(SelectedLoan));
-                }
-            }
-        }
-
-        public BorrowingVM SelectedBorrowing
-        {
-            get { return selectedBorrowing; }
-            set
-            {
-                if (selectedBorrowing != value)
-                {
-                    selectedBorrowing = value;
-                    OnPropertyChanged(nameof(SelectedBorrowing));
-                }
-            }
-        }
-
-        public string EntryText
-        {
-            get { return entryText; }
-            set
-            {
-                if (entryText != value)
-                {
-                    entryText = value;
-                    OnPropertyChanged(nameof(EntryText));
-                }
-            }
-        }
-
-        public string GivenFirstName
-        {
-            get { return givenFirstName; }
-            set
-            {
-                if (givenFirstName != value)
-                {
-                    givenFirstName = value;
-                    OnPropertyChanged(nameof(GivenFirstName));
-                }
-            }
-        }
-
-        public string GivenLastName
-        {
-            get { return givenLastName; }
-            set
-            {
-                if (givenLastName != value)
-                {
-                    givenLastName = value;
-                    OnPropertyChanged(nameof(GivenLastName));
-                }
-            }
-        }
-
-        public bool IsFavorite
-        {
-            get { return isFavorite; }
-            set
-            {
-                if (isFavorite != value)
-                {
-                    isFavorite = value;
-                    OnPropertyChanged(nameof(IsFavorite));
-                }
-            }
-        }
-
         public string SearchTitle { get; private set; }
-
-        public int Index 
-        {
-            get => index; 
-            set => SetProperty(ref index, value); 
-        }
 
         public int Count { get; set; } = 5;
 
-        public long NbBooks
-        {
-            get => nbBooks;
-            set
-            {
-                SetProperty(ref nbBooks, value);
-                OnPropertyChanged(nameof(NbPages));
-            }
-        }
-
         public int NbPages => (int)((NbBooks - 1) / Count);
-
-        public ICommand PreviousCommand { get; private set; }
-
-        public ICommand NextCommand { get; private set; }
-
-        public ICommand GetBooksByTitleCommand { get; private set; }
-
-        public ICommand GetBooksFromCollectionCommand { get; private set; }
-
-        public ICommand AddBookCommand { get; private set; }
-
-        public ICommand UpdateBookCommand { get; private set; }
-
-        public ICommand UpdateStatusBookCommand { get; private set; }
-
-        public ICommand UpdateToBeReadBookCommand { get; private set; }
-
-        public ICommand RemoveBookCommand { get; private set; }
-
-        public ICommand GetBooksByAuthorCommand { get; private set; }
-
-        public ICommand GetAllAuthorsCommand { get; private set; }
-
-        public ICommand GetBooksByDateCommand { get; private set; }
-
-        public ICommand GetAllPublishDatesCommand { get; private set; }
-
-        public ICommand GetBooksByRatingCommand { get; private set; }
-
-        public ICommand GetAllRatingsCommand { get; private set; }
-
-        public ICommand GetAllStatusCommand { get; private set; } 
-
-        public ICommand GetToBeReadBooksCommand { get; private set; }
-
-        public ICommand GetFavoriteBooksCommand { get; private set; }
-
-        public ICommand AddToFavoritesCommand { get; private set; }
-
-        public ICommand RemoveFromFavoritesCommand { get; private set; }
-
-        public ICommand CheckBookIsFavoriteCommand { get; private set; }
-
-        public ICommand GetCurrentLoansCommand { get; private set; }
-
-        public ICommand GetPastLoansCommand { get; private set; }
-
-        public ICommand GetCurrentBorrowingsCommand { get; private set; }
-
-        public ICommand GetPastBorrowingsCommand { get; private set; }
-
-        public ICommand LendBookCommand { get; private set; }
-
-        public ICommand GetContactsCommand { get; private set; } 
-
-        public ICommand AddContactCommand { get; private set; }
 
         #endregion
 
         #region Constructor
 
-        public ManagerVM(Manager model) : base(model)
+        public ManagerVM(Manager model)
         {
-            PreviousCommand = new RelayCommand(() => Previous());
-            NextCommand = new RelayCommand(() => Next());
-            GetBooksFromCollectionCommand = new RelayCommand(() => GetBooksFromCollection());
-            AddBookCommand = new RelayCommand<string>((isbn) => AddBook(isbn));
-            UpdateBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateBook(bookVM));
-            UpdateStatusBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateStatusBook(bookVM));
-            UpdateToBeReadBookCommand = new RelayCommand<BookVM>((bookVM) => UpdateToBeReadBook(bookVM));
-            RemoveBookCommand = new RelayCommand<BookVM>((bookVM) => RemoveBook(bookVM));
-            GetBooksByAuthorCommand = new RelayCommand(() => GetBooksByAuthor());
-            GetAllAuthorsCommand = new RelayCommand(() => GetAllAuthors());
-            GetBooksByDateCommand = new RelayCommand(() => GetBooksByDate());
-            GetAllPublishDatesCommand = new RelayCommand(() => GetAllPublishDates());
-            GetBooksByRatingCommand = new RelayCommand(() => GetBooksByRating());
-            GetAllRatingsCommand = new RelayCommand(() => GetAllRatings());
-            GetAllStatusCommand = new RelayCommand(() => GetAllStatus());
-            GetToBeReadBooksCommand = new RelayCommand(() => GetToBeReadBooks());
-            GetFavoriteBooksCommand = new RelayCommand(() => GetFavoriteBooks());
-            AddToFavoritesCommand = new RelayCommand<BookVM>(bookVM => AddToFavorites(bookVM));
-            RemoveFromFavoritesCommand = new RelayCommand<BookVM>(bookVM => RemoveFromFavorites(bookVM));
-            CheckBookIsFavoriteCommand = new RelayCommand<BookVM>(bookVM => CheckBookIsFavorite(bookVM));
-            GetCurrentLoansCommand = new RelayCommand(() =>  GetCurrentLoans());
-            GetPastLoansCommand = new RelayCommand(() =>  GetPastLoans());
-            GetCurrentBorrowingsCommand = new RelayCommand(() => GetCurrentBorrowings());
-            GetPastBorrowingsCommand = new RelayCommand(() => GetPastBorrowings());
-            LendBookCommand = new RelayCommand<ContactVM>((contactVM) => LendBook(contactVM));
-            GetContactsCommand = new RelayCommand(() => GetContacts());
-            AddContactCommand = new RelayCommand(() => AddContact());
+            Model = model;
             //GetBooksByTitleCommand = new RelayCommand(() => AllBooks = model.GetBooksByTitle(SearchTitle, Index, Count).Result.books.Select(book => new BookVM(book)));
         }
 
@@ -430,41 +140,45 @@ namespace ViewModels
 
         #region Methods
 
+        [RelayCommand]
         private async Task Previous()
         {
-            if (Index > 0)
+            if (IndexPage > 0)
             {
-                Index--;
+                IndexPage--;
                 await GetBooksFromCollection();
             }
         }
 
+        [RelayCommand]
         private async Task Next()
         {
-            if (Index < NbPages)
+            if (IndexPage < NbPages)
             {
-                Index++;
+                IndexPage++;
                 await GetBooksFromCollection();
             }
         }
 
+        [RelayCommand]
         private async Task GetBooksFromCollection()
         {
-            var result = await Model.GetBooksFromCollection(Index, Count);
+            var result = await Model.GetBooksFromCollection(IndexPage, Count);
             NbBooks = result.count;
             IEnumerable<Book> someBooks = result.books;
             someBooks = someBooks.OrderBy(b => b.Status);
-            books.Clear();
+            Books.Clear();
             foreach (var b in someBooks.Select(b => new BookVM(b))) 
             {
-                books.Add(b); 
-                GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
-                GroupedStatusBooks = AllBooks.GroupBy(b => b.Status).OrderBy(group => group.Key);
+                Books.Add(b);
+                GroupedBooks = Books.GroupBy(b => b.Author).OrderBy(group => group.Key);
+                GroupedStatusBooks = Books.GroupBy(b => b.Status).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(GroupedBooks));
-            OnPropertyChanged(nameof(AllBooks));
+            OnPropertyChanged(nameof(Books));
         }
 
+        [RelayCommand]
         private async Task AddBook(string isbn)
         {
             var result = await Model.GetBookByISBN(isbn);
@@ -475,12 +189,14 @@ namespace ViewModels
             GetBooksFromCollectionCommand.Execute(null);
         }
 
+        [RelayCommand]
         private async Task UpdateBook(BookVM bookVM)
         {
             var book = await Model.GetBookById(bookVM.Id);
             await Model.UpdateBook(book);
         }
-        
+
+        [RelayCommand]
         private async Task UpdateStatusBook(BookVM bookVM)
         {
             var book = await Model.GetBookById(bookVM.Id);
@@ -491,6 +207,7 @@ namespace ViewModels
             OnPropertyChanged(nameof(bookVM));
         }
 
+        [RelayCommand]
         private async Task UpdateToBeReadBook(BookVM bookVM)
         {
             var book = await Model.GetBookById(bookVM.Id);
@@ -498,6 +215,7 @@ namespace ViewModels
             await Model.UpdateBook(book);
         }
 
+        [RelayCommand]
         private async Task RemoveBook(BookVM bookVM)
         {
             var book = await Model.GetBookById(bookVM.Id);
@@ -506,6 +224,7 @@ namespace ViewModels
             await GetBooksFromCollection();
         }
 
+        [RelayCommand]
         private async Task GetBooksByAuthor()
         {
             var result = await Model.GetBooksByAuthor(SelectedAuthor.Name, 0, 1000);
@@ -515,12 +234,13 @@ namespace ViewModels
             foreach (var b in someBooks.Select(b => new BookVM(b)))
             {
                 books.Add(b);
-                GroupedBooks = AllBooks.GroupBy(b => b.Author).OrderBy(group => group.Key);
+                GroupedBooks = Books.GroupBy(b => b.Author).OrderBy(group => group.Key);
             }
             OnPropertyChanged(nameof(GroupedBooks));
-            OnPropertyChanged(nameof(AllBooks));
+            OnPropertyChanged(nameof(Books));
         }
 
+        [RelayCommand]
         private async Task GetAllAuthors()
         {
             var result = await Model.GetBooksFromCollection(0, 1000);
@@ -535,9 +255,10 @@ namespace ViewModels
                     a.NbBooksWritten++;
                 }
             }
-            OnPropertyChanged(nameof(AllAuthors));
+            OnPropertyChanged(nameof(Authors));
         }
 
+        [RelayCommand]
         private async Task GetBooksByDate()
         {
             var result = await Model.GetBooksFromCollection(0, 1000);
@@ -549,42 +270,44 @@ namespace ViewModels
                 if (b.PublishDate.Year == SelectedDate.PublishDate.Year)
                 {
                     books.Add(b);
-                    GroupedBooks = AllBooks.GroupBy(b => b.PublishDate.Year.ToString()).OrderBy(group => group.Key);
+                    GroupedBooks = Books.GroupBy(b => b.PublishDate.Year.ToString()).OrderBy(group => group.Key);
                 }                
             }
             OnPropertyChanged(nameof(GroupedBooks));
-            OnPropertyChanged(nameof(AllBooks));
+            OnPropertyChanged(nameof(Books));
         }
 
+        [RelayCommand]
         private async Task GetAllPublishDates()
         {
             var result = await Model.GetBooksFromCollection(0, 1000);
             IEnumerable<Book> someBooks = result.books;
-            books.Clear();
-            publishDates.Clear();
+            Books.Clear();
+            PublishDates.Clear();
             foreach (var b in someBooks.Select(b => new BookVM(b)))
             {
                 var date = new PublishDateVM { PublishDate = b.PublishDate };
                 date.NbBooksWritten++;
-                publishDates.Add(date);
-                foreach (var p in publishDates)
+                PublishDates.Add(date);
+                foreach (var p in PublishDates)
                 {
                     if (date.PublishDate.Year == p.PublishDate.Year && !date.Equals(p))
                     {
                         p.NbBooksWritten++;
-                        publishDates.Remove(date);
+                        PublishDates.Remove(date);
                     }
                 }
             }
-            OnPropertyChanged(nameof(AllPublishDates));
+            OnPropertyChanged(nameof(PublishDates));
         }
 
+        [RelayCommand]
         private async Task GetBooksByRating()
         {
             var result = await Model.GetBooksFromCollection(0, 1000);
             NbBooks = result.count;
             IEnumerable<Book> someBooks = result.books;
-            books.Clear();
+            Books.Clear();
 
             var groupedBooks = someBooks
                 .Where(book => book.UserRating.HasValue)
@@ -595,17 +318,16 @@ namespace ViewModels
             GroupedBooks = groupedBooks;
 
             OnPropertyChanged(nameof(GroupedBooks));
-            OnPropertyChanged(nameof(AllBooks));
+            OnPropertyChanged(nameof(Books));
         }
 
-
-
+        [RelayCommand]
         private async Task GetAllRatings()
         {
             var result = await Model.GetBooksFromCollection(0, 1000);
             IEnumerable<Book> someBooks = result.books;
-            books.Clear();
-            ratings.Clear();
+            Books.Clear();
+            Ratings.Clear();
 
             Dictionary<string, List<BookVM>> groupedBooks = new Dictionary<string, List<BookVM>>();
 
@@ -639,19 +361,21 @@ namespace ViewModels
                 ratings.Add(rating);
             }
 
-            OnPropertyChanged(nameof(AllRatings));
+            OnPropertyChanged(nameof(Ratings));
         }
 
+        [RelayCommand]
         private async Task GetAllStatus()
         {
             var allStatusValues = Enum.GetValues(typeof(Status)).OfType<Status>();
             foreach (var s in allStatusValues)
             {
-                status.Add(s);
+                allStatus.Add(s);
             }
             OnPropertyChanged(nameof(AllStatus));
         }
 
+        [RelayCommand]
         private async Task GetToBeReadBooks()
         {
             var result = await Model.GetBooksFromCollection(0, 1000);
@@ -668,6 +392,7 @@ namespace ViewModels
             OnPropertyChanged(nameof(ToBeReadBooks));
         }
 
+        [RelayCommand]
         private async Task GetFavoriteBooks()
         {
             var result = await Model.GetFavoritesBooks(0, 1000);
@@ -678,9 +403,10 @@ namespace ViewModels
             {
                 favoriteBooks.Add(b);
             }
-            OnPropertyChanged(nameof(AllFavoriteBooks));
+            OnPropertyChanged(nameof(FavoriteBooks));
         }
 
+        [RelayCommand]
         private async Task AddToFavorites(BookVM bookVM)
         {
             var book = await Model.GetBookById(bookVM.Id);
@@ -688,6 +414,7 @@ namespace ViewModels
             await GetFavoriteBooks();
         }
 
+        [RelayCommand]
         private async Task RemoveFromFavorites(BookVM bookVM)
         {
             var book = await Model.GetBookById(bookVM.Id);
@@ -695,10 +422,11 @@ namespace ViewModels
             await GetFavoriteBooks();
         }
 
+        [RelayCommand]
         private async Task CheckBookIsFavorite(BookVM bookVM)
         {
             await GetFavoriteBooks();
-            if (AllFavoriteBooks.Any(favoriteBook => favoriteBook.Id == bookVM.Id))
+            if (FavoriteBooks.Any(favoriteBook => favoriteBook.Id == bookVM.Id))
             {
                 IsFavorite = true;
                 OnPropertyChanged(nameof(IsFavorite));
@@ -710,6 +438,7 @@ namespace ViewModels
             }
         }
 
+        [RelayCommand]
         private async Task GetCurrentLoans()
         {
             var result = await Model.GetCurrentLoans(0, 1000);
@@ -718,11 +447,12 @@ namespace ViewModels
             foreach (var l in someLoans.Select(l => new LoanVM(l)))
             {
                 currentLoans.Add(l);
-                AllCurrentGroupedLoans = AllCurrentLoans.GroupBy(l => l.Loaner).OrderBy(group => group.Key);
+                CurrentGroupedLoans = CurrentLoans.GroupBy(l => l.Loaner).OrderBy(group => group.Key);
             }
-            OnPropertyChanged(nameof(AllCurrentLoans));
+            OnPropertyChanged(nameof(CurrentLoans));
         }
 
+        [RelayCommand]
         private async Task GetPastLoans()
         {
             var result = await Model.GetPastLoans(0, 1000);
@@ -731,11 +461,12 @@ namespace ViewModels
             foreach (var l in someLoans.Select(l => new LoanVM(l)))
             {
                 pastLoans.Add(l);
-                AllPastGroupedLoans = AllPastLoans.GroupBy(l => l.Loaner).OrderBy(group => group.Key);
+                PastGroupedLoans = PastLoans.GroupBy(l => l.Loaner).OrderBy(group => group.Key);
             }
-            OnPropertyChanged(nameof(AllPastLoans));
+            OnPropertyChanged(nameof(PastLoans));
         }
 
+        [RelayCommand]
         private async Task GetCurrentBorrowings()
         {
             var result = await Model.GetCurrentBorrowings(0, 1000);
@@ -744,11 +475,12 @@ namespace ViewModels
             foreach (var b in someBorrowings.Select(b => new BorrowingVM(b)))
             {
                 currentBorrowings.Add(b);
-                AllCurrentGroupedBorrowings = AllCurrentBorrowings.GroupBy(b => b.Owner).OrderBy(group => group.Key);
+                CurrentGroupedBorrowings = CurrentBorrowings.GroupBy(b => b.Owner).OrderBy(group => group.Key);
             }
-            OnPropertyChanged(nameof(AllCurrentBorrowings));
+            OnPropertyChanged(nameof(CurrentBorrowings));
         }
 
+        [RelayCommand]
         private async Task GetPastBorrowings()
         {
             var result = await Model.GetPastBorrowings(0, 1000);
@@ -757,16 +489,17 @@ namespace ViewModels
             foreach (var b in someBorrowings.Select(b => new BorrowingVM(b)))
             {
                 pastBorrowings.Add(b);
-                AllPastGroupedBorrowings = AllPastBorrowings.GroupBy(b => b.Owner).OrderBy(group => group.Key);
+                PastGroupedBorrowings = PastBorrowings.GroupBy(b => b.Owner).OrderBy(group => group.Key);
             }
-            OnPropertyChanged(nameof(AllPastBorrowings));
+            OnPropertyChanged(nameof(PastBorrowings));
         }
 
+        [RelayCommand]
         private async Task LendBook(ContactVM contactVM)
         {
             var book = await Model.GetBookById(SelectedBook.Id);
             Model.Contact contact = new Model.Contact();
-            var resultContacts = await Model.GetContacts(Index, Count);
+            var resultContacts = await Model.GetContacts(IndexPage, Count);
             var allContacts = resultContacts.contacts;
             foreach (var c in allContacts)
             {
@@ -781,9 +514,10 @@ namespace ViewModels
             }
         }
 
+        [RelayCommand]
         private async Task GetContacts()
         {
-            var result = await Model.GetContacts(Index, Count);
+            var result = await Model.GetContacts(IndexPage, Count);
             IEnumerable<Model.Contact> someContacts = result.contacts;
             someContacts = someContacts.OrderBy(c => c.FirstName);
             contacts.Clear();
@@ -791,12 +525,13 @@ namespace ViewModels
             {
                 contacts.Add(c);
             }
-            OnPropertyChanged(nameof(AllContacts));
+            OnPropertyChanged(nameof(Contacts));
         }
 
+        [RelayCommand]
         private async Task AddContact()
         {
-            var result = await Model.GetContacts(Index, Count);
+            var result = await Model.GetContacts(IndexPage, Count);
             IEnumerable<Model.Contact> someContacts = result.contacts;
 
             int lastSequence = someContacts
@@ -820,7 +555,7 @@ namespace ViewModels
             GivenLastName = null;
 
             await Model.AddContact(newContact);
-            OnPropertyChanged(nameof(AllContacts));
+            OnPropertyChanged(nameof(Contacts));
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,20 @@ using ViewModels;
 
 namespace LivreLand.ViewModel
 {
-    public class FavorisVM : BaseViewModel
+    [ObservableObject]
+    public partial class FavorisVM
     {
+        #region Fields
+
+        [ObservableProperty]
+        private NavigatorVM navigator;
+
+        [ObservableProperty]
+        private ManagerVM manager;
+
+        #endregion
+
         #region Properties
-
-        public NavigatorVM Navigator { get; private set; }
-
-        public ManagerVM Manager { get; private set; }
 
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Model;
-using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,71 +12,29 @@ using ViewModels;
 
 namespace LivreLand.ViewModel
 {
-    public class DetailsLivreVM : BaseViewModel
+    [ObservableObject]
+    public partial class DetailsLivreVM
     {
         #region Fields
 
+        [ObservableProperty]
+        private NavigatorVM navigator;
+
+        [ObservableProperty]
+        private ManagerVM manager;
+
+        [ObservableProperty]
+        private BookVM book;
+
+        [ObservableProperty]
         private bool isPickerVisible = false;
+
+        [ObservableProperty]
         private string addFavorisButtonText;
 
         #endregion
 
         #region Properties
-
-        public ManagerVM Manager { get; private set; }
-
-        public NavigatorVM Navigator { get; private set; }
-
-        public BookVM Book { get; private set; }
-
-        public bool IsPickerVisible
-        {
-            get => isPickerVisible;
-            set
-            {
-                if (isPickerVisible != value)
-                {
-                    isPickerVisible = value;
-                    OnPropertyChanged(nameof(IsPickerVisible));
-                }
-            }
-        }
-        
-        public string AddFavorisButtonText
-        {
-            get
-            {
-                Manager.GetFavoriteBooksCommand.Execute(null);
-                if (Manager.AllFavoriteBooks.Any(favoriteBook => favoriteBook.Id == Book.Id))
-                {
-                    return addFavorisButtonText = "Supprimer des favoris";
-                }
-                else
-                {
-                    return addFavorisButtonText = "Ajouter aux favoris";
-                }
-            }
-            set
-            {
-                if (addFavorisButtonText != value)
-                {
-                    addFavorisButtonText = value;
-                    OnPropertyChanged(nameof(AddFavorisButtonText));
-                }
-            }
-        }
-
-        public ICommand BackButtonCommand { get; private set; }
-
-        public ICommand ShowPickerCommand { get; private set; }
-
-        public ICommand AddRemoveBookToFavoritesCommand { get; private set; }
-
-        public ICommand AddBookToReadListCommand { get; private set; }
-
-        public ICommand LoanBookCommand { get; private set; }
-
-        public ICommand RemoveBookCommand { get; private set; }
 
         #endregion
 
@@ -86,30 +45,27 @@ namespace LivreLand.ViewModel
             Manager = managerVM;
             Navigator = navigatorVM;
             Book = bookVM;
-            BackButtonCommand = new RelayCommand(() => BackButton());
-            ShowPickerCommand = new RelayCommand(() => ShowPicker());
-            AddRemoveBookToFavoritesCommand = new RelayCommand<BookVM>((bookVM) => AddRemoveBookToFavorites(bookVM));
-            AddBookToReadListCommand = new RelayCommand<BookVM>((bookVM) => AddBookToReadList(bookVM));
-            LoanBookCommand = new RelayCommand<BookVM>((bookVM) => LoanBook(bookVM));
-            RemoveBookCommand = new RelayCommand<BookVM>((bookVM) => RemoveBook(bookVM));
         }
 
         #endregion
 
         #region Methods
 
+        [RelayCommand]
         private void BackButton()
         {
             Navigator.PopupBackButtonNavigationCommand.Execute(null);
         }
 
+        [RelayCommand]
         private void ShowPicker()
         {
             Manager.GetAllStatusCommand.Execute(null);
-            Manager.SelectedStatus = this.Book.Status;
+            Manager.SelectedStatus = Book.Status;
             IsPickerVisible = true;
         }
 
+        [RelayCommand]
         private async Task AddRemoveBookToFavorites(BookVM bookVM)
         {
             Manager.CheckBookIsFavoriteCommand.Execute(bookVM);
@@ -139,6 +95,7 @@ namespace LivreLand.ViewModel
             }
         }
 
+        [RelayCommand]
         private async Task AddBookToReadList(BookVM bookVM)
         {
             Manager.UpdateToBeReadBookCommand.Execute(bookVM);
@@ -150,6 +107,7 @@ namespace LivreLand.ViewModel
             Navigator.NavigationCommand.Execute("/later");
         }
 
+        [RelayCommand]
         private void LoanBook(BookVM bookVM)
         {
             Manager.SelectedBook = bookVM;
@@ -157,6 +115,7 @@ namespace LivreLand.ViewModel
             Navigator.NavigationCommand.Execute("contacts");
         }
 
+        [RelayCommand]
         private async Task RemoveBook(BookVM bookVM)
         {
             Manager.RemoveBookCommand.Execute(bookVM);

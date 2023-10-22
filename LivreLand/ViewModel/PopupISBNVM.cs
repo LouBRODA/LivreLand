@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Model;
-using PersonalMVVMToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,20 @@ using ViewModels;
 
 namespace LivreLand.ViewModel
 {
-    public class PopupISBNVM : BaseViewModel
+    [ObservableObject]
+    public partial class PopupISBNVM
     {
+        #region Fields
+
+        [ObservableProperty]
+        private NavigatorVM navigator;
+
+        [ObservableProperty]
+        private ManagerVM manager;
+
+        #endregion
+
         #region Properties
-
-        public NavigatorVM Navigator { get; private set; }
-
-        public ManagerVM Manager { get; private set; }
-
-        public ICommand AddBookCommand { get; private set; }
 
         #endregion
 
@@ -29,13 +35,13 @@ namespace LivreLand.ViewModel
         {
             Navigator = navigatorVM;
             Manager = managerVM;
-            AddBookCommand = new RelayCommand<string>((text) => AddBook(text));
         }
 
         #endregion
 
         #region Methods
 
+        [RelayCommand]
         private async Task AddBook(string entryText)
         {
             Manager.AddBookCommand.Execute(entryText);

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Alerts;
-using PersonalMVVMToolkit;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,36 +11,23 @@ using ViewModels;
 
 namespace LivreLand.ViewModel
 {
-    public class ContactsVM : BaseViewModel
+    [ObservableObject]
+    public partial class ContactsVM
     {
         #region Fields
 
+        [ObservableProperty]
+        private NavigatorVM navigator;
+
+        [ObservableProperty]
+        private ManagerVM manager;
+
+        [ObservableProperty]
         private bool dataFormIsVisible = false;
 
         #endregion
 
         #region Properties
-
-        public NavigatorVM Navigator { get; private set; }
-
-        public ManagerVM Manager { get; private set; }
-
-        public bool DataFormIsVisible
-        {
-            get { return dataFormIsVisible; }
-            set
-            {
-                if (dataFormIsVisible != value)
-                {
-                    dataFormIsVisible = value;
-                    OnPropertyChanged(nameof(DataFormIsVisible));
-                }
-            }
-        }
-
-        public ICommand AddContactDataFormCommand { get; private set; }
-
-        public ICommand BookLendedCommand { get; private set; }
 
         #endregion
 
@@ -49,19 +37,19 @@ namespace LivreLand.ViewModel
         {
             Navigator = navigatorVM;
             Manager = managerVM;
-            AddContactDataFormCommand = new RelayCommand(() => AddContactDataForm());
-            BookLendedCommand = new RelayCommand<ContactVM>((contactVM) => BookLended(contactVM));
         }
 
         #endregion
 
         #region Methods
 
+        [RelayCommand]
         private void AddContactDataForm()
         {
             DataFormIsVisible = true;
         }
 
+        [RelayCommand]
         private async Task BookLended(ContactVM contactVM)
         {
             Manager.LendBookCommand.Execute(contactVM);

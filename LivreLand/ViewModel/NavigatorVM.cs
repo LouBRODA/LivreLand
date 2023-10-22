@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using LivreLand.View;
 using LivreLand.View.ContentViews;
 using System;
@@ -10,14 +12,14 @@ using System.Windows.Input;
 
 namespace LivreLand.ViewModel
 {
-    public class NavigatorVM
+    [ObservableObject]
+    public partial class NavigatorVM
     {
-        #region Properties
+        #region Fields
 
-        public ICommand NavigationCommand { get; }
-        public ICommand PopupHomePlusNavigationCommand { get; }
-        public ICommand PopupISBNNavigationCommand { get; }
-        public ICommand PopupBackButtonNavigationCommand { get; }
+        #endregion
+
+        #region Properties
 
         #endregion
 
@@ -25,16 +27,36 @@ namespace LivreLand.ViewModel
 
         public NavigatorVM()
         {
-            NavigationCommand = new Command(async (target) => await Shell.Current.GoToAsync($"//library/{target}"));
 
-            PopupHomePlusNavigationCommand = new Command(() => App.Current.MainPage.ShowPopup(new PopupHomePlusButtonView(this)));
-            PopupISBNNavigationCommand = new Command(() => App.Current.MainPage.ShowPopup(new PopupISBNView(Application.Current.Handler.MauiContext.Services.GetService<PopupISBNVM>())));
-            PopupBackButtonNavigationCommand = new Command(() => App.Current.MainPage.Navigation.PopAsync());
         }
 
         #endregion
 
         #region Methods
+
+        [RelayCommand]
+        private async Task Navigation(string target)
+        {
+            await Shell.Current.GoToAsync($"//library/{target}");
+        }
+
+        [RelayCommand]
+        private async Task PopupHomePlusNavigation()
+        {
+            await App.Current.MainPage.ShowPopupAsync(new PopupHomePlusButtonView(this));
+        }
+
+        [RelayCommand]
+        private async Task PopupISBNNavigation()
+        {
+            await App.Current.MainPage.ShowPopupAsync(new PopupISBNView(Application.Current.Handler.MauiContext.Services.GetService<PopupISBNVM>()));
+        }
+
+        [RelayCommand]
+        private async Task PopupBackButtonNavigation()
+        {
+            await App.Current.MainPage.Navigation.PopAsync();
+        }
 
         #endregion
     }

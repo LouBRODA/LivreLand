@@ -1,5 +1,5 @@
-﻿using Model;
-using PersonalMVVMToolkit;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,47 +8,35 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    public class LoanVM : BaseViewModel<Loan>
+    [ObservableObject]
+    public partial class LoanVM
     {
         #region Fields
+
+        [ObservableProperty]
+        private string id;
+
+        [ObservableProperty]
+        private BookVM book;
+
+        [ObservableProperty]
+        private ContactVM loaner;
+
+        [ObservableProperty]
+        private DateTime loanedAt;
+
+        [ObservableProperty]
+        private DateTime? returnedAt;
 
         #endregion
 
         #region Properties
 
-        public string Id
-        {
-            get => Model.Id;
-            set => SetProperty(Model.Id, value, v => Model.Id = value);
-        }
-
-        public BookVM Book
-        {
-            get => new BookVM(Model.Book);
-        }
-
-        public ContactVM Loaner
-        {
-            get => new ContactVM(Model.Loaner);
-        }
-
-        public DateTime LoanedAt
-        {
-            get => Model.LoanedAt;
-            set => SetProperty(Model.LoanedAt, value, v => Model.LoanedAt = value);
-        }
-
-        public DateTime? ReturnedAt
-        {
-            get => Model.ReturnedAt;
-            set => SetProperty(Model.ReturnedAt, value, v => Model.ReturnedAt = value);
-        }
-
         #endregion
 
         #region Constructor
 
-        public LoanVM(Loan l) : base(l)
+        public LoanVM(Loan l)
         {
 
         }
